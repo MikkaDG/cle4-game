@@ -8,7 +8,7 @@ export class Gamescene extends Scene {
         onInitialize(engine) {
             // this.game = this.engine
 
-            this.player = new Player();
-            this.add(this.player);
+            // this.player = new Player();
+            // this.add(this.player);
 }
 }
