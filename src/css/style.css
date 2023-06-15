@@ -1,5 +1,12 @@
 body {
-    margin:0;
-    padding:0;
-    background-color:darkgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: darkgrey;
+}
+
+canvas {
+    border: 2px solid #000; /* Voeg een rand toe aan het canvas voor zichtbaarheid */
 }

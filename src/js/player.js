@@ -6,11 +6,12 @@ export class Player extends Actor {
 
     constructor() {
         super({
-            width: Resources.Stickman.width,
-            height: Resources.Stickman.height
+            width: Resources.Player.width,
+            height: Resources.Player.height
         })
-        this.graphics.use(Resources.Stickman.toSprite())
-        this.pos = new Vector(250, 500)
+        this.graphics.use(Resources.Player.toSprite())
+        this.scale = new Vector(0.03, 0.03)
+        this.pos = new Vector(300, 500)
     }
 
     onInitialize(engine) {
@@ -22,6 +23,7 @@ export class Player extends Actor {
         engine.input.keyboard.on('down', (evt) => {
             if (evt.key === 'ArrowLeft' || evt.key === 'KeyA') {
                 this.vel.x = -300; // verplaats de speler met een snelheid van -600 pixels per seconde naar links
+                flipHorizontal = true
             } else if (evt.key === 'ArrowRight' || evt.key === 'KeyD') {
                 this.vel.x = 300; // verplaats de speler met een snelheid van 300 pixels per seconde naar rechts
             }

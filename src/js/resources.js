@@ -1,10 +1,10 @@
 import { ImageSource, Sound, Resource, Loader } from 'excalibur'
 import fishImage from '../images/fish.png'
-import stickmanImage from '../images/stickman.png'
+import playerImage from '../images/player1.png'
 
 const Resources = {
     Fish: new ImageSource(fishImage),
-    Stickman: new ImageSource(stickmanImage)
+    Player: new ImageSource(playerImage)
 }
 
 // met deze for loop hoef je niet alles handmatig in de loader te zetten
