@@ -1,14 +1,13 @@
-import '../css/style.css'
-import {Actor, Engine, Scene, Vector} from 'excalibur';
-import { Resources, ResourceLoader } from './resources.js'
-import {Player} from './player.js';
+import '../css/style.css';
+import {Actor, Color, Engine, Label, Physics, Scene, TextAlign, Vector, Input, Font, FontUnit} from 'excalibur';
+import {Background} from './background.js';
 
 export class Gamescene extends Scene {
 
         onInitialize(engine) {
-            // this.game = this.engine
+            const game = engine;
 
-            // this.player = new Player();
-            // this.add(this.player);
-}
+            const background = new Background({});
+            this.add(background);
+        }
 }
