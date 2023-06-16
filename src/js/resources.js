@@ -1,9 +1,9 @@
 import { ImageSource, Sound, Resource, Loader } from 'excalibur'
 import playerImage from '../images/player1.png'
-import suhailImage from '../images/suhail.png'
-import mikeImage from '../images/mike.png'
-import mickImage from '../images/mick.png'
-import cerenImage from '../images/ceren.png'
+import suhailImage from '../images/suhail/suhail.png'
+import mikeImage from '../images/mike/mike.png'
+import mickImage from '../images/mick/mick.png'
+import cerenImage from '../images/ceren/ceren.png'
 import backgroundImage from '../images/background.png'
 
 const Resources = {
