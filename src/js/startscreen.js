@@ -60,7 +60,7 @@ export class Startscreen extends Scene {
 
         cerenButton.on('pointerup', () => {
             game.goToScene('gamescene');
-            game.currentScene.add(new Ceren(300, 500));
+            game.currentScene.add(new Ceren(300, 600));
         });
 
         const mickText = new Label({
@@ -81,7 +81,7 @@ export class Startscreen extends Scene {
 
         mickButton.on('pointerup', () => {
             game.goToScene('gamescene');
-            game.currentScene.add(new Mick(300, 500));
+            game.currentScene.add(new Mick(300, 600));
         });
 
         const mikeText = new Label({
@@ -102,7 +102,7 @@ export class Startscreen extends Scene {
 
         mikeButton.on('pointerup', () => {
             game.goToScene('gamescene');
-            game.currentScene.add(new Mike(300, 500));
+            game.currentScene.add(new Mike(300, 600));
         });
 
         const suhailText = new Label({
@@ -123,7 +123,7 @@ export class Startscreen extends Scene {
 
         suhailButton.on('pointerup', () => {
             game.goToScene('gamescene');
-            game.currentScene.add(new Suhail(300, 500));
+            game.currentScene.add(new Suhail(300, 620));
         });
 
 
