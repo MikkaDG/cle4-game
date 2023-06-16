@@ -16,6 +16,19 @@ export class Startscreen extends Scene {
         const background = new SelectScreenBackground({});
         this.add(background);
 
+        // Blokkeer toetsenbordinput alleen in Startscreen
+        engine.input.keyboard.on('down', (evt) => {
+            if (engine.currentScene instanceof Startscreen) {
+                evt.preventDefault();
+            }
+        });
+
+        engine.input.keyboard.on('up', (evt) => {
+            if (engine.currentScene instanceof Startscreen) {
+                evt.preventDefault();
+            }
+        });
+
         const startText = new Label({
             text: 'Choose your character!',
             pos: new Vector(400, 200),
@@ -42,16 +55,12 @@ export class Startscreen extends Scene {
         });
         this.add(cerenText);
 
-        const cerenButton = new Ceren({
-            width: Resources.Ceren.width,
-            height: Resources.Ceren.height,
-            anchor: new Vector(0.5, 0.5),
-        });
+        const cerenButton = new Ceren(225, 400);
         this.add(cerenButton);
 
         cerenButton.on('pointerup', () => {
             game.goToScene('gamescene');
-            game.currentScene.add(new Player(Resources.Ceren.toSprite()));
+            game.currentScene.add(new Ceren(300, 500));
         });
 
         const mickText = new Label({
@@ -67,16 +76,12 @@ export class Startscreen extends Scene {
         });
         this.add(mickText);
 
-        const mickButton = new Mick({
-            width: Resources.Mick.width,
-            height: Resources.Mick.height,
-            anchor: new Vector(0.5, 0.5),
-        });
+        const mickButton = new Mick(475, 400);
         this.add(mickButton);
 
         mickButton.on('pointerup', () => {
             game.goToScene('gamescene');
-            game.currentScene.add(new Player(Resources.Mick.toSprite()));
+            game.currentScene.add(new Mick(300, 500));
         });
 
         const mikeText = new Label({
@@ -92,16 +97,12 @@ export class Startscreen extends Scene {
         });
         this.add(mikeText);
 
-        const mikeButton = new Mike({
-            width: Resources.Mike.width,
-            height: Resources.Mike.height,
-            anchor: new Vector(0.5, 0.5),
-        });
+        const mikeButton = new Mike(725, 400);
         this.add(mikeButton);
 
         mikeButton.on('pointerup', () => {
             game.goToScene('gamescene');
-            game.currentScene.add(new Player(Resources.Mike.toSprite()));
+            game.currentScene.add(new Mike(300, 500));
         });
 
         const suhailText = new Label({
@@ -117,34 +118,30 @@ export class Startscreen extends Scene {
         });
         this.add(suhailText);
 
-        const suhailButton = new Suhail({
-            width: Resources.Suhail.width,
-            height: Resources.Suhail.height,
-            anchor: new Vector(0.5, 0.5),
-        });
+        const suhailButton = new Suhail(975, 400);
         this.add(suhailButton);
 
         suhailButton.on('pointerup', () => {
             game.goToScene('gamescene');
-            game.currentScene.add(new Player(Resources.Suhail.toSprite()));
+            game.currentScene.add(new Suhail(300, 500));
         });
 
 
+        const instructions = new Label({
+            text: 'Collect trash and avoid the pigeons.' +
+                '\nMove  ᐊ ᐅ' +
+                '\nJump    ⎵',
+            pos: new Vector(400, 600),
+            textAlign: TextAlign.Center,
+            color: Color.Black,
+            font: new Font({
+                family: 'impact',
+                size: 24,
+                unit: FontUnit.Px
+            })
+        });
+        this.add(instructions);
 
-const instructions = new Label({
-    text: 'Collect trash and avoid the pigeons.' +
-        '\nMove  ᐊ ᐅ' +
-        '\nJump    ⎵',
-    pos: new Vector(400, 600),
-    textAlign: TextAlign.Center,
-    color: Color.Black,
-    font: new Font({
-        family: 'impact',
-        size: 24,
-        unit: FontUnit.Px
-    })
-});
-this.add(instructions);
 
-}
+    }
 }
