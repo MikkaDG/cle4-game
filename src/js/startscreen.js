@@ -6,14 +6,14 @@ import {Suhail} from './suhail.js';
 import {Ceren} from './ceren.js';
 import {Mick} from './mick.js';
 import {Mike} from './mike.js';
-import {Background} from './background.js';
+import {SelectScreenBackground} from './select.screen.background.js';
 
 export class Startscreen extends Scene {
 
     onInitialize(engine) {
         const game = engine;
 
-        const background = new Background({});
+        const background = new SelectScreenBackground({});
         this.add(background);
 
         const startText = new Label({

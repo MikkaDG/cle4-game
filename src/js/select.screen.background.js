@@ -1,7 +1,7 @@
 import {Actor, Vector, GraphicsGroup} from 'excalibur';
 import {Resources} from './resources.js';
 
-export class Background extends Actor {
+export class SelectScreenBackground extends Actor {
     game;
     offset;
 
