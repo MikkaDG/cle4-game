@@ -19,6 +19,10 @@ export class Background extends Actor {
             {
                 graphic: this.backgroundImage,
                 pos: new Vector(this.backgroundImage.width, 0),
+            },
+            {
+                graphic: this.backgroundImage,
+                pos: new Vector(this.backgroundImage.width * 2, 0),
             }
         ];
 
@@ -31,9 +35,4 @@ export class Background extends Actor {
         this.pos = new Vector(0, 0);
     }
 
-    onPostUpdate(engine, delta) {
-        if (this.pos.x < -this.offset) {
-            this.pos = new Vector(0, 0);
-        }
-    }
 }
