@@ -1,5 +1,5 @@
 import '../css/style.css'
-import { Actor, Engine, Vector } from "excalibur"
+import {Actor, CollisionType, Engine, Vector} from 'excalibur';
 import { Resources, ResourceLoader } from './resources.js'
 
 export class Player extends Actor {
@@ -11,6 +11,7 @@ export class Player extends Actor {
         })
         this.scale = new Vector(0.8, 0.8)
         this.pos = new Vector(300, 500)
+        this.body.collisionType = CollisionType.Active;
     }
 
     onInitialize(engine) {
