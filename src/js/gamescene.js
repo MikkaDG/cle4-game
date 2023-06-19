@@ -51,8 +51,12 @@ export class Gamescene extends Scene {
         const elasticFactor = 0.03;
 
         // Pas de elastische interpolatie toe op de camera-positie
-        const cameraX = this.camera.pos.x + (targetCameraX - this.camera.pos.x) * elasticFactor;
+        let cameraX = this.camera.pos.x + (targetCameraX - this.camera.pos.x) * elasticFactor;
+
+        // Zorg ervoor dat de cameraX niet onder de waarde 300 komt
+        cameraX = Math.max(cameraX, 600);
 
         this.camera.pos = new Vector(cameraX, cameraY);
     }
+
 }
