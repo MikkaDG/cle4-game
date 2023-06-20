@@ -15,12 +15,15 @@ import {
 } from 'excalibur';
 import {Background} from './background.js';
 import {Player} from './player.js';
+import {Ground} from './ground.js';
 
 export class Gamescene extends Scene {
 
     player = null;
 
     onInitialize(engine) {
+        Physics.gravity = new Vector(0, 500)
+
         const game = engine;
 
         const background = new Background({});
@@ -35,7 +38,12 @@ export class Gamescene extends Scene {
             collisionType: CollisionType.Fixed
         });
         this.add(barrier);
+
+        const ground = new Ground(450, 870, 1.5);
+        this.add(ground);
     }
+
+
 
     onPreUpdate(_engine, _delta) {
         if (this.player === null) {

@@ -6,6 +6,11 @@ import mickImage from '../images/mickspritesheet.png'
 import cerenImage from '../images/cerenspritesheet.png'
 import backgroundImage from '../images/background.png'
 import logoImage from '../images/logo.png'
+import groundImage from '../images/ground2.png'
+import suhailKnop from '../images/suhail/suhail.png'
+import mikeKnop from '../images/mike/mike.png'
+import mickKnop from '../images/mick/mick.png'
+import cerenKnop from '../images/ceren/ceren.png'
 
 const Resources = {
     Player: new ImageSource(playerImage),
@@ -14,6 +19,11 @@ const Resources = {
     Mick: new ImageSource(mickImage),
     Ceren: new ImageSource(cerenImage),
     Background: new ImageSource(backgroundImage),
+    Ground: new ImageSource(groundImage),
+    SuhailKnop: new ImageSource(suhailKnop),
+    MikeKnop: new ImageSource(mikeKnop),
+    MickKnop: new ImageSource(mickKnop),
+    CerenKnop: new ImageSource(cerenKnop),
 }
 
 

@@ -1,5 +1,18 @@
 import '../css/style.css';
-import {Actor, Color, Engine, Label, Physics, Scene, TextAlign, Vector, Input, Font, FontUnit} from 'excalibur';
+import {
+    Actor,
+    Color,
+    Engine,
+    Label,
+    Physics,
+    Scene,
+    TextAlign,
+    Vector,
+    Input,
+    Font,
+    FontUnit,
+    CollisionType
+} from 'excalibur';
 import {Resources} from './resources.js';
 import {Player} from './player.js';
 import {Suhail} from './suhail.js';
@@ -7,6 +20,7 @@ import {Ceren} from './ceren.js';
 import {Mick} from './mick.js';
 import {Mike} from './mike.js';
 import {SelectScreenBackground} from './select.screen.background.js';
+import {PlayerKnop} from './playerKnop.js';
 
 export class Startscreen extends Scene {
 
@@ -42,7 +56,7 @@ export class Startscreen extends Scene {
         });
         this.add(cerenText);
 
-        const cerenButton = new Ceren(225, 400);
+        const cerenButton = new PlayerKnop(225, 400, Resources.CerenKnop);
         this.add(cerenButton);
 
         cerenButton.on('pointerup', () => {
@@ -63,7 +77,7 @@ export class Startscreen extends Scene {
         });
         this.add(mickText);
 
-        const mickButton = new Mick(475, 400);
+        const mickButton = new PlayerKnop(475, 400, Resources.MickKnop);
         this.add(mickButton);
 
         mickButton.on('pointerup', () => {
@@ -84,7 +98,7 @@ export class Startscreen extends Scene {
         });
         this.add(mikeText);
 
-        const mikeButton = new Mike(725, 400);
+        const mikeButton = new PlayerKnop(725, 400, Resources.MikeKnop);
         this.add(mikeButton);
 
         mikeButton.on('pointerup', () => {
@@ -105,7 +119,7 @@ export class Startscreen extends Scene {
         });
         this.add(suhailText);
 
-        const suhailButton = new Suhail(975, 400);
+        const suhailButton = new PlayerKnop(975, 400, Resources.SuhailKnop);
         this.add(suhailButton);
 
         suhailButton.on('pointerup', () => {

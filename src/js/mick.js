@@ -59,6 +59,32 @@ export class Mick extends Player {
             || this.vel.x < 0 && engine.input.keyboard.isHeld(Input.Keys.E)) {
             this.graphics.use('pickupLeft')
         }
+        if (engine.input.keyboard.wasReleased(Input.Keys.X) || engine.input.keyboard.wasReleased(Input.Keys.E)) {
+            this.graphics.use('idle');
+        }
+
+
+        if (engine.input.keyboard.wasPressed(Input.Keys.Space) && this.vel.y === 0) {
+            console.log('jump');
+            this.jump();
+        }
+
+        if (engine.input.keyboard.wasReleased(Input.Keys.Space)) {
+            this.fall();
+        }
+
+
+    }
+
+
+    jump() {
+        console.log('jump');
+        this.vel = this.vel.add(new Vector(0, -500));
+
+    }
+
+    fall() {
+        this.vel = this.vel.add(new Vector(0, 100));
     }
 
 }
