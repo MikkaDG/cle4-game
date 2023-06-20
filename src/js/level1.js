@@ -17,6 +17,7 @@ import {Background} from './background.js';
 import {Player} from './player.js';
 import {Ground} from './ground.js';
 import {Trash} from './trash.js';
+import {Pigeon} from './pigeon.js';
 
 export class Level1 extends Scene {
 
@@ -104,6 +105,12 @@ export class Level1 extends Scene {
         {
             this.add(trash1);
         }
+
+        const ground4 = new Ground(3400, 870, 1.5);
+        this.add(ground4);
+
+        const pigeon1 = new Pigeon(800, 648);
+        this.add(pigeon1);
     }
 
 
@@ -143,40 +150,20 @@ export class Level1 extends Scene {
         // Stel de nieuwe positie in voor de scorelabel
         this.scoreLabel.pos = new Vector(scoreLabelX, scoreLabelY);
 
-        // als je op e of x drukt roep functie pickupTrash aan
-        // this.player.on('collisionstart', (event) => {
-        //     this.pickupTrash(event);
-        // });
-
-        // als je op e of x drukt terwijl de player collision heft met trash wordt de pickupTrash functie aangeroepen
-        // this.player.on('collisionstart', (event) => {
-        //     if (event.other instanceof Trash) {
-        //         this.pickupTrash(event);
-        //     }
-        // });
+        this.player.on('collisionstart', (event) => {
+            console.log(event.other);
+            if (event.other instanceof Trash && (engine.input.keyboard.wasReleased(Input.Keys.X)
+                || engine.input.keyboard.wasReleased(Input.Keys.E))) {
+                // console log of de e of x knop is ingedrukt
+                console.log('E or X is pressed');
+                this.pickupTrash(event);
+            }
+        });
     }
-
-    // pickupTrash(event, engine) {
-    //     if (engine.input.keyboard.wasPressed(Input.Keys.X) || engine.input.keyboard.wasPressed(Input.Keys.E)) {
-    //         event.other.kill();
-    //         this.score += 1;
-    //         this.scoreLabel.text = `SCORE: ${this.score}`;
-    //     }
-    // }
-
-
-
-    // als player en trash elkaar raken en e of x wordt ingedrukt dan wordt de trash verwijderd en de score verhoogd
-        // pickupTrash(event, engine) {
-        //     if (engine.input.keyboard.wasPressed(Input.Keys.X) || engine.input.keyboard.wasPressed(Input.Keys.E)) {
-        //         console.log('pickup trash');
-        //         if (event.other instanceof Trash) {
-        //             event.other.kill();
-        //             this.score += 1;
-        //             this.scoreLabel.text = `SCORE: ${this.score}`;
-        //         }
-        //     }
-        // }
-
+    pickupTrash(event) {
+        event.other.kill(); // Verwijder het afval uit de scene
+        this.score += 1; // Verhoog de score
+        this.scoreLabel.text = `SCORE: ${this.score}`; // Werk de scorelabel bij
+    }
 
 }

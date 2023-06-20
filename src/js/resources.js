@@ -15,6 +15,7 @@ import banana from '../images/trash/banana.png'
 import can from '../images/trash/can.png'
 import paper from '../images/trash/paper.png'
 import bag from '../images/trash/bag.png'
+import pigeonImage from '../images/pigeon.png'
 
 const Resources = {
     Player: new ImageSource(playerImage),
@@ -32,6 +33,7 @@ const Resources = {
     Can: new ImageSource(can),
     Paper: new ImageSource(paper),
     Bag: new ImageSource(bag),
+    Pigeon: new ImageSource(pigeonImage),
 }
 
 
