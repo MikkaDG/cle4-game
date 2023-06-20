@@ -11,6 +11,10 @@ import suhailKnop from '../images/suhail/suhail.png'
 import mikeKnop from '../images/mike/mike.png'
 import mickKnop from '../images/mick/mick.png'
 import cerenKnop from '../images/ceren/ceren.png'
+import banana from '../images/trash/banana.png'
+import can from '../images/trash/can.png'
+import paper from '../images/trash/paper.png'
+import bag from '../images/trash/bag.png'
 
 const Resources = {
     Player: new ImageSource(playerImage),
@@ -24,6 +28,10 @@ const Resources = {
     MikeKnop: new ImageSource(mikeKnop),
     MickKnop: new ImageSource(mickKnop),
     CerenKnop: new ImageSource(cerenKnop),
+    Banana: new ImageSource(banana),
+    Can: new ImageSource(can),
+    Paper: new ImageSource(paper),
+    Bag: new ImageSource(bag),
 }
 
 

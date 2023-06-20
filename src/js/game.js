@@ -1,7 +1,7 @@
 import '../css/style.css'
 import {Actor, Color, Engine, Events, Font, FontUnit, Input, Label, Physics, Scene, TextAlign, Vector} from 'excalibur';
 import { Resources, ResourceLoader } from './resources.js';
-import {Gamescene} from './gamescene.js';
+import {Level1} from './level1.js';
 import {Startscreen} from './startscreen.js';
 
 export class Game extends Engine {
@@ -16,7 +16,7 @@ export class Game extends Engine {
 
     startGame() {
         this.addScene('start', new Startscreen())
-        this.addScene('gamescene', new Gamescene());
+        this.addScene('gamescene', new Level1());
 
         this.goToScene('start')
     }
