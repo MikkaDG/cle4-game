@@ -1,8 +1,8 @@
 import {ImageSource, Sound, Resource, Loader, Vector} from 'excalibur';
 import playerImage from '../images/player1.png'
-import suhailImage from '../images/suhail/suhail.png'
-import mikeImage from '../images/mike/mike.png'
-import mickImage from '../images/mick/mick.png'
+import suhailImage from '../images/suhailspritesheet.png'
+import mikeImage from '../images/mikespritesheet.png'
+import mickImage from '../images/mickspritesheet.png'
 import cerenImage from '../images/cerenspritesheet.png'
 import backgroundImage from '../images/background.png'
 import logoImage from '../images/logo.png'

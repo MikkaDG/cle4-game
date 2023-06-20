@@ -16,19 +16,6 @@ export class Startscreen extends Scene {
         const background = new SelectScreenBackground({});
         this.add(background);
 
-        // Blokkeer toetsenbordinput alleen in Startscreen
-        engine.input.keyboard.on('down', (evt) => {
-            if (engine.currentScene instanceof Startscreen) {
-                evt.preventDefault();
-            }
-        });
-
-        engine.input.keyboard.on('up', (evt) => {
-            if (engine.currentScene instanceof Startscreen) {
-                evt.preventDefault();
-            }
-        });
-
         const startText = new Label({
             text: 'Choose your character!',
             pos: new Vector(400, 200),
@@ -127,20 +114,20 @@ export class Startscreen extends Scene {
         });
 
 
-        const instructions = new Label({
-            text: 'Collect trash and avoid the pigeons.' +
-                '\nMove  ᐊ ᐅ' +
-                '\nJump    ⎵',
-            pos: new Vector(400, 600),
-            textAlign: TextAlign.Center,
-            color: Color.Black,
-            font: new Font({
-                family: 'impact',
-                size: 24,
-                unit: FontUnit.Px
-            })
-        });
-        this.add(instructions);
+        // const instructions = new Label({
+        //     text: 'Collect trash and avoid the pigeons.' +
+        //         '\nMove  ᐊ ᐅ' +
+        //         '\nJump    ⎵',
+        //     pos: new Vector(400, 600),
+        //     textAlign: TextAlign.Center,
+        //     color: Color.Black,
+        //     font: new Font({
+        //         family: 'impact',
+        //         size: 24,
+        //         unit: FontUnit.Px
+        //     })
+        // });
+        // this.add(instructions);
 
 
     }

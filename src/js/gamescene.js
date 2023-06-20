@@ -28,8 +28,8 @@ export class Gamescene extends Scene {
 
         // voeg barriere toe aan start van level zodat de speler niet naar links kan
         const barrier = new Actor({
-            pos: new Vector(0, 360),
-            width: 10,
+            pos: new Vector(0, 400),
+            width: 5,
             height: 800,
             color: Color.Transparent,
             collisionType: CollisionType.Fixed

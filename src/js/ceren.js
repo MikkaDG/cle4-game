@@ -2,6 +2,7 @@ import '../css/style.css'
 import {Animation, Input, range, SpriteSheet, Vector} from 'excalibur';
 import { Resources, ResourceLoader } from './resources.js'
 import {Player} from './player.js';
+import {Startscreen} from './startscreen.js';
 
 export class Ceren extends Player {
     constructor(posX, posY) {
@@ -51,8 +52,12 @@ export class Ceren extends Player {
             this.vel.x = 0
             this.graphics.use('idle')
         }
-        if (engine.input.keyboard.isHeld(Input.Keys.X || Input.Keys.E)) {
+        if (engine.input.keyboard.isHeld(Input.Keys.X) || engine.input.keyboard.isHeld(Input.Keys.E)) {
             this.graphics.use('pickup')
+        }
+        if (this.vel.x < 0 && engine.input.keyboard.isHeld(Input.Keys.X)
+            || this.vel.x < 0 && engine.input.keyboard.isHeld(Input.Keys.E)) {
+            this.graphics.use('pickupLeft')
         }
     }
 
