@@ -16,6 +16,7 @@ import {
 import {Background1} from './background1.js';
 import {Player} from './player.js';
 import {Ground} from './ground.js';
+import {Fground} from './fground.js';
 import {Trash} from './trash.js';
 import {Pigeon} from './pigeon.js';
 
@@ -110,8 +111,26 @@ export class Level1 extends Scene {
         const ground4 = new Ground(3400, 870, 1.5);
         this.add(ground4);
 
-        const pigeon1 = new Pigeon(800, 648);
+        const pigeon1 = new Pigeon(3600, 648);
         this.add(pigeon1);
+
+        const sprintLabel = new Label({
+            text: 'Sprint with SHIFT',
+            pos: new Vector(3980, 250),
+            color: '#575757',
+            font: new Font({
+                family: 'impact',
+                size: 30,
+                unit: FontUnit.Px
+            }),
+        });
+        this.add(sprintLabel);
+
+        const ground5 = new Ground(4900, 870, 1.5);
+        this.add(ground5);
+
+        const fground = new Fground(4900, 670, 1.5);
+        this.add(fground);
     }
 
 

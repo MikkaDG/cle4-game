@@ -12,7 +12,7 @@ export class Fground extends Actor {
     }
 
     onInitialize(engine) {
-        this.graphics.use(Resources.fground.toSprite());
+        this.graphics.use(Resources.Fground.toSprite());
         this.body.collisionType = CollisionType.Fixed;
         this.body.useGravity = false;
     }

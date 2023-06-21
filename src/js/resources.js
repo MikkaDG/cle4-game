@@ -39,6 +39,7 @@ const Resources = {
     Paper: new ImageSource(paper),
     Bag: new ImageSource(bag),
     Pigeon: new ImageSource(pigeonImage),
+    Fground: new ImageSource(fgroundImage),
 }
 
 
