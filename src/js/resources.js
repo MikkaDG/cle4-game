@@ -1,14 +1,14 @@
 import {ImageSource, Sound, Resource, Loader, Vector} from 'excalibur';
 import playerImage from '../images/player1.png'
-import suhailImage from '../images/suhailspritesheet.png'
-import mikeImage from '../images/mikespritesheet.png'
-import mickImage from '../images/mickspritesheet.png'
-import cerenImage from '../images/cerenspritesheet.png'
+import suhailImage from '../images/suhail/suhailspritesheet.png'
+import mikeImage from '../images/mike/mikespritesheet.png'
+import mickImage from '../images/mick/mickspritesheet.png'
+import cerenImage from '../images/ceren/cerenspritesheet.png'
 import background1Image from '../images/background/background1.png'
 import background2Image from '../images/background/background2.png'
 import background3Image from '../images/background/background3.png'
 import logoImage from '../images/logo.png'
-import groundImage from '../images/ground2.png'
+import groundImage from '../images/ground/ground2.png'
 import suhailKnop from '../images/suhail/suhail.png'
 import mikeKnop from '../images/mike/mike.png'
 import mickKnop from '../images/mick/mick.png'
@@ -17,7 +17,7 @@ import banana from '../images/trash/banana.png'
 import can from '../images/trash/can.png'
 import paper from '../images/trash/paper.png'
 import bag from '../images/trash/bag.png'
-import pigeonImage from '../images/pigeon.png'
+import pigeonImage from '../images/enemies/pigeon.png'
 
 const Resources = {
     Player: new ImageSource(playerImage),

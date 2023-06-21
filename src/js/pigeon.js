@@ -5,7 +5,7 @@ import {Player} from './player.js';
 
 export class Pigeon extends Actor {
     actor;
-    ray;
+
     constructor(posX, posY) {
         super({
             width: 40,
@@ -33,23 +33,38 @@ export class Pigeon extends Actor {
     }
 
 
-//
 
-//     onPostUpdate(engine, delta) {
-//         const leftRay = new Ray(this.pos, new Vector(-1, 0));
-//         const rightRay = new Ray(this.pos.add(new Vector(this.width, 0)), new Vector(1, 0));
-//
-//         // Controleer of de linkerstraal een botsing heeft met de rand
-//         const leftCollision = engine.currentScene.physics.rayCast(leftRay, this.width, CollisionType.Fixed);
-//         // Controleer of de rechterstraal een botsing heeft met de rand
-//         const rightCollision = engine.currentScene.physics.rayCast(rightRay, this.width, CollisionType.Fixed);
-//
-//         if (leftCollision) {
-//             this.vel.x = 100; // Keer de bewegingsrichting om naar rechts
-//             this.graphics.use('walkright');
-//         } else if (rightCollision) {
-//             this.vel.x = -100; // Keer de bewegingsrichting om naar links
-//             this.graphics.use('walkleft');
-//         }
-//     };
+
+
+    onPostUpdate(engine, delta) {
+        // Definieer de raycasting-lengte en -hoek
+        const raycastLength = 100; // Lengte van de raycast-stralen
+        const raycastAngle = Math.PI / 4; // Hoek van de raycast-stralen (45 graden in dit voorbeeld)
+
+// Voeg de volgende code toe in de update-loop van de duif
+        const raycastStartLeft = this.pos.add(new Vector(-this.width / 2, 0)); // Startpunt van de linkse raycast
+        const raycastStartRight = this.pos.add(new Vector(this.width / 2, 0)); // Startpunt van de rechtse raycast
+
+        const raycastDirectionLeft = new Vector(0, 1).rotate(raycastAngle); // Richting van de linkse raycast
+        const raycastDirectionRight = new Vector(0, 1).rotate(-raycastAngle); // Richting van de rechtse raycast
+
+        const raycastEndLeft = raycastStartLeft.add(raycastDirectionLeft.scale(raycastLength)); // Eindpunt van de linkse raycast
+        const raycastEndRight = raycastStartRight.add(raycastDirectionRight.scale(raycastLength)); // Eindpunt van de rechtse raycast
+
+// Voer de raycast uit voor de linkse straal
+        const leftRaycast = this.scene.rayCast(raycastStartLeft, raycastDirectionLeft, raycastLength, (actor) => actor instanceof Ground);
+
+// Voer de raycast uit voor de rechtse straal
+        const rightRaycast = this.scene.rayCast(raycastStartRight, raycastDirectionRight, raycastLength, (actor) => actor instanceof Ground);
+
+// Controleer of beide stralen een botsing hebben met de grondacteur
+        const isOnGround = leftRaycast && rightRaycast;
+
+// Voer acties uit op basis van de grondstatus
+        if (isOnGround) {
+            // De duif loopt nog op de grond
+        } else {
+            // De duif is niet meer op de grond
+        }
+    }
 }
