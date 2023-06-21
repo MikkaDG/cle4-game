@@ -67,10 +67,10 @@ export class Mike extends Player {
         if (engine.input.keyboard.wasPressed(Input.Keys.Space) && this.vel.y === 0) {
             console.log('jump');
             this.jump();
-        }
-
-        if (engine.input.keyboard.wasReleased(Input.Keys.Space)) {
-            this.fall();
+            //na 0.5 sec valt ceren weer
+            setTimeout(() => {
+                this.fall();
+            }, 500);
         }
 
 

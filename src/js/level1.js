@@ -24,9 +24,10 @@ export class Level1 extends Scene {
     player = null;
 
     onInitialize(engine) {
+        this.game = engine;
+
         Physics.gravity = new Vector(0, 500);
 
-        const game = engine;
 
         const background1 = new Background1({});
         this.add(background1);
@@ -149,21 +150,15 @@ export class Level1 extends Scene {
 
         // Stel de nieuwe positie in voor de scorelabel
         this.scoreLabel.pos = new Vector(scoreLabelX, scoreLabelY);
-
-        this.player.on('collisionstart', (event) => {
-            console.log(event.other);
-            if (event.other instanceof Trash && (engine.input.keyboard.wasReleased(Input.Keys.X)
-                || engine.input.keyboard.wasReleased(Input.Keys.E))) {
-                // console log of de e of x knop is ingedrukt
-                console.log('E or X is pressed');
-                this.pickupTrash(event);
-            }
-        });
     }
-    pickupTrash(event) {
-        event.other.kill(); // Verwijder het afval uit de scene
+
+    pickupTrash() {
         this.score += 1; // Verhoog de score
         this.scoreLabel.text = `SCORE: ${this.score}`; // Werk de scorelabel bij
     }
 
+    gameOver() {
+        localStorage.setItem('scores', JSON.stringify(this.score));
+        this.game.goToScene('gameover');
+    }
 }

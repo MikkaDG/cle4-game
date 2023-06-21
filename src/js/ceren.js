@@ -3,8 +3,10 @@ import {Animation, Input, range, SpriteSheet, Vector} from 'excalibur';
 import {Resources, ResourceLoader} from './resources.js';
 import {Player} from './player.js';
 import {Startscreen} from './startscreen.js';
+import {Trash} from './trash.js';
 
 export class Ceren extends Player {
+    game;
     constructor(posX, posY) {
         super();
         const runSheet = SpriteSheet.fromImageSource({
@@ -29,6 +31,19 @@ export class Ceren extends Player {
 
 
         this.graphics.use(idle);
+
+
+    }
+
+    onInitialize(engine) {
+        this.game = engine;
+        this.on('collisionstart', (event) => this.onCollisionStart(event));
+        this.on('exitviewport', (event) => this.die(event))
+    }
+
+    die(event) {
+        this.game.currentScene.gameOver();
+        this.kill();
     }
 
     onPreUpdate(engine, delta) {
@@ -62,19 +77,17 @@ export class Ceren extends Player {
 
         if (engine.input.keyboard.wasReleased(Input.Keys.X) || engine.input.keyboard.wasReleased(Input.Keys.E)) {
             this.graphics.use('idle');
+            // this.on('collisionstart', (event) => this.onCollisionStart(event));
         }
-
 
         if (engine.input.keyboard.wasPressed(Input.Keys.Space) && this.vel.y === 0) {
             console.log('jump');
             this.jump();
+            //na 0.5 sec valt ceren weer
+            setTimeout(() => {
+                this.fall();
+            }, 500);
         }
-
-        if (engine.input.keyboard.wasReleased(Input.Keys.Space)) {
-            this.fall();
-        }
-
-
     }
 
 
@@ -87,4 +100,12 @@ export class Ceren extends Player {
     fall() {
         this.vel = this.vel.add(new Vector(0, 100));
     }
+
+    onCollisionStart(event) {
+        if (event.other instanceof Trash) {
+            event.other.kill();
+            this.game.currentScene.pickupTrash();
+        }
+    }
+
 }
