@@ -4,11 +4,14 @@ import {Resources, ResourceLoader} from './resources.js';
 import {Player} from './player.js';
 
 export class Pigeon extends Actor {
+    actor;
+    ray;
     constructor(posX, posY) {
         super({
             width: 40,
             height: 40,
         });
+
         const pigeonSheet = SpriteSheet.fromImageSource({
             image: Resources.Pigeon,
             grid: {rows: 1, columns: 48, spriteWidth: 40, spriteHeight: 40}
@@ -25,7 +28,12 @@ export class Pigeon extends Actor {
 
         this.graphics.use(walkLeft);
         this.vel.x = -100;
+
+
     }
+
+
+//
 
 //     onPostUpdate(engine, delta) {
 //         const leftRay = new Ray(this.pos, new Vector(-1, 0));

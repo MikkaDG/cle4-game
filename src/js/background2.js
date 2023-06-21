@@ -1,24 +1,28 @@
 import {Actor, Vector, GraphicsGroup} from 'excalibur';
 import {Resources} from './resources.js';
 
-export class SelectScreenBackground extends Actor {
+export class Background1 extends Actor {
     game;
     offset;
 
     onInitialize(engine) {
-        this.background1Image = Resources.Background1.toSprite(); // Eerste achtergrondafbeelding
+        this.background2Image = Resources.Background.toSprite(); // Eerste achtergrondafbeelding
         // this.scale = new Vector(0.3, 0.3);
-        this.offset = this.background1Image.width;
+        this.offset = this.background2Image.width;
         this.game = engine;
 
         this.members = [
             {
-                graphic: this.background1Image,
+                graphic: this.background2Image,
                 pos: new Vector(0, 0),
             },
             {
-                graphic: this.background1Image,
-                pos: new Vector(this.background1Image.width, 0),
+                graphic: this.background2Image,
+                pos: new Vector(this.background2Image.width, 0),
+            },
+            {
+                graphic: this.background2Image,
+                pos: new Vector(this.background2Image.width * 2, 0),
             }
         ];
 
@@ -29,12 +33,6 @@ export class SelectScreenBackground extends Actor {
         this.graphics.anchor = new Vector(0, 0);
         this.graphics.add(group);
         this.pos = new Vector(0, 0);
-        this.vel = new Vector(-200, 0);
     }
 
-    onPostUpdate(engine, delta) {
-        if (this.pos.x < -this.offset) {
-            this.pos = new Vector(0, 0);
-        }
-    }
 }

@@ -1,7 +1,7 @@
 import {Actor, Vector, GraphicsGroup} from 'excalibur';
 import {Resources} from './resources.js';
 
-export class SelectScreenBackground extends Actor {
+export class Background1 extends Actor {
     game;
     offset;
 
@@ -19,6 +19,10 @@ export class SelectScreenBackground extends Actor {
             {
                 graphic: this.background1Image,
                 pos: new Vector(this.background1Image.width, 0),
+            },
+            {
+                graphic: this.background1Image,
+                pos: new Vector(this.background1Image.width * 2, 0),
             }
         ];
 
@@ -29,12 +33,6 @@ export class SelectScreenBackground extends Actor {
         this.graphics.anchor = new Vector(0, 0);
         this.graphics.add(group);
         this.pos = new Vector(0, 0);
-        this.vel = new Vector(-200, 0);
     }
 
-    onPostUpdate(engine, delta) {
-        if (this.pos.x < -this.offset) {
-            this.pos = new Vector(0, 0);
-        }
-    }
 }

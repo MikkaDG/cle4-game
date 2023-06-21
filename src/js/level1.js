@@ -13,7 +13,7 @@ import {
     FontUnit,
     CollisionType
 } from 'excalibur';
-import {Background} from './background.js';
+import {Background1} from './background1.js';
 import {Player} from './player.js';
 import {Ground} from './ground.js';
 import {Trash} from './trash.js';
@@ -28,8 +28,8 @@ export class Level1 extends Scene {
 
         const game = engine;
 
-        const background = new Background({});
-        this.add(background);
+        const background1 = new Background1({});
+        this.add(background1);
 
         this.score = 0;
 
