@@ -6,6 +6,8 @@ import {Startscreen} from './startscreen.js';
 import {Trash} from './trash.js';
 
 export class Mick extends Player {
+    game;
+
     constructor(posX, posY) {
         super()
         const runSheet = SpriteSheet.fromImageSource({
@@ -35,15 +37,17 @@ export class Mick extends Player {
     onInitialize(engine) {
         this.game = engine;
         this.on('collisionstart', (event) => this.onCollisionStart(event));
-        this.on('exitviewport', (event) => this.die(event))
     }
 
-    die(event) {
+    die() {
         this.game.currentScene.gameOver();
         this.kill();
     }
 
     onPreUpdate(engine, delta) {
+        if (this.pos.y >= 1000) {
+            this.die();
+        }
 
         if (engine.input.keyboard.isHeld(Input.Keys.A) || engine.input.keyboard.isHeld(Input.Keys.Left)) {
             this.graphics.use('runleft');

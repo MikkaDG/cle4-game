@@ -11,7 +11,7 @@ import {
     Input,
     Font,
     FontUnit,
-    CollisionType
+    CollisionType, RotationType
 } from 'excalibur';
 import {Background1} from './background1.js';
 import {Player} from './player.js';
@@ -28,7 +28,6 @@ export class Level1 extends Scene {
         this.game = engine;
 
         Physics.gravity = new Vector(0, 500);
-
 
         const background1 = new Background1({});
         this.add(background1);
@@ -129,23 +128,38 @@ export class Level1 extends Scene {
         const ground5 = new Ground(4900, 870, 1.5);
         this.add(ground5);
 
-        const ground6 = new Ground(5800, 870, 1.5);
-        this.add(ground6);
-
-        const fground = new Fground(5400, 480, 1.5);
-        this.add(fground);
-
-        const fground2 = new Fground(5800, 280, 1.5);
-        this.add(fground2);
-
-        const fground3 = new Fground(6200, 480, 1.5);
-        this.add(fground3);
-
-        const ground7 = new Ground(6700, 870, 1.5);
+        const ground7 = new Ground(6200, 680, 1.5);
+        ground7.actions.rotateTo(Math.PI / -5.5, Math.PI, RotationType.Clockwise);
         this.add(ground7);
 
-        const ground8 = new Ground(6700, 870, -0.5);
+        const ground6 = new Ground(5400, 870, 1.5);
+        this.add(ground6);
+
+        const fground = new Fground(4900, 480, 1.5);
+        this.add(fground);
+
+        const trash2 = new Trash(4900, 423);
+        this.add(trash2);
+
+        const fground2 = new Fground(5200, 280, 1.5);
+        this.add(fground2);
+
+        const trash3 = new Trash(5200, 223);
+        this.add(trash3);
+
+        const fground3 = new Fground(5500, 480, 1.5);
+        this.add(fground3);
+
+        const trash4 = new Trash(5500, 423);
+        this.add(trash4);
+
+        const trash5 = new Trash(5200, 658);
+        this.add(trash5);
+
+        const ground8 = new Ground(6930, 464, 1.5);
         this.add(ground8);
+
+
     }
 
 

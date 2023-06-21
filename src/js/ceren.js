@@ -32,21 +32,22 @@ export class Ceren extends Player {
 
         this.graphics.use(idle);
 
-
     }
 
     onInitialize(engine) {
         this.game = engine;
         this.on('collisionstart', (event) => this.onCollisionStart(event));
-        this.on('exitviewport', (event) => this.die(event))
     }
 
-    die(event) {
+    die() {
         this.game.currentScene.gameOver();
         this.kill();
     }
 
     onPreUpdate(engine, delta) {
+        if (this.pos.y >= 1000) {
+            this.die();
+        }
 
         if (engine.input.keyboard.isHeld(Input.Keys.A) || engine.input.keyboard.isHeld(Input.Keys.Left)) {
             this.graphics.use('runleft');
@@ -60,7 +61,7 @@ export class Ceren extends Player {
             this.anchor.setTo(0.35, 0.5);
         }
         if (engine.input.keyboard.isHeld(Input.Keys.ShiftLeft) || engine.input.keyboard.isHeld(Input.Keys.ShiftRight)) {
-            this.vel.x *= 1.5;
+            this.vel.x *= 9.5;
         }
         if (engine.input.keyboard.wasReleased(Input.Keys.A) || engine.input.keyboard.wasReleased(Input.Keys.Left)) {
             this.vel.x = 0;
