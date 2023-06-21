@@ -3,6 +3,7 @@ import {Animation, Input, range, SpriteSheet, Vector} from 'excalibur';
 import { Resources, ResourceLoader } from './resources.js'
 import {Player} from './player.js';
 import {Startscreen} from './startscreen.js';
+import {Trash} from './trash.js';
 
 export class Mike extends Player {
     constructor(posX, posY) {
@@ -31,38 +32,55 @@ export class Mike extends Player {
         this.graphics.use(idle)
     }
 
+    onInitialize(engine) {
+        this.game = engine;
+        this.on('collisionstart', (event) => this.onCollisionStart(event));
+        this.on('exitviewport', (event) => this.die(event))
+    }
+
+    die(event) {
+        this.game.currentScene.gameOver();
+        this.kill();
+    }
+
     onPreUpdate(engine, delta) {
 
         if (engine.input.keyboard.isHeld(Input.Keys.A) || engine.input.keyboard.isHeld(Input.Keys.Left)) {
-            this.graphics.use('runleft')
-            this.vel.x = -300
+            this.graphics.use('runleft');
+            this.vel.x = -300;
+            this.anchor.setTo(0.65, 0.5);
+
         }
         if (engine.input.keyboard.isHeld(Input.Keys.D) || engine.input.keyboard.isHeld(Input.Keys.Right)) {
-            this.graphics.use('runright')
-            this.vel.x = 300
+            this.graphics.use('runright');
+            this.vel.x = 300;
+            this.anchor.setTo(0.35, 0.5);
         }
         if (engine.input.keyboard.isHeld(Input.Keys.ShiftLeft) || engine.input.keyboard.isHeld(Input.Keys.ShiftRight)) {
-            this.vel.x *= 1.5
+            this.vel.x *= 1.5;
         }
         if (engine.input.keyboard.wasReleased(Input.Keys.A) || engine.input.keyboard.wasReleased(Input.Keys.Left)) {
-            this.vel.x = 0
-            this.graphics.use('idleLeft')
+            this.vel.x = 0;
+            this.graphics.use('idleLeft');
+            this.anchor.setTo(0.65, 0.5);
         }
         if (engine.input.keyboard.wasReleased(Input.Keys.D) || engine.input.keyboard.wasReleased(Input.Keys.Right)) {
-            this.vel.x = 0
-            this.graphics.use('idle')
+            this.vel.x = 0;
+            this.graphics.use('idle');
+            this.anchor.setTo(0.35, 0.5);
         }
         if (engine.input.keyboard.isHeld(Input.Keys.X) || engine.input.keyboard.isHeld(Input.Keys.E)) {
-            this.graphics.use('pickup')
+            this.graphics.use('pickup');
         }
         if (this.vel.x < 0 && engine.input.keyboard.isHeld(Input.Keys.X)
             || this.vel.x < 0 && engine.input.keyboard.isHeld(Input.Keys.E)) {
-            this.graphics.use('pickupLeft')
-        }
-        if (engine.input.keyboard.wasReleased(Input.Keys.X) || engine.input.keyboard.wasReleased(Input.Keys.E)) {
-            this.graphics.use('idle');
+            this.graphics.use('pickupLeft');
         }
 
+        if (engine.input.keyboard.wasReleased(Input.Keys.X) || engine.input.keyboard.wasReleased(Input.Keys.E)) {
+            this.graphics.use('idle');
+            // this.on('collisionstart', (event) => this.onCollisionStart(event));
+        }
 
         if (engine.input.keyboard.wasPressed(Input.Keys.Space) && this.vel.y === 0) {
             console.log('jump');
@@ -72,19 +90,24 @@ export class Mike extends Player {
                 this.fall();
             }, 500);
         }
-
-
     }
 
 
     jump() {
         console.log('jump');
-        this.vel = this.vel.add(new Vector(0, -500));
+        this.vel = this.vel.add(new Vector(0, -550));
 
     }
 
     fall() {
-        this.vel = this.vel.add(new Vector(0, 100));
+        this.vel = this.vel.add(new Vector(0, 120));
+    }
+
+    onCollisionStart(event) {
+        if (event.other instanceof Trash) {
+            event.other.kill();
+            this.game.currentScene.pickupTrash();
+        }
     }
 
 }
