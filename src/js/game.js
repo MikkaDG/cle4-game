@@ -3,6 +3,7 @@ import {Actor, Color, Engine, Events, Font, FontUnit, Input, Label, Physics, Sce
 import { Resources, ResourceLoader } from './resources.js';
 import {Level1} from './level1.js';
 import {Startscreen} from './startscreen.js';
+import {GameOver} from './gameover.js';
 
 export class Game extends Engine {
 
@@ -17,6 +18,7 @@ export class Game extends Engine {
     startGame() {
         this.addScene('start', new Startscreen())
         this.addScene('gamescene', new Level1());
+        this.addScene('gameover', new GameOver());
 
         this.goToScene('start')
     }
