@@ -60,7 +60,7 @@ export class Startscreen extends Scene {
         this.add(cerenButton);
 
         cerenButton.on('pointerup', () => {
-            game.goToScene('gamescene');
+            game.goToScene('gamescene1');
             game.currentScene.add(new Ceren(300, 600));
         });
 
@@ -81,7 +81,7 @@ export class Startscreen extends Scene {
         this.add(mickButton);
 
         mickButton.on('pointerup', () => {
-            game.goToScene('gamescene');
+            game.goToScene('gamescene1');
             game.currentScene.add(new Mick(300, 600));
         });
 
@@ -102,7 +102,7 @@ export class Startscreen extends Scene {
         this.add(mikeButton);
 
         mikeButton.on('pointerup', () => {
-            game.goToScene('gamescene');
+            game.goToScene('gamescene1');
             game.currentScene.add(new Mike(300, 600));
         });
 
@@ -123,7 +123,7 @@ export class Startscreen extends Scene {
         this.add(suhailButton);
 
         suhailButton.on('pointerup', () => {
-            game.goToScene('gamescene');
+            game.goToScene('gamescene1');
             game.currentScene.add(new Suhail(300, 620));
         });
 

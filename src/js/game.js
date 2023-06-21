@@ -19,7 +19,8 @@ export class Game extends Engine {
 
     startGame() {
         this.addScene('start', new Startscreen())
-        this.addScene('gamescene', new Level1());
+        this.addScene('gamescene1', new Level1());
+        this.addScene('gamescene2', new Level1());
         this.addScene('gameover', new GameOver());
 
         this.goToScene('start')
