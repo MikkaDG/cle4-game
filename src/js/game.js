@@ -2,6 +2,8 @@ import '../css/style.css'
 import {Actor, Color, Engine, Events, Font, FontUnit, Input, Label, Physics, Scene, TextAlign, Vector} from 'excalibur';
 import { Resources, ResourceLoader } from './resources.js';
 import {Level1} from './level1.js';
+import {Level2} from "./level2.js";
+import {Level3} from "./level3.js";
 import {Startscreen} from './startscreen.js';
 import {GameOver} from './gameover.js';
 
