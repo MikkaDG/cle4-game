@@ -7,6 +7,7 @@ import {Trash} from './trash.js';
 
 export class Ceren extends Player {
     game;
+    isPressed;
     constructor(posX, posY) {
         super();
         const runSheet = SpriteSheet.fromImageSource({
@@ -45,6 +46,7 @@ export class Ceren extends Player {
     }
 
     onPreUpdate(engine, delta) {
+
         if (this.pos.y >= 1000) {
             this.die();
         }
@@ -55,6 +57,7 @@ export class Ceren extends Player {
             this.anchor.setTo(0.65, 0.5);
 
         }
+
         if (engine.input.keyboard.isHeld(Input.Keys.D) || engine.input.keyboard.isHeld(Input.Keys.Right)) {
             this.graphics.use('runright');
             this.vel.x = 300;
@@ -75,6 +78,7 @@ export class Ceren extends Player {
         }
         if (engine.input.keyboard.isHeld(Input.Keys.X) || engine.input.keyboard.isHeld(Input.Keys.E)) {
             this.graphics.use('pickup');
+            this.isPressed = true;
         }
         if (this.vel.x < 0 && engine.input.keyboard.isHeld(Input.Keys.X)
             || this.vel.x < 0 && engine.input.keyboard.isHeld(Input.Keys.E)) {
@@ -83,6 +87,7 @@ export class Ceren extends Player {
 
         if (engine.input.keyboard.wasReleased(Input.Keys.X) || engine.input.keyboard.wasReleased(Input.Keys.E)) {
             this.graphics.use('idle');
+            this.isPressed = false;
             // this.on('collisionstart', (event) => this.onCollisionStart(event));
         }
 
@@ -108,7 +113,7 @@ export class Ceren extends Player {
     }
 
     onCollisionStart(event) {
-        if (event.other instanceof Trash) {
+        if (event.other instanceof Trash && this.isPressed) {
             event.other.kill();
             this.game.currentScene.pickupTrash();
         }

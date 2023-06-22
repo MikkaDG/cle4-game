@@ -19,6 +19,8 @@ import {Ground} from './ground.js';
 import {Fground} from './fground.js';
 import {Trash} from './trash.js';
 import {Pigeon} from './pigeon.js';
+import {Ground2} from './ground2.js';
+import {Trashcan} from './trashcan.js';
 
 export class Level1 extends Scene {
 
@@ -40,7 +42,7 @@ export class Level1 extends Scene {
             pos: new Vector(650, 190),
             color: Color.Black,
             font: new Font({
-                family: 'impact',
+                family: 'Minecraft',
                 size: 50,
                 unit: FontUnit.Px
             })
@@ -65,7 +67,7 @@ export class Level1 extends Scene {
             pos: new Vector(350, 250),
             color: '#575757',
             font: new Font({
-                family: 'impact',
+                family: 'Minecraft',
                 size: 30,
                 unit: FontUnit.Px
             }),
@@ -80,7 +82,7 @@ export class Level1 extends Scene {
             pos: new Vector(1450, 250),
             color: '#575757',
             font: new Font({
-                family: 'impact',
+                family: 'Minecraft',
                 size: 30,
                 unit: FontUnit.Px
             }),
@@ -95,7 +97,7 @@ export class Level1 extends Scene {
             pos: new Vector(2380, 250),
             color: '#575757',
             font: new Font({
-                family: 'impact',
+                family: 'Minecraft',
                 size: 30,
                 unit: FontUnit.Px
             }),
@@ -118,7 +120,7 @@ export class Level1 extends Scene {
             pos: new Vector(3980, 250),
             color: '#575757',
             font: new Font({
-                family: 'impact',
+                family: 'Minecraft',
                 size: 30,
                 unit: FontUnit.Px
             }),
@@ -159,6 +161,42 @@ export class Level1 extends Scene {
         const ground8 = new Ground(6930, 464, 1.5);
         this.add(ground8);
 
+        const ground9 = new Ground(6840, 860, 1.8);
+        ground9.actions.rotateTo(Math.PI / 1, Math.PI, RotationType.Clockwise);
+        this.add(ground9);
+
+        const fground4 = new Fground(7800, 300, 1.5);
+        this.add(fground4);
+
+        const ground10 = new Ground(7830, 870, 1.5);
+        this.add(ground10);
+
+        const fground5 = new Fground(7400, 480, 1.5);
+        this.add(fground5);
+
+        const trash6 = new Trash(7420, 658);
+        this.add(trash6);
+
+        const fground6 = new Fground(8200, 200, 1.5);
+        this.add(fground6);
+
+        const ground2n1 = new Ground2(8800, 770, 2.0);
+        this.add(ground2n1);
+
+        const ground2n2 = new Ground2(8990, 770, 2.0);
+        this.add(ground2n2);
+
+        const trashcan = new Trashcan(8800, 590);
+        this.add(trashcan);
+
+        const barrier2 = new Actor({
+            pos: new Vector(8900, 400),
+            width: 5,
+            height: 800,
+            color: Color.Transparent,
+            collisionType: CollisionType.Fixed
+        });
+        this.add(barrier2);
 
     }
 
@@ -179,11 +217,16 @@ export class Level1 extends Scene {
         // Pas de elastische interpolatie toe op de camera-positie
         let cameraX = this.camera.pos.x + (targetCameraX - this.camera.pos.x) * elasticFactor;
 
-        // Zorg ervoor dat de cameraX niet onder de waarde 300 komt
+        // Zorg ervoor dat de cameraX niet onder de waarde 600 komt
         cameraX = Math.max(cameraX, 600);
+
+        // Zorg ervoor dat de cameraX niet hoger dan de waarde 9000 komt
+        const maxCameraX = 8300;
+        cameraX = Math.min(cameraX, maxCameraX);
 
         this.camera.pos = new Vector(cameraX, cameraY);
     }
+
 
     onPostUpdate(engine, delta) {
         // Bijwerken van de positie van de scorelabel op basis van de huidige camera positie
@@ -198,6 +241,12 @@ export class Level1 extends Scene {
 
         // Stel de nieuwe positie in voor de scorelabel
         this.scoreLabel.pos = new Vector(scoreLabelX, scoreLabelY);
+
+        this.player.on('collisionstart', (e) => {
+            if (e.other instanceof Trashcan) {
+                this.game.goToScene('level1complete');
+            }
+        });
     }
 
     pickupTrash() {

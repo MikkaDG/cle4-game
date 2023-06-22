@@ -32,11 +32,11 @@ export class Startscreen extends Scene {
 
         const startText = new Label({
             text: 'Choose your character!',
-            pos: new Vector(400, 200),
+            pos: new Vector(370, 200),
             textAlign: TextAlign.Center,
             color: Color.Black,
             font: new Font({
-                family: 'impact',
+                family: 'Minecraft',
                 size: 40,
                 unit: FontUnit.Px
             })
@@ -45,11 +45,11 @@ export class Startscreen extends Scene {
 
         const cerenText = new Label({
             text: 'Ceren',
-            pos: new Vector(160, 280),
+            pos: new Vector(180, 280),
             textAlign: TextAlign.Center,
             color: Color.Black,
             font: new Font({
-                family: 'impact',
+                family: 'Minecraft',
                 size: 30,
                 unit: FontUnit.Px
             })
@@ -60,17 +60,17 @@ export class Startscreen extends Scene {
         this.add(cerenButton);
 
         cerenButton.on('pointerup', () => {
-            game.goToScene('gamescene1');
+            game.goToScene('gamescene3');
             game.currentScene.add(new Ceren(300, 600));
         });
 
         const mickText = new Label({
             text: 'Mick',
-            pos: new Vector(415, 280),
+            pos: new Vector(435, 280),
             textAlign: TextAlign.Center,
             color: Color.Black,
             font: new Font({
-                family: 'impact',
+                family: 'Minecraft',
                 size: 30,
                 unit: FontUnit.Px
             })
@@ -87,11 +87,11 @@ export class Startscreen extends Scene {
 
         const mikeText = new Label({
             text: 'Mike',
-            pos: new Vector(665, 280),
+            pos: new Vector(685, 280),
             textAlign: TextAlign.Center,
             color: Color.Black,
             font: new Font({
-                family: 'impact',
+                family: 'Minecraft',
                 size: 30,
                 unit: FontUnit.Px
             })
@@ -108,11 +108,11 @@ export class Startscreen extends Scene {
 
         const suhailText = new Label({
             text: 'Suhail',
-            pos: new Vector(905, 280),
+            pos: new Vector(925, 280),
             textAlign: TextAlign.Center,
             color: Color.Black,
             font: new Font({
-                family: 'impact',
+                family: 'Minecraft',
                 size: 30,
                 unit: FontUnit.Px
             })

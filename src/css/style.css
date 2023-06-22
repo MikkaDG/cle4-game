@@ -1,11 +1,15 @@
-body {
+@import url('https://fonts.cdnfonts.com/css/minecraft-4');
+
+
+  body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
     background-color: darkgrey;
-}
+    font-family: 'Minecraft', sans-serif;
+  }
 
 canvas {
     border: 2px solid #000; /* Voeg een rand toe aan het canvas voor zichtbaarheid */

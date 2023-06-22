@@ -19,6 +19,8 @@ import can from '../images/trash/can.png'
 import paper from '../images/trash/paper.png'
 import bag from '../images/trash/bag.png'
 import pigeonImage from '../images/enemies/pigeon.png'
+import ground2Image from '../images/ground/ground.png'
+import trashcanImage from '../images/trashcan.png'
 
 const Resources = {
     Player: new ImageSource(playerImage),
@@ -40,6 +42,8 @@ const Resources = {
     Bag: new ImageSource(bag),
     Pigeon: new ImageSource(pigeonImage),
     Fground: new ImageSource(fgroundImage),
+    Ground2: new ImageSource(ground2Image),
+    Trashcan: new ImageSource(trashcanImage),
 }
 
 
