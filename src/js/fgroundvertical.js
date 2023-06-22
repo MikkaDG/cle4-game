@@ -2,15 +2,15 @@ import {Actor, CollisionType, Vector} from 'excalibur';
 import {Resources} from './resources.js';
 
 export class FgroundV extends Actor {
-    constructor(posX, posY, scale) {
+    constructor(posX, posY, distance) {
         super({
             width: Resources.Fground.width,
             height: Resources.Fground.height,
         });
         this.pos = new Vector(posX, posY);
-        this.scale = new Vector(scale, scale);
+        this.scale = new Vector(1.5, 1.5);
         this.startY = posY; // Startpositie Y
-        this.distance = 200; // Afstand om te verplaatsen
+        this.distance = distance; // Afstand om te verplaatsen
         this.velocity = 100; // Snelheid van 100 pixels per seconde
         this.direction = -1; // Richting: -1 voor naar links, 1 voor naar rechts
         this.timer = 0; // Timer voor het bijhouden van de tijd

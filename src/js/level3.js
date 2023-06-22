@@ -65,12 +65,23 @@ export class Level3 extends Scene {
         const ground = new Ground(450, 870, 1.5);
         this.add(ground);
 
-        const fgroundh1 = new FgroundH(1200, 470, 1.5);
+        const fgroundh1 = new FgroundH(1200, 480, 200);
         this.add(fgroundh1);
 
-        const fgroundV2 = new FgroundV(1500, 500, 1.5);
-        this.add(fgroundV2);
+        const fgroundv1 = new FgroundV(1600, 680, 400);
+        this.add(fgroundv1);
 
+        const fgroundh2 = new FgroundH(2200, 480, 200);
+        this.add(fgroundh2);
+
+        const fgroundv2 = new FgroundV(2800, 680, 400);
+        this.add(fgroundv2);
+
+        const fground1 = new Fground(3400, 700, 1.5);
+        this.add(fground1);
+
+        const fground2 = new Fground(3400, 200, 1.5);
+        this.add(fground2);
     }
 
 

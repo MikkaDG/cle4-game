@@ -45,6 +45,7 @@ export class Mike extends Player {
     }
 
     onPreUpdate(engine, delta) {
+
         if (this.pos.y >= 1000) {
             this.die();
         }
@@ -55,13 +56,14 @@ export class Mike extends Player {
             this.anchor.setTo(0.65, 0.5);
 
         }
+
         if (engine.input.keyboard.isHeld(Input.Keys.D) || engine.input.keyboard.isHeld(Input.Keys.Right)) {
             this.graphics.use('runright');
             this.vel.x = 300;
             this.anchor.setTo(0.35, 0.5);
         }
         if (engine.input.keyboard.isHeld(Input.Keys.ShiftLeft) || engine.input.keyboard.isHeld(Input.Keys.ShiftRight)) {
-            this.vel.x *= 1.5;
+            this.vel.x *= 9.5;
         }
         if (engine.input.keyboard.wasReleased(Input.Keys.A) || engine.input.keyboard.wasReleased(Input.Keys.Left)) {
             this.vel.x = 0;
@@ -75,6 +77,7 @@ export class Mike extends Player {
         }
         if (engine.input.keyboard.isHeld(Input.Keys.X) || engine.input.keyboard.isHeld(Input.Keys.E)) {
             this.graphics.use('pickup');
+            this.isPressed = true;
         }
         if (this.vel.x < 0 && engine.input.keyboard.isHeld(Input.Keys.X)
             || this.vel.x < 0 && engine.input.keyboard.isHeld(Input.Keys.E)) {
@@ -83,6 +86,7 @@ export class Mike extends Player {
 
         if (engine.input.keyboard.wasReleased(Input.Keys.X) || engine.input.keyboard.wasReleased(Input.Keys.E)) {
             this.graphics.use('idle');
+            this.isPressed = false;
             // this.on('collisionstart', (event) => this.onCollisionStart(event));
         }
 
@@ -108,7 +112,7 @@ export class Mike extends Player {
     }
 
     onCollisionStart(event) {
-        if (event.other instanceof Trash) {
+        if (event.other instanceof Trash && this.isPressed) {
             event.other.kill();
             this.game.currentScene.pickupTrash();
         }
