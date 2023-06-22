@@ -1,12 +1,12 @@
 import {Actor, Vector, GraphicsGroup} from 'excalibur';
 import {Resources} from './resources.js';
 
-export class Background1 extends Actor {
+export class Background2 extends Actor {
     game;
     offset;
 
     onInitialize(engine) {
-        this.background2Image = Resources.Background.toSprite(); // Eerste achtergrondafbeelding
+        this.background2Image = Resources.Background2.toSprite(); // Eerste achtergrondafbeelding
         // this.scale = new Vector(0.3, 0.3);
         this.offset = this.background2Image.width;
         this.game = engine;
@@ -23,7 +23,23 @@ export class Background1 extends Actor {
             {
                 graphic: this.background2Image,
                 pos: new Vector(this.background2Image.width * 2, 0),
-            }
+            },
+            {
+                graphic: this.background2Image,
+                pos: new Vector(this.background2Image.width * 3, 0),
+            },
+            {
+                graphic: this.background2Image,
+                pos: new Vector(this.background2Image.width * 4, 0),
+            },
+            {
+                graphic: this.background2Image,
+                pos: new Vector(this.background2Image.width * 5, 0),
+            },
+            {
+                graphic: this.background2Image,
+                pos: new Vector(this.background2Image.width * 6, 0),
+            },
         ];
 
         const group = new GraphicsGroup({
