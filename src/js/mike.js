@@ -1,5 +1,5 @@
 import '../css/style.css'
-import {Animation, Input, range, SpriteSheet, Vector} from 'excalibur';
+import {Animation, DegreeOfFreedom, Input, range, SpriteSheet, Vector} from 'excalibur';
 import { Resources, ResourceLoader } from './resources.js'
 import {Player} from './player.js';
 import {Startscreen} from './startscreen.js';
@@ -32,6 +32,9 @@ export class Mike extends Player {
 
 
         this.graphics.use(idle)
+
+        // this.body.friction = 1;
+        // this.body.limitDegreeOfFreedom.push(DegreeOfFreedom.Rotation);
     }
 
     onInitialize(engine) {
@@ -104,7 +107,6 @@ export class Mike extends Player {
     jump() {
         console.log('jump');
         this.vel = this.vel.add(new Vector(0, -550));
-
     }
 
     fall() {

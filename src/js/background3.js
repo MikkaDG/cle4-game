@@ -26,11 +26,11 @@ export class Background3 extends Actor {
             },
             {
                 graphic: this.background3Image,
-                pos: new Vector(this.background3Image.width * 2, 0),
+                pos: new Vector(this.background3Image.width * 3, 0),
             },
             {
                 graphic: this.background3Image,
-                pos: new Vector(this.background3Image.width * 2, 0),
+                pos: new Vector(this.background3Image.width * 4, 0),
             },
         ];
 

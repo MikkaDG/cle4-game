@@ -18,6 +18,7 @@ export class Game extends Engine {
         ResourceLoader.suppressPlayButton = true
         this.showDebug(true)
         Physics.gravity = new Vector(0, 500)
+        // Physics.useRealisticPhysics();
     }
 
     startGame() {

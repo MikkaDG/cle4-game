@@ -1,5 +1,5 @@
 import '../css/style.css';
-import {Animation, Input, range, SpriteSheet, Vector} from 'excalibur';
+import {Animation, DegreeOfFreedom, Input, range, SpriteSheet, Vector} from 'excalibur';
 import {Resources, ResourceLoader} from './resources.js';
 import {Player} from './player.js';
 import {Startscreen} from './startscreen.js';
@@ -8,6 +8,7 @@ import {Trash} from './trash.js';
 export class Ceren extends Player {
     game;
     isPressed;
+
     constructor(posX, posY) {
         super();
         const runSheet = SpriteSheet.fromImageSource({
@@ -33,6 +34,9 @@ export class Ceren extends Player {
 
         this.graphics.use(idle);
 
+        //
+        // this.body.friction = 1;
+        // this.body.limitDegreeOfFreedom.push(DegreeOfFreedom.Rotation);
     }
 
     onInitialize(engine) {
@@ -101,11 +105,9 @@ export class Ceren extends Player {
         }
     }
 
-
     jump() {
         console.log('jump');
         this.vel = this.vel.add(new Vector(0, -550));
-
     }
 
     fall() {
@@ -118,5 +120,4 @@ export class Ceren extends Player {
             this.game.currentScene.pickupTrash();
         }
     }
-
 }

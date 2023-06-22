@@ -24,6 +24,7 @@ import {Trashcan} from './trashcan.js';
 import {Background3} from './background3.js';
 import {FgroundH} from './fgroundhorizontal.js';
 import {FgroundV} from './fgroundvertical.js';
+import {FgroundS} from './fgroundsquare.js';
 
 export class Level3 extends Scene {
 
@@ -80,8 +81,25 @@ export class Level3 extends Scene {
         const fground1 = new Fground(3400, 700, 1.5);
         this.add(fground1);
 
+        const trash = new Trash(3400, 642);
+        this.add(trash);
+
         const fground2 = new Fground(3400, 200, 1.5);
         this.add(fground2);
+
+        const trash2 = new Trash(3400, 142);
+        this.add(trash2);
+
+        const fgrounds1 = new FgroundS(4400, 200, 500);
+        this.add(fgrounds1);
+
+        const fgroundv3 = new FgroundV(5000, 700, 500);
+        this.add(fgroundv3);
+
+        const fgroundv4 = new FgroundV(5600, 700, 500);
+        this.add(fgroundv4);
+
+
     }
 
 
