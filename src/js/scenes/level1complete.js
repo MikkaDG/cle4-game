@@ -147,7 +147,7 @@ export class Level1complete extends Scene {
         mikeButton.on('pointerup', () => {
             this.clear()
             game.goToScene('gamescene2');
-            game.currentScene.add(new Mike(500, 600));
+            game.currentScene.add(new Mike(300, 600));
         });
 
         const mikePerk = new Label({

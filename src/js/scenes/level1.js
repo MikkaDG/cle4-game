@@ -287,8 +287,8 @@ export class Level1 extends Scene {
             }
         });
 
-        if (engine.input.keyboard.wasPressed(Key.Escape)) {
-            this.game.goToScene('pause');
+        if (engine.input.keyboard.wasPressed(Input.Keys.Esc)) {
+            this.game.goToScene('level1complete');
         }
     }
 

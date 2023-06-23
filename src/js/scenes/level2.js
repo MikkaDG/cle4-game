@@ -298,6 +298,10 @@ export class Level2 extends Scene {
                 // }
             }
         });
+
+        if (engine.input.keyboard.wasPressed(Input.Keys.Esc)) {
+            this.game.goToScene('level2complete');
+        }
     }
 
     pickupTrash() {

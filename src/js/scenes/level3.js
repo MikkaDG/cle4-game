@@ -333,6 +333,10 @@ export class Level3 extends Scene {
 
         // Stel de nieuwe positie in voor de scorelabel
         this.scoreLabel.pos = new Vector(scoreLabelX, scoreLabelY);
+
+        if (engine.input.keyboard.wasPressed(Input.Keys.Esc)) {
+            this.game.goToScene('prebossfight');
+        }
     }
 
     pickupTrash() {
