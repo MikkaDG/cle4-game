@@ -1,5 +1,5 @@
-import { Actor, CollisionType, Vector } from 'excalibur';
-import { Resources } from './resources.js';
+import {Actor, CollisionType, Physics, Vector} from 'excalibur';
+import {Resources} from './resources.js';
 
 export class Trashp extends Actor {
     constructor(posX, posY) {
@@ -23,5 +23,19 @@ export class Trashp extends Actor {
         this.graphics.use(randomSprite);
         this.body.collisionType = CollisionType.Passive;
         this.body.useGravity = true;
+        const randomVel = Math.floor(100 + Math.random() * 500);
+        console.log(randomVel);
+        this.vel = new Vector(randomVel, -randomVel);
+    }
+
+    onPostUpdate(engine, delta) {
+        setTimeout(() => {
+            this.trashfall();
+        }, 500);
+
+    }
+
+    trashfall() {
+        this.vel = this.vel.add(new Vector(0, 10));
     }
 }

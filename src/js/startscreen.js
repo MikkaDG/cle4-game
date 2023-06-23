@@ -132,7 +132,7 @@ export class Startscreen extends Scene {
 
         mikeButton.on('pointerup', () => {
             this.clear()
-            game.goToScene('gamescene1');
+            game.goToScene('bossfight');
             game.currentScene.add(new Mike(300, 600));
         });
 
