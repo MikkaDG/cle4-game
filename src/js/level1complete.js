@@ -74,7 +74,7 @@ export class Level1complete extends Scene {
 
         cerenButton.on('pointerup', () => {
             this.clear()
-            game.goToScene('gamescene3');
+            game.goToScene('gamescene2');
             game.currentScene.add(new Ceren(300, 600));
 
         });
@@ -110,7 +110,7 @@ export class Level1complete extends Scene {
 
         mickButton.on('pointerup', () => {
             this.clear()
-            game.goToScene('gamescene3');
+            game.goToScene('gamescene2');
             game.currentScene.add(new Mick(300, 600));
         });
 
@@ -145,7 +145,7 @@ export class Level1complete extends Scene {
 
         mikeButton.on('pointerup', () => {
             this.clear()
-            game.goToScene('gamescene3');
+            game.goToScene('gamescene2');
             game.currentScene.add(new Mike(500, 600));
         });
 
@@ -180,7 +180,7 @@ export class Level1complete extends Scene {
 
         suhailButton.on('pointerup', () => {
             this.clear()
-            game.goToScene('gamescene3');
+            game.goToScene('gamescene2');
             game.currentScene.add(new Suhail(300, 620));
         });
 

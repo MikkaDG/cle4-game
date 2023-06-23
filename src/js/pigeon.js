@@ -27,7 +27,7 @@ export class Pigeon extends Actor {
         this.graphics.add('walkright', walkRight);
 
         this.graphics.use(walkLeft);
-        this.vel.x = -100;
+        this.vel.x = 0;
     }
 
 //     onPostUpdate(engine, delta) {
