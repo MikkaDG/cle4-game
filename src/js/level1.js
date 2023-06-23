@@ -162,6 +162,9 @@ export class Level1 extends Scene {
         const trash5 = new Trash(5200, 658);
         this.add(trash5);
 
+        const fground5 = new Fground(7400, 480, 1.5);
+        this.add(fground5);
+
         const ground8 = new Ground(6930, 464, 1.5);
         this.add(ground8);
 
@@ -175,8 +178,6 @@ export class Level1 extends Scene {
         const ground10 = new Ground(7830, 870, 1.5);
         this.add(ground10);
 
-        const fground5 = new Fground(7400, 480, 1.5);
-        this.add(fground5);
 
         const trash6 = new Trash(7420, 658);
         this.add(trash6);
