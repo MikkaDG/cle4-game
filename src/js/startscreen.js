@@ -60,9 +60,24 @@ export class Startscreen extends Scene {
         this.add(cerenButton);
 
         cerenButton.on('pointerup', () => {
+            this.clear()
             game.goToScene('gamescene3');
-            game.currentScene.add(new Ceren(300, 600));
+            game.currentScene.add(new Ceren(500, 600));
+
         });
+
+        const cerenPerk = new Label({
+            text: 'All-round',
+            pos: new Vector(175, 520),
+            textAlign: TextAlign.Center,
+            color: Color.Black,
+            font: new Font({
+                family: 'Minecraft',
+                size: 20,
+                unit: FontUnit.Px
+            })
+        });
+        this.add(cerenPerk);
 
         const mickText = new Label({
             text: 'Mick',
@@ -81,9 +96,23 @@ export class Startscreen extends Scene {
         this.add(mickButton);
 
         mickButton.on('pointerup', () => {
+            this.clear()
             game.goToScene('gamescene1');
             game.currentScene.add(new Mick(300, 600));
         });
+
+        const mickPerk = new Label({
+            text: 'Jumps higher',
+            pos: new Vector(410, 520),
+            textAlign: TextAlign.Center,
+            color: Color.Black,
+            font: new Font({
+                family: 'Minecraft',
+                size: 20,
+                unit: FontUnit.Px
+            })
+        });
+        this.add(mickPerk);
 
         const mikeText = new Label({
             text: 'Mike',
@@ -102,9 +131,23 @@ export class Startscreen extends Scene {
         this.add(mikeButton);
 
         mikeButton.on('pointerup', () => {
+            this.clear()
             game.goToScene('gamescene1');
             game.currentScene.add(new Mike(300, 600));
         });
+
+        const mikePerk = new Label({
+            text: 'Sprints faster',
+            pos: new Vector(650, 520),
+            textAlign: TextAlign.Center,
+            color: Color.Black,
+            font: new Font({
+                family: 'Minecraft',
+                size: 20,
+                unit: FontUnit.Px
+            })
+        });
+        this.add(mikePerk);
 
         const suhailText = new Label({
             text: 'Suhail',
@@ -123,9 +166,23 @@ export class Startscreen extends Scene {
         this.add(suhailButton);
 
         suhailButton.on('pointerup', () => {
+            this.clear()
             game.goToScene('gamescene1');
             game.currentScene.add(new Suhail(300, 620));
         });
+
+        const suhailPerk = new Label({
+            text: 'Auto-collects trash',
+            pos: new Vector(875, 520),
+            textAlign: TextAlign.Center,
+            color: Color.Black,
+            font: new Font({
+                family: 'Minecraft',
+                size: 20,
+                unit: FontUnit.Px
+            })
+        });
+        this.add(suhailPerk);
 
 
         // const instructions = new Label({

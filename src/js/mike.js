@@ -4,6 +4,12 @@ import { Resources, ResourceLoader } from './resources.js'
 import {Player} from './player.js';
 import {Startscreen} from './startscreen.js';
 import {Trash} from './trash.js';
+import {Ground} from './ground.js';
+import {Fground} from './fground.js';
+import {FgroundH} from './fgroundhorizontal.js';
+import {FgroundS} from './fgroundsquare.js';
+import {FgroundV} from './fgroundvertical.js';
+import {Ground2} from './ground2.js';
 
 export class Mike extends Player {
     game;
@@ -39,10 +45,12 @@ export class Mike extends Player {
 
     onInitialize(engine) {
         this.game = engine;
+
         this.on('collisionstart', (event) => this.onCollisionStart(event));
+        this.on('collisionend', (event) => this.onCollisionEnd(event));
     }
 
-    die(event) {
+    die() {
         this.game.currentScene.gameOver();
         this.kill();
     }
@@ -55,32 +63,36 @@ export class Mike extends Player {
 
         if (engine.input.keyboard.isHeld(Input.Keys.A) || engine.input.keyboard.isHeld(Input.Keys.Left)) {
             this.graphics.use('runleft');
-            this.vel.x = -300;
+            this.vel.x = -200;
             this.anchor.setTo(0.65, 0.5);
 
         }
 
         if (engine.input.keyboard.isHeld(Input.Keys.D) || engine.input.keyboard.isHeld(Input.Keys.Right)) {
             this.graphics.use('runright');
-            this.vel.x = 300;
+            this.vel.x = 200;
             this.anchor.setTo(0.35, 0.5);
         }
         if (engine.input.keyboard.isHeld(Input.Keys.ShiftLeft) || engine.input.keyboard.isHeld(Input.Keys.ShiftRight)) {
-            this.vel.x *= 9.5;
+            this.vel.x *= 2.2;
         }
         if (engine.input.keyboard.wasReleased(Input.Keys.A) || engine.input.keyboard.wasReleased(Input.Keys.Left)) {
             this.vel.x = 0;
             this.graphics.use('idleLeft');
             this.anchor.setTo(0.65, 0.5);
+            this.facingLeft = true;
         }
         if (engine.input.keyboard.wasReleased(Input.Keys.D) || engine.input.keyboard.wasReleased(Input.Keys.Right)) {
             this.vel.x = 0;
             this.graphics.use('idle');
             this.anchor.setTo(0.35, 0.5);
+            this.facingLeft = false;
         }
         if (engine.input.keyboard.isHeld(Input.Keys.X) || engine.input.keyboard.isHeld(Input.Keys.E)) {
             this.graphics.use('pickup');
-            this.isPressed = true;
+        }
+        if (this.facingLeft === true && engine.input.keyboard.isHeld(Input.Keys.X) || engine.input.keyboard.isHeld(Input.Keys.E)) {
+            this.graphics.use('pickupLeft');
         }
         if (this.vel.x < 0 && engine.input.keyboard.isHeld(Input.Keys.X)
             || this.vel.x < 0 && engine.input.keyboard.isHeld(Input.Keys.E)) {
@@ -89,11 +101,13 @@ export class Mike extends Player {
 
         if (engine.input.keyboard.wasReleased(Input.Keys.X) || engine.input.keyboard.wasReleased(Input.Keys.E)) {
             this.graphics.use('idle');
-            this.isPressed = false;
-            // this.on('collisionstart', (event) => this.onCollisionStart(event));
+            this.grabTrash();
+        }
+        if (this.facingLeft === true && engine.input.keyboard.wasReleased(Input.Keys.X) || engine.input.keyboard.wasReleased(Input.Keys.E)) {
+            this.graphics.use('idleLeft');
         }
 
-        if (engine.input.keyboard.wasPressed(Input.Keys.Space) && this.vel.y === 0) {
+        if (engine.input.keyboard.wasPressed(Input.Keys.Space) && this.canJump === true) {
             console.log('jump');
             this.jump();
             //na 0.5 sec valt ceren weer
@@ -101,12 +115,16 @@ export class Mike extends Player {
                 this.fall();
             }, 500);
         }
-    }
 
+        if (this.pos.y <= -300) {
+            this.fall();
+        }
+    }
 
     jump() {
         console.log('jump');
         this.vel = this.vel.add(new Vector(0, -550));
+        this.canJump = false;
     }
 
     fall() {
@@ -114,10 +132,26 @@ export class Mike extends Player {
     }
 
     onCollisionStart(event) {
-        if (event.other instanceof Trash && this.isPressed) {
-            event.other.kill();
-            this.game.currentScene.pickupTrash();
+        if (event.other instanceof Trash) {
+            this.collision = true;
+            this.trash = event.other;
+        }
+        if (event.other instanceof Ground || event.other instanceof Fground || event.other instanceof FgroundH
+            || event.other instanceof FgroundS || event.other instanceof FgroundV || event.other instanceof Ground2) {
+            this.canJump = true;
         }
     }
 
+    onCollisionEnd(event) {
+        if (event.other instanceof Trash) {
+            this.collision = false;
+        }
+    }
+
+    grabTrash() {
+        if (this.collision === true) {
+            this.game.currentScene.pickupTrash();
+            this.trash.kill();
+        }
+    }
 }

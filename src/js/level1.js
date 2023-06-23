@@ -21,6 +21,10 @@ import {Trash} from './trash.js';
 import {Pigeon} from './pigeon.js';
 import {Ground2} from './ground2.js';
 import {Trashcan} from './trashcan.js';
+import {Ceren} from './ceren.js';
+import {Mick} from './mick.js';
+import {Mike} from './mike.js';
+import {Suhail} from './suhail.js';
 
 export class Level1 extends Scene {
 
@@ -28,6 +32,8 @@ export class Level1 extends Scene {
 
     onInitialize(engine) {
         this.game = engine;
+
+        this.on('enter', this.onEnter);
 
         Physics.gravity = new Vector(0, 500);
 
@@ -105,9 +111,7 @@ export class Level1 extends Scene {
         this.add(trashLabel);
 
         const trash1 = new Trash(2400, 658);
-        {
-            this.add(trash1);
-        }
+        this.add(trash1);
 
         const ground4 = new Ground(3400, 870, 1.5);
         this.add(ground4);
@@ -232,7 +236,7 @@ export class Level1 extends Scene {
         // Bijwerken van de positie van de scorelabel op basis van de huidige camera positie
         const cameraX = this.camera.pos.x;
         const cameraY = this.camera.pos.y;
-        const offsetX = 350; // X-offset van de scorelabel ten opzichte van de camera
+        const offsetX = 300; // X-offset van de scorelabel ten opzichte van de camera
         const offsetY = -300; // Y-offset van de scorelabel ten opzichte van de camera
 
         // Bereken de nieuwe positie van de scorelabel gebaseerd op de camera positie
@@ -244,7 +248,21 @@ export class Level1 extends Scene {
 
         this.player.on('collisionstart', (e) => {
             if (e.other instanceof Trashcan) {
+                localStorage.setItem('scores', JSON.stringify(this.score));
+                this.clear();
                 this.game.goToScene('level1complete');
+                // if (this.player instanceof Ceren) {
+                //     this.game.currentScene.add(new Ceren(0, 0));
+                // }
+                // if (this.player instanceof Mick) {
+                //     this.game.currentScene.add(new Mick(0, 0));
+                // }
+                // if (this.player instanceof Mike) {
+                //     this.game.currentScene.add(new Mike(0, 0));
+                // }
+                // if (this.player instanceof Suhail) {
+                //     this.game.currentScene.add(new Suhail(0, 0));
+                // }
             }
         });
     }

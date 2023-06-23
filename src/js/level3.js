@@ -66,6 +66,9 @@ export class Level3 extends Scene {
         const ground = new Ground(450, 870, 1.5);
         this.add(ground);
 
+        const trash0 = new Trash(100, 658);
+        this.add(trash0);
+
         const fgroundh1 = new FgroundH(1200, 480, 200);
         this.add(fgroundh1);
 
@@ -99,6 +102,31 @@ export class Level3 extends Scene {
         const fgroundv4 = new FgroundV(5600, 700, 500);
         this.add(fgroundv4);
 
+        const fgroundh3 = new FgroundH(7000, 680, 1200);
+        this.add(fgroundh3);
+
+        const ground2 = new Ground(7500, 900, 1.5);
+        this.add(ground2);
+
+        const ground2n3 = new Ground2(7848, 620, 2.12);
+        this.add(ground2n3);
+
+        const ground2n4 = new Ground2(8060, 680, 2.5);
+        this.add(ground2n4);
+
+        const ground2n1 = new Ground2(7250, 350, 3.0);
+        this.add(ground2n1);
+
+        const ground2n2 = new Ground2(7806, 350, 3.0);
+        this.add(ground2n2);
+
+        const ground2n5 = new Ground2(8700, 820, 2.0);
+        this.add(ground2n5);
+
+        const ground3 = new Ground(8205, 592, 1.5);
+        ground3.actions.rotateTo(Math.PI / 5, Math.PI, RotationType.CounterClockwise);
+        this.add(ground3);
+
 
     }
 
@@ -123,7 +151,7 @@ export class Level3 extends Scene {
         cameraX = Math.max(cameraX, 600);
 
         // Zorg ervoor dat de cameraX niet hoger dan de waarde 9000 komt
-        const maxCameraX = 8300;
+        const maxCameraX = 9300;
         cameraX = Math.min(cameraX, maxCameraX);
 
         this.camera.pos = new Vector(cameraX, cameraY);
@@ -134,7 +162,7 @@ export class Level3 extends Scene {
         // Bijwerken van de positie van de scorelabel op basis van de huidige camera positie
         const cameraX = this.camera.pos.x;
         const cameraY = this.camera.pos.y;
-        const offsetX = 350; // X-offset van de scorelabel ten opzichte van de camera
+        const offsetX = 300; // X-offset van de scorelabel ten opzichte van de camera
         const offsetY = -300; // Y-offset van de scorelabel ten opzichte van de camera
 
         // Bereken de nieuwe positie van de scorelabel gebaseerd op de camera positie

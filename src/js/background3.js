@@ -32,6 +32,10 @@ export class Background3 extends Actor {
                 graphic: this.background3Image,
                 pos: new Vector(this.background3Image.width * 4, 0),
             },
+            {
+                graphic: this.background3Image,
+                pos: new Vector(this.background3Image.width * 5, 0),
+            },
         ];
 
         const group = new GraphicsGroup({
