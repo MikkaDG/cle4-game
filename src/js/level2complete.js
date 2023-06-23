@@ -8,7 +8,7 @@ import {Mick} from './mick.js';
 import {PlayerKnop} from './playerKnop.js';
 import {Resources} from './resources.js';
 
-export class Level1complete extends Scene {
+export class Level2complete extends Scene {
 
     onInitialize(engine) {
         const game = engine;

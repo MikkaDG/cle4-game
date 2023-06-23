@@ -19,6 +19,8 @@ import {Ground} from './ground.js';
 import {Fground} from './fground.js';
 import {Trash} from './trash.js';
 import {Pigeon} from './pigeon.js';
+import {Ground2} from "./ground2.js";
+import {Trashcan} from "./trashcan.js";
 
 export class Level2 extends Scene {
 
@@ -52,7 +54,7 @@ export class Level2 extends Scene {
         const barrier = new Actor({
             pos: new Vector(0, 400),
             width: 5,
-            height: 800,
+            height: 2000,
             color: Color.Transparent,
             collisionType: CollisionType.Fixed
         });
@@ -139,17 +141,14 @@ export class Level2 extends Scene {
         const trash8 = new Trash(6220, 318,);
         this.add(trash8);
 
-        const trash9 = new Trash(6250, 258,);
+        const trash9 = new Trash(6280, 318,);
         this.add(trash9);
-
-        const trash10 = new Trash(6280, 318,);
-        this.add(trash10);
 
         const ground5 = new Ground(6700, 920, 1.5);
         this.add(ground5);
 
-        const trash11 = new Trash(6400, 708,);
-        this.add(trash11);
+        const trash10 = new Trash(6400, 708,);
+        this.add(trash10);
 
         const fground12 = new Fground(6550, 525, 1.5);
         this.add(fground12);
@@ -157,11 +156,11 @@ export class Level2 extends Scene {
         const pigeon5 = new Pigeon(6550, 478,);
         this.add(pigeon5);
 
-        const trash12 = new Trash(6700, 708,);
-        this.add(trash12);
+        const trash11 = new Trash(6700, 708,);
+        this.add(trash11);
 
-        const trash13 = new Trash(7000, 708,);
-        this.add(trash13);
+        const trash12 = new Trash(7000, 708,);
+        this.add(trash12);
 
         const ground6 = new Ground(7400, 920, 1.5);
         this.add(ground6);
@@ -201,6 +200,24 @@ export class Level2 extends Scene {
 
         const ground11 = new Ground(10900, 920, 1.5);
         this.add(ground11);
+
+        const ground2n1 = new Ground2(11200, 770, 2.0);
+        this.add(ground2n1);
+
+        const ground2n2 = new Ground2(11390, 770, 2.0);
+        this.add(ground2n2);
+
+        const trashcan = new Trashcan(11200, 590);
+        this.add(trashcan);
+
+        const barrier2 = new Actor({
+            pos: new Vector(11300, 400),
+            width: 5,
+            height: 2000,
+            color: Color.Transparent,
+            collisionType: CollisionType.Fixed
+        });
+        this.add(barrier2);
     }
 
     onPreUpdate(_engine, _delta) {
@@ -238,6 +255,26 @@ export class Level2 extends Scene {
 
         // Stel de nieuwe positie in voor de scorelabel
         this.scoreLabel.pos = new Vector(scoreLabelX, scoreLabelY);
+
+        this.player.on('collisionstart', (e) => {
+            if (e.other instanceof Trashcan) {
+                localStorage.setItem('scores', JSON.stringify(this.score));
+                this.clear();
+                this.game.goToScene('level2complete');
+                // if (this.player instanceof Ceren) {
+                //     this.game.currentScene.add(new Ceren(0, 0));
+                // }
+                // if (this.player instanceof Mick) {
+                //     this.game.currentScene.add(new Mick(0, 0));
+                // }
+                // if (this.player instanceof Mike) {
+                //     this.game.currentScene.add(new Mike(0, 0));
+                // }
+                // if (this.player instanceof Suhail) {
+                //     this.game.currentScene.add(new Suhail(0, 0));
+                // }
+            }
+        });
     }
 
     pickupTrash() {

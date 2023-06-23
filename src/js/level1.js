@@ -59,7 +59,7 @@ export class Level1 extends Scene {
         const barrier = new Actor({
             pos: new Vector(0, 400),
             width: 5,
-            height: 800,
+            height: 2000,
             color: Color.Transparent,
             collisionType: CollisionType.Fixed
         });
@@ -197,7 +197,7 @@ export class Level1 extends Scene {
         const barrier2 = new Actor({
             pos: new Vector(8900, 400),
             width: 5,
-            height: 800,
+            height: 2000,
             color: Color.Transparent,
             collisionType: CollisionType.Fixed
         });
