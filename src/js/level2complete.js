@@ -1,6 +1,6 @@
 import '../css/style.css';
 import {Actor, CollisionType, Color, Engine, Font, FontUnit, Label, Physics, Scene, TextAlign, Vector} from 'excalibur';
-import {Background1} from './background1.js';
+import {Background2} from './background2.js';
 import {Suhail} from './suhail.js';
 import {Ceren} from './ceren.js';
 import {Mike} from './mike.js';
@@ -14,7 +14,7 @@ export class Level1complete extends Scene {
         const game = engine;
         const storedScores = JSON.parse(localStorage.getItem('scores'));
 
-        const gameOverbackground = new Background1();
+        const gameOverbackground = new Background2();
         this.add(gameOverbackground);
 
         const gameOverText = new Label({
@@ -74,7 +74,7 @@ export class Level1complete extends Scene {
 
         cerenButton.on('pointerup', () => {
             this.clear()
-            game.goToScene('gamescene2');
+            game.goToScene('gamescene3');
             game.currentScene.add(new Ceren(300, 600));
 
         });
@@ -110,7 +110,7 @@ export class Level1complete extends Scene {
 
         mickButton.on('pointerup', () => {
             this.clear()
-            game.goToScene('gamescene2');
+            game.goToScene('gamescene3');
             game.currentScene.add(new Mick(300, 600));
         });
 
@@ -145,7 +145,7 @@ export class Level1complete extends Scene {
 
         mikeButton.on('pointerup', () => {
             this.clear()
-            game.goToScene('gamescene2');
+            game.goToScene('gamescene3');
             game.currentScene.add(new Mike(500, 600));
         });
 
@@ -180,7 +180,7 @@ export class Level1complete extends Scene {
 
         suhailButton.on('pointerup', () => {
             this.clear()
-            game.goToScene('gamescene2');
+            game.goToScene('gamescene3');
             game.currentScene.add(new Suhail(300, 620));
         });
 
