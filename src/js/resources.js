@@ -44,6 +44,7 @@ const Resources = {
     Fground: new ImageSource(fgroundImage),
     Ground2: new ImageSource(ground2Image),
     Trashcan: new ImageSource(trashcanImage),
+
 }
 
 

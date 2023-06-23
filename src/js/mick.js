@@ -98,7 +98,7 @@ export class Mick extends Player {
         }
 
         if (engine.input.keyboard.isHeld(Input.Keys.D) && engine.input.keyboard.isHeld(Input.Keys.X) || engine.input.keyboard.isHeld(Input.Keys.Right) && engine.input.keyboard.isHeld(Input.Keys.X)
-            || engine.input.keyboard.isHeld(Input.Keys.A) && engine.input.keyboard.isHeld(Input.Keys.E) || engine.input.keyboard.isHeld(Input.Keys.Left) && engine.input.keyboard.isHeld(Input.Keys.E)) {
+            || engine.input.keyboard.isHeld(Input.Keys.D) && engine.input.keyboard.isHeld(Input.Keys.E) || engine.input.keyboard.isHeld(Input.Keys.Right) && engine.input.keyboard.isHeld(Input.Keys.E)) {
             this.graphics.use('pickup');
         }
 
