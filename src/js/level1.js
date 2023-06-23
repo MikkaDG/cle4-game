@@ -35,7 +35,7 @@ export class Level1 extends Scene {
 
         this.on('enter', this.onEnter);
 
-        Physics.gravity = new Vector(0, 500);
+        Physics.gravity = new Vector(0, 500)
 
         const background1 = new Background1({});
         this.add(background1);

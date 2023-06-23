@@ -61,7 +61,7 @@ export class Startscreen extends Scene {
 
         cerenButton.on('pointerup', () => {
             this.clear()
-            game.goToScene('gamescene2');
+            game.goToScene('gamescene3');
             game.currentScene.add(new Ceren(500, 600));
 
         });

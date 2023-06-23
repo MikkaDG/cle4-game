@@ -62,6 +62,7 @@ export class Ceren extends Player {
     }
 
     onPreUpdate(engine, delta) {
+        this.on('collisionstart', (event) => this.onCollisionGround(event));
 
         if (this.pos.y >= 1000) {
             this.die();
@@ -100,9 +101,14 @@ export class Ceren extends Player {
         if (this.facingLeft === true && engine.input.keyboard.isHeld(Input.Keys.X) || engine.input.keyboard.isHeld(Input.Keys.E)) {
             this.graphics.use('pickupLeft');
         }
-        if (this.vel.x < 0 && engine.input.keyboard.isHeld(Input.Keys.X)
-            || this.vel.x < 0 && engine.input.keyboard.isHeld(Input.Keys.E)) {
+        if (engine.input.keyboard.isHeld(Input.Keys.A) || engine.input.keyboard.isHeld(Input.Keys.Left) && engine.input.keyboard.isHeld(Input.Keys.X)
+            || engine.input.keyboard.isHeld(Input.Keys.A) || engine.input.keyboard.isHeld(Input.Keys.Left) && engine.input.keyboard.isHeld(Input.Keys.E)) {
             this.graphics.use('pickupLeft');
+        }
+
+        if (engine.input.keyboard.isHeld(Input.Keys.D) || engine.input.keyboard.isHeld(Input.Keys.Right) && engine.input.keyboard.isHeld(Input.Keys.X)
+            || engine.input.keyboard.isHeld(Input.Keys.A) || engine.input.keyboard.isHeld(Input.Keys.Left) && engine.input.keyboard.isHeld(Input.Keys.E)) {
+            this.graphics.use('pickup');
         }
 
         if (engine.input.keyboard.wasReleased(Input.Keys.X) || engine.input.keyboard.wasReleased(Input.Keys.E)) {
@@ -116,11 +122,10 @@ export class Ceren extends Player {
         if (this.vel.y !== 0 && this.canJump === true) {
             setTimeout(() => {
                 this.canJump = false;
-            }, 200);
+            }, 100);
         }
 
         if (engine.input.keyboard.wasPressed(Input.Keys.Space) && this.canJump === true) {
-            console.log('jump');
             this.jump();
             //na 0.3 sec valt ceren weer
             setTimeout(() => {
@@ -148,6 +153,9 @@ export class Ceren extends Player {
             this.collision = true;
             this.trash = event.other;
         }
+    }
+
+    onCollisionGround(event) {
         if (event.other instanceof Ground || event.other instanceof Fground || event.other instanceof FgroundH
             || event.other instanceof FgroundS || event.other instanceof FgroundV || event.other instanceof Ground2) {
             this.canJump = true;
