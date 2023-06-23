@@ -168,6 +168,15 @@ export class Level1 extends Scene {
         const ground8 = new Ground(6930, 464, 1.5);
         this.add(ground8);
 
+        const trash6 = new Trash(6580, 252);
+        this.add(trash6);
+
+        const pigeon2 = new Pigeon(6930, 220);
+        this.add(pigeon2);
+
+        const trash7 = new Trash(7280, 252);
+        this.add(trash7);
+
         const ground9 = new Ground(6840, 860, 1.8);
         ground9.actions.rotateTo(Math.PI / 1, Math.PI, RotationType.Clockwise);
         this.add(ground9);
@@ -175,15 +184,26 @@ export class Level1 extends Scene {
         const fground4 = new Fground(7800, 300, 1.5);
         this.add(fground4);
 
+        const trash8 = new Trash(7800, 243);
+        this.add(trash8);
+
         const ground10 = new Ground(7830, 870, 1.5);
         this.add(ground10);
 
+        const trash9 = new Trash(7420, 658);
+        this.add(trash9);
 
-        const trash6 = new Trash(7420, 658);
-        this.add(trash6);
+        const pigeon3 = new Pigeon(7830, 648);
+        this.add(pigeon3);
+
+        const trash10 = new Trash(8240, 658);
+        this.add(trash10);
 
         const fground6 = new Fground(8200, 200, 1.5);
         this.add(fground6);
+
+        const pigeon4 = new Pigeon(8200, 148);
+        this.add(pigeon4);
 
         const ground2n1 = new Ground2(8800, 770, 2.0);
         this.add(ground2n1);

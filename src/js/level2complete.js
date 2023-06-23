@@ -75,7 +75,7 @@ export class Level2complete extends Scene {
         cerenButton.on('pointerup', () => {
             this.clear()
             game.goToScene('gamescene3');
-            game.currentScene.add(new Ceren(300, 600));
+            game.currentScene.add(new Ceren(500, 600));
 
         });
 
@@ -111,7 +111,7 @@ export class Level2complete extends Scene {
         mickButton.on('pointerup', () => {
             this.clear()
             game.goToScene('gamescene3');
-            game.currentScene.add(new Mick(300, 600));
+            game.currentScene.add(new Mick(500, 600));
         });
 
         const mickPerk = new Label({
@@ -181,7 +181,7 @@ export class Level2complete extends Scene {
         suhailButton.on('pointerup', () => {
             this.clear()
             game.goToScene('gamescene3');
-            game.currentScene.add(new Suhail(300, 620));
+            game.currentScene.add(new Suhail(500, 620));
         });
 
         const suhailPerk = new Label({
