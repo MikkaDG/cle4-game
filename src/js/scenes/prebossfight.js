@@ -1,26 +1,31 @@
 import '../../css/style.css';
 import {Actor, CollisionType, Color, Engine, Font, FontUnit, Label, Physics, Scene, TextAlign, Vector} from 'excalibur';
-import {Background2} from '../backgrounds/background2.js';
+import {Background1} from '../backgrounds/background1.js';
 import {Suhail} from '../actors/suhail.js';
 import {Ceren} from '../actors/ceren.js';
 import {Mike} from '../actors/mike.js';
 import {Mick} from '../actors/mick.js';
 import {PlayerKnop} from '../actors/playerKnop.js';
 import {Resources} from '../resources.js';
+import {BossSuhail} from '../actors/bossSuhail.js';
+import {BossMike} from '../actors/bossMike';
+import {BossMick} from '../actors/bossMick.js';
+import {BossCeren} from '../actors/bossCeren.js';
+import {Background3} from '../backgrounds/background3.js';
 import {SelectScreenBackground} from '../backgrounds/select.screen.background.js';
 
-export class Level2complete extends Scene {
+export class Prebossfight extends Scene {
 
     onInitialize(engine) {
         const game = engine;
         const storedScores = JSON.parse(localStorage.getItem('scores'));
 
-        const gameOverbackground = new SelectScreenBackground(Resources.Background2);
+        const gameOverbackground = new SelectScreenBackground(Resources.Background3);
         this.add(gameOverbackground);
 
         const gameOverText = new Label({
-            text: 'Level Complete!',
-            pos: new Vector(400, 200),
+            text: 'Boss Fight Incoming!',
+            pos: new Vector(360, 200),
             textAlign: TextAlign.Center,
             color: Color.Black,
             font: new Font({
@@ -32,7 +37,7 @@ export class Level2complete extends Scene {
         this.add(gameOverText);
 
         const lastScoreLabel = new Label({
-            text: 'SCORE: ' + storedScores,
+            text: 'LV 3 SCORE: ' + storedScores,
             pos: new Vector(500, 270),
             color: Color.Black,
             font: new Font({
@@ -45,7 +50,7 @@ export class Level2complete extends Scene {
         this.add(lastScoreLabel);
 
         const nextLevelCharacter = new Label({
-            text: 'Choose your character for the next level!',
+            text: 'Choose your character for the boss fight!',
             pos: new Vector(270, 400),
             textAlign: TextAlign.Center,
             color: Color.Black,
@@ -75,8 +80,8 @@ export class Level2complete extends Scene {
 
         cerenButton.on('pointerup', () => {
             this.clear()
-            game.goToScene('gamescene3');
-            game.currentScene.add(new Ceren(500, 600));
+            game.goToScene('bossfight');
+            game.currentScene.add(new BossCeren(300, 600));
 
         });
 
@@ -111,8 +116,8 @@ export class Level2complete extends Scene {
 
         mickButton.on('pointerup', () => {
             this.clear()
-            game.goToScene('gamescene3');
-            game.currentScene.add(new Mick(500, 600));
+            game.goToScene('bossfight');
+            game.currentScene.add(new BossMick(300, 600));
         });
 
         const mickPerk = new Label({
@@ -146,8 +151,8 @@ export class Level2complete extends Scene {
 
         mikeButton.on('pointerup', () => {
             this.clear()
-            game.goToScene('gamescene3');
-            game.currentScene.add(new Mike(500, 600));
+            game.goToScene('bossfight');
+            game.currentScene.add(new BossMike(300, 600));
         });
 
         const mikePerk = new Label({
@@ -181,13 +186,13 @@ export class Level2complete extends Scene {
 
         suhailButton.on('pointerup', () => {
             this.clear()
-            game.goToScene('gamescene3');
-            game.currentScene.add(new Suhail(500, 620));
+            game.goToScene('bossfight');
+            game.currentScene.add(new BossSuhail(300, 620));
         });
 
         const suhailPerk = new Label({
-            text: 'Auto-collects trash',
-            pos: new Vector(875, 720),
+            text: 'Can double jump',
+            pos: new Vector(895, 720),
             textAlign: TextAlign.Center,
             color: Color.Black,
             font: new Font({

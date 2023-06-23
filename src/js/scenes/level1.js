@@ -286,6 +286,10 @@ export class Level1 extends Scene {
                 // }
             }
         });
+
+        if (engine.input.keyboard.wasPressed(Key.Escape)) {
+            this.game.goToScene('pause');
+        }
     }
 
     pickupTrash() {

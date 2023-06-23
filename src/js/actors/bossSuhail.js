@@ -1,44 +1,50 @@
-import '../../css/style.css'
+import '../../css/style.css';
 import {Animation, DegreeOfFreedom, Input, range, SpriteSheet, Vector} from 'excalibur';
-import { Resources, ResourceLoader } from '../resources.js'
+import {Resources, ResourceLoader} from '../resources.js';
 import {Player} from './player.js';
 import {Startscreen} from '../scenes/startscreen.js';
 import {Trash} from '../objects/trash.js';
-import {Ground} from '../objects/ground.js';
 import {Fground} from '../objects/fground.js';
 import {FgroundH} from '../objects/fgroundhorizontal.js';
-import {FgroundS} from '../objects/fgroundsquare.js';
 import {FgroundV} from '../objects/fgroundvertical.js';
+import {FgroundS} from '../objects/fgroundsquare.js';
+import {Ground} from '../objects/ground.js';
 import {Ground2} from '../objects/ground2.js';
 
-export class Mike extends Player {
+export class BossSuhail extends Player {
     game;
+    trash;
+    canJump = true;
+    jumpCount = 0;
+    maxJumpCount = 1;
+
 
     constructor(posX, posY) {
-        super()
+        super();
         const runSheet = SpriteSheet.fromImageSource({
-            image: Resources.Mike,
-            grid: { rows: 1, columns: 8, spriteWidth: 300, spriteHeight: 300 }
-        })
-        const idle = runSheet.sprites[0] // geen animatie
-        const idleLeft = runSheet.sprites[5] // geen animatie
-        const runLeft = Animation.fromSpriteSheet(runSheet, range(3, 5), 80)
-        const runRight = Animation.fromSpriteSheet(runSheet, range(0, 2), 80)
-        const pickup = runSheet.sprites[6] // pick up trash
-        const pickupLeft = runSheet.sprites[7] // pick up trash
+            image: Resources.Suhail,
+            grid: {rows: 1, columns: 8, spriteWidth: 302, spriteHeight: 300}
+        });
+        const idle = runSheet.sprites[6]; // geen animatie
+        // const idleLeft = runSheet.sprites[5]; // geen animatie
+        // const runLeft = Animation.fromSpriteSheet(runSheet, range(3, 5), 80);
+        const runRight = runSheet.sprites[6];
+        const pickup = runSheet.sprites[0]; // pick up trash
+        // const pickupLeft = runSheet.sprites[7]; // pick up trash
 
-        this.pos = new Vector(posX, posY)
+        this.pos = new Vector(posX, posY);
 
-        this.graphics.add("idle", idle)
-        this.graphics.add("idleLeft", idleLeft)
-        this.graphics.add("runleft", runLeft)
-        this.graphics.add("runright", runRight)
-        this.graphics.add("pickup", pickup)
-        this.graphics.add("pickupLeft", pickupLeft)
+        this.graphics.add('idle', idle);
+        // this.graphics.add('idleLeft', idleLeft);
+        // this.graphics.add('runleft', runLeft);
+        this.graphics.add('runright', runRight);
+        this.graphics.add('pickup', pickup);
+        // this.graphics.add('pickupLeft', pickupLeft);
 
 
-        this.graphics.use(idle)
+        this.graphics.use(idle);
 
+        //
         // this.body.friction = 1;
         // this.body.limitDegreeOfFreedom.push(DegreeOfFreedom.Rotation);
     }
@@ -46,8 +52,8 @@ export class Mike extends Player {
     onInitialize(engine) {
         this.game = engine;
 
-        this.on('collisionstart', (event) => this.onCollisionStart(event));
-        this.on('collisionend', (event) => this.onCollisionEnd(event));
+        // this.on('collisionstart', (event) => this.onCollisionStart(event));
+        // this.on('collisionend', (event) => this.onCollisionEnd(event));
     }
 
     die() {
@@ -63,10 +69,8 @@ export class Mike extends Player {
         }
 
         if (engine.input.keyboard.isHeld(Input.Keys.A) || engine.input.keyboard.isHeld(Input.Keys.Left)) {
-            this.graphics.use('runleft');
+            this.graphics.use('runright');
             this.vel.x = -200;
-            this.anchor.setTo(0.65, 0.5);
-
         }
 
         if (engine.input.keyboard.isHeld(Input.Keys.D) || engine.input.keyboard.isHeld(Input.Keys.Right)) {
@@ -75,29 +79,20 @@ export class Mike extends Player {
             this.anchor.setTo(0.35, 0.5);
         }
         if (engine.input.keyboard.isHeld(Input.Keys.ShiftLeft) || engine.input.keyboard.isHeld(Input.Keys.ShiftRight)) {
-            this.vel.x *= 2.2;
+            this.vel.x *= 1.5;
         }
         if (engine.input.keyboard.wasReleased(Input.Keys.A) || engine.input.keyboard.wasReleased(Input.Keys.Left)) {
             this.vel.x = 0;
-            this.graphics.use('idleLeft');
-            this.anchor.setTo(0.65, 0.5);
-            this.facingLeft = true;
+            this.graphics.use('idle');
         }
         if (engine.input.keyboard.wasReleased(Input.Keys.D) || engine.input.keyboard.wasReleased(Input.Keys.Right)) {
             this.vel.x = 0;
             this.graphics.use('idle');
             this.anchor.setTo(0.35, 0.5);
-            this.facingLeft = false;
         }
+
         if (engine.input.keyboard.isHeld(Input.Keys.X) || engine.input.keyboard.isHeld(Input.Keys.E)) {
             this.graphics.use('pickup');
-        }
-        if (this.facingLeft === true && engine.input.keyboard.isHeld(Input.Keys.X) || engine.input.keyboard.isHeld(Input.Keys.E)) {
-            this.graphics.use('pickupLeft');
-        }
-        if (engine.input.keyboard.isHeld(Input.Keys.A) && engine.input.keyboard.isHeld(Input.Keys.X) || engine.input.keyboard.isHeld(Input.Keys.Left) && engine.input.keyboard.isHeld(Input.Keys.X)
-            || engine.input.keyboard.isHeld(Input.Keys.A) && engine.input.keyboard.isHeld(Input.Keys.E) || engine.input.keyboard.isHeld(Input.Keys.Left) && engine.input.keyboard.isHeld(Input.Keys.E)) {
-            this.graphics.use('pickupLeft');
         }
 
         if (engine.input.keyboard.isHeld(Input.Keys.D) && engine.input.keyboard.isHeld(Input.Keys.X) || engine.input.keyboard.isHeld(Input.Keys.Right) && engine.input.keyboard.isHeld(Input.Keys.X)
@@ -107,10 +102,6 @@ export class Mike extends Player {
 
         if (engine.input.keyboard.wasReleased(Input.Keys.X) || engine.input.keyboard.wasReleased(Input.Keys.E)) {
             this.graphics.use('idle');
-            this.grabTrash();
-        }
-        if (this.facingLeft === true && engine.input.keyboard.wasReleased(Input.Keys.X) || engine.input.keyboard.wasReleased(Input.Keys.E)) {
-            this.graphics.use('idleLeft');
         }
 
         // if (this.vel.y !== 0 && this.canJump === true) {
@@ -120,11 +111,15 @@ export class Mike extends Player {
         // }
 
         if (engine.input.keyboard.wasPressed(Input.Keys.Space) && this.canJump === true) {
-            this.jump();
-            //na 0.5 sec valt ceren weer
-            setTimeout(() => {
-                this.fall();
-            }, 500);
+            if (this.canJump || this.jumpCount < this.maxJumpCount) {
+                this.jump();
+                this.jumpCount+=1;
+                //na 0.5 sec valt ceren weer
+                setTimeout(() => {
+                    this.fall();
+                }, 500);
+            }
+
         }
 
         if (this.pos.y <= -300) {
@@ -134,38 +129,21 @@ export class Mike extends Player {
 
     jump() {
         console.log('jump');
-        this.vel = this.vel.add(new Vector(0, -550));
-        this.canJump = false;
+        this.vel = this.vel.add(new Vector(0, -500));
+        if (this.jumpCount === 1) {
+            this.canJump = false;
+        }
     }
 
     fall() {
         this.vel = this.vel.add(new Vector(0, 120));
     }
 
-    onCollisionStart(event) {
-        if (event.other instanceof Trash) {
-            this.collision = true;
-            this.trash = event.other;
-        }
-    }
-
     onCollisionGround(event) {
         if (event.other instanceof Ground || event.other instanceof Fground || event.other instanceof FgroundH
             || event.other instanceof FgroundS || event.other instanceof FgroundV || event.other instanceof Ground2) {
             this.canJump = true;
-        }
-    }
-
-    onCollisionEnd(event) {
-        if (event.other instanceof Trash) {
-            this.collision = false;
-        }
-    }
-
-    grabTrash() {
-        if (this.collision === true) {
-            this.game.currentScene.pickupTrash();
-            this.trash.kill();
+            this.jumpCount = 0;
         }
     }
 }

@@ -7,6 +7,7 @@ import {Mike} from '../actors/mike.js';
 import {Mick} from '../actors/mick.js';
 import {PlayerKnop} from '../actors/playerKnop.js';
 import {Resources} from '../resources.js';
+import {SelectScreenBackground} from '../backgrounds/select.screen.background.js';
 
 export class Level1complete extends Scene {
 
@@ -14,7 +15,7 @@ export class Level1complete extends Scene {
         const game = engine;
         const storedScores = JSON.parse(localStorage.getItem('scores'));
 
-        const gameOverbackground = new Background1();
+        const gameOverbackground = new SelectScreenBackground(Resources.Background1);
         this.add(gameOverbackground);
 
         const gameOverText = new Label({
@@ -69,7 +70,7 @@ export class Level1complete extends Scene {
         });
         this.add(cerenText);
 
-        const cerenButton = new PlayerKnop(225, 600, Resources.CerenKnop);
+        const cerenButton = new PlayerKnop(225, 600, Resources.CerenKnop, 0.8, 0.8);
         this.add(cerenButton);
 
         cerenButton.on('pointerup', () => {
@@ -105,7 +106,7 @@ export class Level1complete extends Scene {
         });
         this.add(mickText);
 
-        const mickButton = new PlayerKnop(475, 600, Resources.MickKnop);
+        const mickButton = new PlayerKnop(475, 600, Resources.MickKnop, 0.8, 0.8);
         this.add(mickButton);
 
         mickButton.on('pointerup', () => {
@@ -140,7 +141,7 @@ export class Level1complete extends Scene {
         });
         this.add(mikeText);
 
-        const mikeButton = new PlayerKnop(725, 600, Resources.MikeKnop);
+        const mikeButton = new PlayerKnop(725, 600, Resources.MikeKnop, 0.8, 0.8);
         this.add(mikeButton);
 
         mikeButton.on('pointerup', () => {
@@ -175,7 +176,7 @@ export class Level1complete extends Scene {
         });
         this.add(suhailText);
 
-        const suhailButton = new PlayerKnop(975, 600, Resources.SuhailKnop);
+        const suhailButton = new PlayerKnop(975, 600, Resources.SuhailKnop, 0.92, 0.8);
         this.add(suhailButton);
 
         suhailButton.on('pointerup', () => {

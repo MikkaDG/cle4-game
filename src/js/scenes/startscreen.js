@@ -21,13 +21,14 @@ import {Mick} from '../actors/mick.js';
 import {Mike} from '../actors/mike.js';
 import {SelectScreenBackground} from '../backgrounds/select.screen.background.js';
 import {PlayerKnop} from '../actors/playerKnop.js';
+import {BossCeren} from '../actors/bossCeren.js';
 
 export class Startscreen extends Scene {
 
     onInitialize(engine) {
         const game = engine;
 
-        const background = new SelectScreenBackground({});
+        const background = new SelectScreenBackground(Resources.Background1);
         this.add(background);
 
         const startText = new Label({
@@ -56,12 +57,12 @@ export class Startscreen extends Scene {
         });
         this.add(cerenText);
 
-        const cerenButton = new PlayerKnop(225, 400, Resources.CerenKnop);
+        const cerenButton = new PlayerKnop(225, 400, Resources.CerenKnop, 0.8, 0.8);
         this.add(cerenButton);
 
         cerenButton.on('pointerup', () => {
             this.clear()
-            game.goToScene('gamescene3');
+            game.goToScene('bossfight');
             game.currentScene.add(new Ceren(300, 600));
 
         });
@@ -92,7 +93,7 @@ export class Startscreen extends Scene {
         });
         this.add(mickText);
 
-        const mickButton = new PlayerKnop(475, 400, Resources.MickKnop);
+        const mickButton = new PlayerKnop(475, 400, Resources.MickKnop, 0.8, 0.8);
         this.add(mickButton);
 
         mickButton.on('pointerup', () => {
@@ -127,13 +128,13 @@ export class Startscreen extends Scene {
         });
         this.add(mikeText);
 
-        const mikeButton = new PlayerKnop(725, 400, Resources.MikeKnop);
+        const mikeButton = new PlayerKnop(725, 400, Resources.MikeKnop, 0.8, 0.8);
         this.add(mikeButton);
 
         mikeButton.on('pointerup', () => {
             this.clear()
-            game.goToScene('bossfight');
-            game.currentScene.add(new Mike(300, 600));
+            game.goToScene('gamescene3');
+            game.currentScene.add(new Mike(7300, 600));
         });
 
         const mikePerk = new Label({
@@ -162,7 +163,7 @@ export class Startscreen extends Scene {
         });
         this.add(suhailText);
 
-        const suhailButton = new PlayerKnop(975, 400, Resources.SuhailKnop);
+        const suhailButton = new PlayerKnop(975, 400, Resources.SuhailKnop, 0.92, 0.8);
         this.add(suhailButton);
 
         suhailButton.on('pointerup', () => {

@@ -118,11 +118,11 @@ export class Ceren extends Player {
             this.graphics.use('idleLeft');
         }
 
-        if (this.vel.y !== 0 && this.canJump === true) {
-            setTimeout(() => {
-                this.canJump = false;
-            }, 100);
-        }
+        // if (this.vel.y !== 0 && this.canJump === true) {
+        //     setTimeout(() => {
+        //         this.canJump = false;
+        //     }, 100);
+        // }
 
         if (engine.input.keyboard.wasPressed(Input.Keys.Space) && this.canJump === true) {
             this.jump();

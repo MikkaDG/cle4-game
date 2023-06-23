@@ -5,8 +5,13 @@ export class SelectScreenBackground extends Actor {
     game;
     offset;
 
+    constructor(sprite) {
+        super();
+        this.background1Image = sprite.toSprite()
+    }
+
     onInitialize(engine) {
-        this.background1Image = Resources.Background1.toSprite(); // Eerste achtergrondafbeelding
+        // this.background1Image = Resources.Background1.toSprite(); // Eerste achtergrondafbeelding
         // this.scale = new Vector(0.3, 0.3);
         this.offset = this.background1Image.width;
         this.game = engine;

@@ -20,12 +20,12 @@ export class Suhail extends Player {
             image: Resources.Suhail,
             grid: {rows: 1, columns: 8, spriteWidth: 300, spriteHeight: 300}
         });
-        const idle = runSheet.sprites[0]; // geen animatie
-        const idleLeft = runSheet.sprites[5]; // geen animatie
+        const idle = runSheet.sprites[6]; // geen animatie
+        const idleLeft = runSheet.sprites[7]; // geen animatie
         const runLeft = Animation.fromSpriteSheet(runSheet, range(3, 5), 80);
         const runRight = Animation.fromSpriteSheet(runSheet, range(0, 2), 80);
-        const pickup = runSheet.sprites[6]; // pick up trash
-        const pickupLeft = runSheet.sprites[7]; // pick up trash
+        // const pickup = runSheet.sprites[6]; // pick up trash
+        // const pickupLeft = runSheet.sprites[7]; // pick up trash
 
         this.pos = new Vector(posX, posY);
 
@@ -33,8 +33,8 @@ export class Suhail extends Player {
         this.graphics.add('idleLeft', idleLeft);
         this.graphics.add('runleft', runLeft);
         this.graphics.add('runright', runRight);
-        this.graphics.add('pickup', pickup);
-        this.graphics.add('pickupLeft', pickupLeft);
+        // this.graphics.add('pickup', pickup);
+        // this.graphics.add('pickupLeft', pickupLeft);
 
 
         this.graphics.use(idle);
@@ -87,34 +87,34 @@ export class Suhail extends Player {
             this.anchor.setTo(0.35, 0.5);
             this.facingLeft = false;
         }
-        if (engine.input.keyboard.isHeld(Input.Keys.X) || engine.input.keyboard.isHeld(Input.Keys.E)) {
-            this.graphics.use('pickup');
-        }
-        if (this.facingLeft === true && engine.input.keyboard.isHeld(Input.Keys.X) || engine.input.keyboard.isHeld(Input.Keys.E)) {
-            this.graphics.use('pickupLeft');
-        }
-        if (engine.input.keyboard.isHeld(Input.Keys.A) && engine.input.keyboard.isHeld(Input.Keys.X) || engine.input.keyboard.isHeld(Input.Keys.Left) && engine.input.keyboard.isHeld(Input.Keys.X)
-            || engine.input.keyboard.isHeld(Input.Keys.A) && engine.input.keyboard.isHeld(Input.Keys.E) || engine.input.keyboard.isHeld(Input.Keys.Left) && engine.input.keyboard.isHeld(Input.Keys.E)) {
-            this.graphics.use('pickupLeft');
-        }
+        // if (engine.input.keyboard.isHeld(Input.Keys.X) || engine.input.keyboard.isHeld(Input.Keys.E)) {
+        //     this.graphics.use('pickup');
+        // }
+        // if (this.facingLeft === true && engine.input.keyboard.isHeld(Input.Keys.X) || engine.input.keyboard.isHeld(Input.Keys.E)) {
+        //     this.graphics.use('pickupLeft');
+        // }
+        // if (engine.input.keyboard.isHeld(Input.Keys.A) && engine.input.keyboard.isHeld(Input.Keys.X) || engine.input.keyboard.isHeld(Input.Keys.Left) && engine.input.keyboard.isHeld(Input.Keys.X)
+        //     || engine.input.keyboard.isHeld(Input.Keys.A) && engine.input.keyboard.isHeld(Input.Keys.E) || engine.input.keyboard.isHeld(Input.Keys.Left) && engine.input.keyboard.isHeld(Input.Keys.E)) {
+        //     this.graphics.use('pickupLeft');
+        // }
 
-        if (engine.input.keyboard.isHeld(Input.Keys.D) && engine.input.keyboard.isHeld(Input.Keys.X) || engine.input.keyboard.isHeld(Input.Keys.Right) && engine.input.keyboard.isHeld(Input.Keys.X)
-            || engine.input.keyboard.isHeld(Input.Keys.D) && engine.input.keyboard.isHeld(Input.Keys.E) || engine.input.keyboard.isHeld(Input.Keys.Right) && engine.input.keyboard.isHeld(Input.Keys.E)) {
-            this.graphics.use('pickup');
-        }
+        // if (engine.input.keyboard.isHeld(Input.Keys.D) && engine.input.keyboard.isHeld(Input.Keys.X) || engine.input.keyboard.isHeld(Input.Keys.Right) && engine.input.keyboard.isHeld(Input.Keys.X)
+        //     || engine.input.keyboard.isHeld(Input.Keys.D) && engine.input.keyboard.isHeld(Input.Keys.E) || engine.input.keyboard.isHeld(Input.Keys.Right) && engine.input.keyboard.isHeld(Input.Keys.E)) {
+        //     this.graphics.use('pickup');
+        // }
 
-        if (engine.input.keyboard.wasReleased(Input.Keys.X) || engine.input.keyboard.wasReleased(Input.Keys.E)) {
-            this.graphics.use('idle');
-        }
-        if (this.facingLeft === true && engine.input.keyboard.wasReleased(Input.Keys.X) || engine.input.keyboard.wasReleased(Input.Keys.E)) {
-            this.graphics.use('idleLeft');
-        }
+        // if (engine.input.keyboard.wasReleased(Input.Keys.X) || engine.input.keyboard.wasReleased(Input.Keys.E)) {
+        //     this.graphics.use('idle');
+        // }
+        // if (this.facingLeft === true && engine.input.keyboard.wasReleased(Input.Keys.X) || engine.input.keyboard.wasReleased(Input.Keys.E)) {
+        //     this.graphics.use('idleLeft');
+        // }
 
-        if (this.vel.y !== 0 && this.canJump === true) {
-            setTimeout(() => {
-                this.canJump = false;
-            }, 100);
-        }
+        // if (this.vel.y !== 0 && this.canJump === true) {
+        //     setTimeout(() => {
+        //         this.canJump = false;
+        //     }, 100);
+        // }
 
         if (engine.input.keyboard.wasPressed(Input.Keys.Space) && this.canJump === true) {
             this.jump();

@@ -283,6 +283,13 @@ export class Level3 extends Scene {
         });
         this.add(barrier3);
 
+        barrier3.on('collisionstart', (e) => {
+            if (e.other instanceof Player) {
+                localStorage.setItem('scores', JSON.stringify(this.score));
+                this.clear();
+                this.engine.goToScene('prebossfight');
+            }
+        });
     }
 
 
@@ -326,12 +333,6 @@ export class Level3 extends Scene {
 
         // Stel de nieuwe positie in voor de scorelabel
         this.scoreLabel.pos = new Vector(scoreLabelX, scoreLabelY);
-
-        this.player.on('collisionstart', (e) => {
-            if (e.other instanceof Trashcan) {
-                this.game.goToScene('level1complete');
-            }
-        });
     }
 
     pickupTrash() {

@@ -129,11 +129,11 @@ export class Mick extends Player {
             }, 500);
         }
 
-        if (this.vel.y !== 0 && this.canJump === true) {
-            setTimeout(() => {
-                this.canJump = false;
-            }, 100);
-        }
+        // if (this.vel.y !== 0 && this.canJump === true) {
+        //     setTimeout(() => {
+        //         this.canJump = false;
+        //     }, 100);
+        // }
 
         if (this.pos.y <= -300) {
             this.fall();
@@ -142,12 +142,12 @@ export class Mick extends Player {
 
     jump() {
         console.log('jump');
-        this.vel = this.vel.add(new Vector(0, 0));
+        this.vel = this.vel.add(new Vector(0, -650));
         this.canJump = false;
     }
 
     fall() {
-        this.vel = this.vel.add(new Vector(0, 0));
+        this.vel = this.vel.add(new Vector(0, 120));
     }
 
     onCollisionStart(event) {

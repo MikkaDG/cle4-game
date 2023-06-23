@@ -167,7 +167,7 @@ export class Bossfight extends Scene {
             this.chargeTimer += delta; // Verhoog de oplaadtijd
 
             // Bepaal de maximale waarde van chargedVel op basis van de laadtijd
-            const maxChargedVel = 500;
+            const maxChargedVel = 800;
             const chargeTimeThresholdSeconds = this.chargeTimeThreshold / 1000; // Omzetten naar seconden
             const chargedVelIncrement = maxChargedVel / chargeTimeThresholdSeconds;
 
