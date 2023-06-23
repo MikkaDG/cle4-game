@@ -59,20 +59,31 @@ export class Mick extends Player {
             this.die();
         }
 
+        // if (engine.input.keyboard.isHeld(Input.Keys.W) || engine.input.keyboard.isHeld(Input.Keys.Up)) {
+        //     this.vel.y = -500;
+        // }
+        // if (engine.input.keyboard.wasReleased(Input.Keys.W) || engine.input.keyboard.wasReleased(Input.Keys.Up)) {
+        //     this.vel.y = 0;
+        // }
+        // if (engine.input.keyboard.isHeld(Input.Keys.S) || engine.input.keyboard.isHeld(Input.Keys.Down)) {
+        //     this.vel.y = 500;
+        // }
+        // if (engine.input.keyboard.wasReleased(Input.Keys.S) || engine.input.keyboard.wasReleased(Input.Keys.Down)) {
+        //     this.vel.y = 0;
+        // }
+
         if (engine.input.keyboard.isHeld(Input.Keys.A) || engine.input.keyboard.isHeld(Input.Keys.Left)) {
             this.graphics.use('runleft');
-            this.vel.x = -200;
+            this.vel.x = -300;
             this.anchor.setTo(0.65, 0.5);
-
         }
-
         if (engine.input.keyboard.isHeld(Input.Keys.D) || engine.input.keyboard.isHeld(Input.Keys.Right)) {
             this.graphics.use('runright');
-            this.vel.x = 200;
+            this.vel.x = 300;
             this.anchor.setTo(0.35, 0.5);
         }
         if (engine.input.keyboard.isHeld(Input.Keys.ShiftLeft) || engine.input.keyboard.isHeld(Input.Keys.ShiftRight)) {
-            this.vel.x *= 1.5;
+            this.vel.x *= 9.5;
         }
         if (engine.input.keyboard.wasReleased(Input.Keys.A) || engine.input.keyboard.wasReleased(Input.Keys.Left)) {
             this.vel.x = 0;
@@ -131,12 +142,12 @@ export class Mick extends Player {
 
     jump() {
         console.log('jump');
-        this.vel = this.vel.add(new Vector(0, -650));
+        this.vel = this.vel.add(new Vector(0, 0));
         this.canJump = false;
     }
 
     fall() {
-        this.vel = this.vel.add(new Vector(0, 120));
+        this.vel = this.vel.add(new Vector(0, 0));
     }
 
     onCollisionStart(event) {
