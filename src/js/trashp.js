@@ -2,7 +2,7 @@ import {Actor, CollisionType, Physics, Vector} from 'excalibur';
 import {Resources} from './resources.js';
 
 export class Trashp extends Actor {
-    constructor(posX, posY) {
+    constructor(posX, posY, vel) {
         super({
             width: Resources.Banana.width,
             height: Resources.Banana.height,
@@ -15,6 +15,7 @@ export class Trashp extends Actor {
             Resources.Paper.toSprite(),
             Resources.Bag.toSprite()
         ];
+        this.vel = new Vector(vel, -vel);
     }
 
     onInitialize(engine) {
@@ -23,9 +24,9 @@ export class Trashp extends Actor {
         this.graphics.use(randomSprite);
         this.body.collisionType = CollisionType.Passive;
         this.body.useGravity = true;
-        const randomVel = Math.floor(100 + Math.random() * 500);
-        console.log(randomVel);
-        this.vel = new Vector(randomVel, -randomVel);
+        // const randomVel = Math.floor(100 + Math.random() * 500);
+        // console.log(randomVel);
+        // this.vel = new Vector(randomVel, -randomVel);
     }
 
     onPostUpdate(engine, delta) {

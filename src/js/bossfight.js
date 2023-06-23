@@ -27,6 +27,9 @@ import {Trashp} from './trashp.js';
 
 
 export class Bossfight extends Scene {
+    chargedVel = 0;
+    chargeTimer = 0;
+    chargeTimeThreshold = 1000; // Duur (in milliseconden) voordat de chargedVel zijn maximum bereikt
 
     player = null;
 
@@ -126,13 +129,27 @@ export class Bossfight extends Scene {
         // Stel de nieuwe positie in voor de scorelabel
         this.scoreLabel.pos = new Vector(scoreLabelX, scoreLabelY);
 
-        if (engine.input.keyboard.wasReleased(Input.Keys.X) || engine.input.keyboard.wasReleased(Input.Keys.E)) {
-            let trashprojectile = new Trashp(this.player.pos.x + 100, this.player.pos.y);
-            this.add(trashprojectile);
+        if (engine.input.keyboard.isHeld(Input.Keys.X) || engine.input.keyboard.isHeld(Input.Keys.E)) {
+            this.chargeTimer += delta; // Verhoog de oplaadtijd
+
+            // Bepaal de maximale waarde van chargedVel op basis van de laadtijd
+            const maxChargedVel = 500;
+            const chargeTimeThresholdSeconds = this.chargeTimeThreshold / 1000; // Omzetten naar seconden
+            const chargedVelIncrement = maxChargedVel / chargeTimeThresholdSeconds;
+
+            // Bereken de nieuwe waarde van chargedVel op basis van de laadtijd
+            this.chargedVel = Math.min(this.chargeTimer / 1000 * chargedVelIncrement, maxChargedVel);
         }
 
+        if (engine.input.keyboard.wasReleased(Input.Keys.X) || engine.input.keyboard.wasReleased(Input.Keys.E)) {
+            let trashprojectile = new Trashp(this.player.pos.x + 100, this.player.pos.y, this.chargedVel);
+            this.add(trashprojectile);
 
+            this.chargeTimer = 0;
+            this.chargedVel = 0;
+        }
 
+        console.log(this.chargedVel);
 
 
         this.player.on('collisionstart', (e) => {

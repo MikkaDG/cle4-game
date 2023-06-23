@@ -33,7 +33,7 @@ export class Level3 extends Scene {
     onInitialize(engine) {
         this.game = engine;
 
-        Physics.gravity = new Vector(0, 0);
+        Physics.gravity = new Vector(0, 500);
 
         const background3 = new Background3({});
         this.add(background3);
