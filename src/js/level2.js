@@ -37,6 +37,31 @@ export class Level2 extends Scene {
 
         this.score = 0;
 
+        // Laad onderstaande elementen in voor de scorelabel zodat deze altijd vooraan blijft staan
+        const fground16 = new Fground(8700, 75, 1.5);
+        this.add(fground16);
+
+        const trash14 = new Trash(8700, 18,);
+        this.add(trash14);
+
+        const fground17 = new Fground(9300, 75, 1.5);
+        this.add(fground17);
+
+        const fground18 = new Fground(9900, 75, 1.5);
+        this.add(fground18);
+
+        const trash15 = new Trash(9900, 18,);
+        this.add(trash15);
+
+        const fground19 = new Fground(10500, 75, 1.5);
+        this.add(fground19);
+
+        const fground20 = new Fground(11600, 75, 1.5);
+        this.add(fground20);
+
+        const trash16 = new Trash(11565, 18,);
+        this.add(trash16);
+
         // Voeg score label toe
         this.scoreLabel = new Label({
             text: `SCORE: ${this.score}`,
@@ -49,6 +74,7 @@ export class Level2 extends Scene {
             })
         });
         this.add(this.scoreLabel);
+
 
         // voeg barriere toe aan start van level zodat de speler niet naar links kan
         const barrier = new Actor({
@@ -174,44 +200,37 @@ export class Level2 extends Scene {
         const fground14 = new Fground(8100, 375, 1.5);
         this.add(fground14);
 
+        const trash13 = new Trash(8100, 318,);
+        this.add(trash13);
+
         const fground15 = new Fground(8400, 225, 1.5);
         this.add(fground15);
-
-        const fground16 = new Fground(8700, 75, 1.5);
-        this.add(fground16);
 
         const ground8 = new Ground(8800, 920, 1.5);
         this.add(ground8);
 
-        const fground17 = new Fground(9300, 75, 1.5);
-        this.add(fground17);
-
         const ground9 = new Ground(9500, 920, 1.5);
         this.add(ground9);
-
-        const fground18 = new Fground(9900, 75, 1.5);
-        this.add(fground18);
 
         const ground10 = new Ground(10200, 920, 1.5);
         this.add(ground10);
 
-        const fground19 = new Fground(10500, 75, 1.5);
-        this.add(fground19);
-
-        const ground11 = new Ground(10900, 920, 1.5);
+        const ground11 = new Ground(11000, 920, 1.5);
         this.add(ground11);
 
-        const ground2n1 = new Ground2(11200, 770, 2.0);
+        const ground2n1 = new Ground2(11500, 770, 2.0);
         this.add(ground2n1);
 
-        const ground2n2 = new Ground2(11390, 770, 2.0);
+        const ground2n2 = new Ground2(11690, 770, 2.0);
         this.add(ground2n2);
 
-        const trashcan = new Trashcan(11200, 590);
+        const trashcan = new Trashcan(11500, 590);
         this.add(trashcan);
 
+
+
         const barrier2 = new Actor({
-            pos: new Vector(11300, 400),
+            pos: new Vector(11600, 400),
             width: 5,
             height: 2000,
             color: Color.Transparent,
@@ -236,8 +255,12 @@ export class Level2 extends Scene {
         // Pas de elastische interpolatie toe op de camera-positie
         let cameraX = this.camera.pos.x + (targetCameraX - this.camera.pos.x) * elasticFactor;
 
-        // Zorg ervoor dat de cameraX niet onder de waarde 300 komt
+        // Zorg ervoor dat de cameraX niet onder de waarde 600 komt
         cameraX = Math.max(cameraX, 600);
+
+        // Zorg ervoor dat de cameraX niet hoger dan de waarde 9000 komt
+        const maxCameraX = 11000;
+        cameraX = Math.min(cameraX, maxCameraX);
 
         this.camera.pos = new Vector(cameraX, cameraY);
     }

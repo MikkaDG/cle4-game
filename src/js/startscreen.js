@@ -61,8 +61,8 @@ export class Startscreen extends Scene {
 
         cerenButton.on('pointerup', () => {
             this.clear()
-            game.goToScene('gamescene2');
-            game.currentScene.add(new Ceren(11000, 600));
+            game.goToScene('gamescene3');
+            game.currentScene.add(new Ceren(300, 600));
 
         });
 
@@ -168,7 +168,7 @@ export class Startscreen extends Scene {
         suhailButton.on('pointerup', () => {
             this.clear()
             game.goToScene('gamescene1');
-            game.currentScene.add(new Suhail(300, 620));
+            game.currentScene.add(new Suhail(300, 600));
         });
 
         const suhailPerk = new Label({
