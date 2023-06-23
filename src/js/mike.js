@@ -95,13 +95,13 @@ export class Mike extends Player {
         if (this.facingLeft === true && engine.input.keyboard.isHeld(Input.Keys.X) || engine.input.keyboard.isHeld(Input.Keys.E)) {
             this.graphics.use('pickupLeft');
         }
-        if (engine.input.keyboard.isHeld(Input.Keys.A) || engine.input.keyboard.isHeld(Input.Keys.Left) && engine.input.keyboard.isHeld(Input.Keys.X)
-            || engine.input.keyboard.isHeld(Input.Keys.A) || engine.input.keyboard.isHeld(Input.Keys.Left) && engine.input.keyboard.isHeld(Input.Keys.E)) {
+        if (engine.input.keyboard.isHeld(Input.Keys.A) && engine.input.keyboard.isHeld(Input.Keys.X) || engine.input.keyboard.isHeld(Input.Keys.Left) && engine.input.keyboard.isHeld(Input.Keys.X)
+            || engine.input.keyboard.isHeld(Input.Keys.A) && engine.input.keyboard.isHeld(Input.Keys.E) || engine.input.keyboard.isHeld(Input.Keys.Left) && engine.input.keyboard.isHeld(Input.Keys.E)) {
             this.graphics.use('pickupLeft');
         }
 
-        if (engine.input.keyboard.isHeld(Input.Keys.D) || engine.input.keyboard.isHeld(Input.Keys.Right) && engine.input.keyboard.isHeld(Input.Keys.X)
-            || engine.input.keyboard.isHeld(Input.Keys.A) || engine.input.keyboard.isHeld(Input.Keys.Left) && engine.input.keyboard.isHeld(Input.Keys.E)) {
+        if (engine.input.keyboard.isHeld(Input.Keys.D) && engine.input.keyboard.isHeld(Input.Keys.X) || engine.input.keyboard.isHeld(Input.Keys.Right) && engine.input.keyboard.isHeld(Input.Keys.X)
+            || engine.input.keyboard.isHeld(Input.Keys.A) && engine.input.keyboard.isHeld(Input.Keys.E) || engine.input.keyboard.isHeld(Input.Keys.Left) && engine.input.keyboard.isHeld(Input.Keys.E)) {
             this.graphics.use('pickup');
         }
 
