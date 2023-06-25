@@ -191,8 +191,8 @@ export class Prebossfight extends Scene {
         });
 
         const suhailPerk = new Label({
-            text: 'Can double jump',
-            pos: new Vector(895, 720),
+            text: 'Shoots better',
+            pos: new Vector(910, 720),
             textAlign: TextAlign.Center,
             color: Color.Black,
             font: new Font({

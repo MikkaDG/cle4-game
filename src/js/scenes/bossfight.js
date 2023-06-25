@@ -25,14 +25,22 @@ import {Background3} from '../backgrounds/background3.js';
 import {Trashmonster} from '../actors/trashmonster.js';
 import {Trashp} from '../objects/trashp.js';
 import {Decortrash} from '../objects/decortrash.js';
+import {Suhail} from '../actors/suhail.js';
+import {BossSuhail} from '../actors/bossSuhail.js';
+import {Bosstrash} from '../objects/bosstrash.js';
+import {Heart} from '../objects/heart.js';
 
 
 export class Bossfight extends Scene {
     chargedVel = 0;
     chargeTimer = 0;
-    chargeTimeThreshold = 1000; // Duur (in milliseconden) voordat de chargedVel zijn maximum bereikt
+    chargeTimeThreshold; // Duur (in milliseconden) voordat de chargedVel zijn maximum bereikt
 
     player = null;
+
+    chargeLabel = null; // Label voor het weergeven van de laadtijd
+
+    lives;
 
     onInitialize(engine) {
         // const storedScores = JSON.parse(localStorage.getItem('scores'));
@@ -41,7 +49,7 @@ export class Bossfight extends Scene {
 
         this.on('enter', this.onEnter);
 
-        Physics.gravity = new Vector(0, 500)
+        Physics.gravity = new Vector(0, 500);
 
         const background = new Background3({});
         this.add(background);
@@ -61,6 +69,17 @@ export class Bossfight extends Scene {
         // });
         // this.add(this.scoreLabel);
 
+        this.lives = 3;
+
+        this.heart1 = new Heart(20,20);
+        this.add(this.heart1);
+
+        this.heart2 = new Heart(60,20);
+        this.add(this.heart2);
+
+        this.heart3 = new Heart(100,20);
+        this.add(this.heart3);
+
         // voeg barriere toe aan start van level zodat de speler niet naar links kan
         const barrier = new Actor({
             pos: new Vector(0, 400),
@@ -74,41 +93,42 @@ export class Bossfight extends Scene {
         const ground = new Ground(0, 870, 1.5);
         this.add(ground);
 
-        const decortrash = new Decortrash(20, 658);
-        this.add(decortrash);
 
         const decortrash2 = new Decortrash(60, 658);
         this.add(decortrash2);
 
-        const decortrash3 = new Decortrash(100, 658);
-        this.add(decortrash3);
-
-        const decortrash4 = new Decortrash(140, 658);
-        this.add(decortrash4);
-
         const decortrash5 = new Decortrash(180, 658);
         this.add(decortrash5);
 
-        const decortrash6 = new Decortrash(220, 658);
-        this.add(decortrash6);
+        const decortrash3 = new Decortrash(100, 658);
+        this.add(decortrash3);
 
-        const decortrash7 = new Decortrash(260, 658);
-        this.add(decortrash7);
-
-        const decortrash8 = new Decortrash(300, 658);
-        this.add(decortrash8);
-
-        const decortrash9 = new Decortrash(340, 658);
-        this.add(decortrash9);
-
-        const decortrash10 = new Decortrash(380, 658);
-        this.add(decortrash10);
+        const decortrash = new Decortrash(20, 658);
+        this.add(decortrash);
 
         const decortrash11 = new Decortrash(420, 658);
         this.add(decortrash11);
 
-        const trashmonster = new Trashmonster();
-        this.add(trashmonster);
+        const decortrash8 = new Decortrash(300, 658);
+        this.add(decortrash8);
+
+        const decortrash4 = new Decortrash(140, 658);
+        this.add(decortrash4);
+
+        const decortrash6 = new Decortrash(220, 658);
+        this.add(decortrash6);
+
+        const decortrash10 = new Decortrash(380, 658);
+        this.add(decortrash10);
+
+        const decortrash7 = new Decortrash(260, 658);
+        this.add(decortrash7);
+
+        const decortrash9 = new Decortrash(340, 658);
+        this.add(decortrash9);
+
+        this.trashmonster = new Trashmonster();
+        this.add(this.trashmonster);
 
         const barrier2 = new Actor({
             pos: new Vector(1200, 400),
@@ -163,16 +183,50 @@ export class Bossfight extends Scene {
         // // Stel de nieuwe positie in voor de scorelabel
         // this.scoreLabel.pos = new Vector(scoreLabelX, scoreLabelY);
 
+        if (this.player instanceof BossSuhail) {
+            this.chargeTimeThreshold = 750;
+            this.maxChargedVel = 800;
+        } else {
+            this.chargeTimeThreshold = 1500;
+            this.maxChargedVel = 500;
+        }
+
         if (engine.input.keyboard.isHeld(Input.Keys.X) || engine.input.keyboard.isHeld(Input.Keys.E)) {
+            this.chargeLabel = new Label({
+                text: '0%', // Begin met 0% laadtijd
+                pos: new Vector(this.player.pos.x - 20, this.player.pos.y - 100), // Positie boven de speler
+                color: Color.Black,
+                font: new Font({
+                    family: 'Minecraft',
+                    size: 30,
+                    unit: FontUnit.Px
+                }),
+                textAlign: TextAlign.Center
+            });
+            this.add(this.chargeLabel);
+            this.remove(this.chargeLabel);
+            // Werk de positie van de chargeLabel bij
+            this.chargeLabel.pos = new Vector(this.player.pos.x - 20, this.player.pos.y - 100);
+
+            // Werk de tekst van de chargeLabel bij op basis van de laadtijd
+            const chargePercentage = Math.floor((this.chargeTimer / this.chargeTimeThreshold) * 100);
+            this.chargeLabel.text = `${chargePercentage}%`;
+            if (chargePercentage >= 100) {
+                this.chargeLabel.text = '100%';
+            }
+
             this.chargeTimer += delta; // Verhoog de oplaadtijd
 
             // Bepaal de maximale waarde van chargedVel op basis van de laadtijd
-            const maxChargedVel = 800;
             const chargeTimeThresholdSeconds = this.chargeTimeThreshold / 1000; // Omzetten naar seconden
-            const chargedVelIncrement = maxChargedVel / chargeTimeThresholdSeconds;
+            const chargedVelIncrement = this.maxChargedVel / chargeTimeThresholdSeconds;
 
             // Bereken de nieuwe waarde van chargedVel op basis van de laadtijd
-            this.chargedVel = Math.min(this.chargeTimer / 1000 * chargedVelIncrement, maxChargedVel);
+            if (this.chargeTimer <= this.chargeTimeThreshold) {
+                this.chargedVel = Math.min(this.chargeTimer / 1000 * chargedVelIncrement, this.maxChargedVel);
+            } else {
+                this.chargedVel = this.maxChargedVel;
+            }
         }
 
         if (engine.input.keyboard.wasReleased(Input.Keys.X) || engine.input.keyboard.wasReleased(Input.Keys.E)) {
@@ -181,27 +235,44 @@ export class Bossfight extends Scene {
 
             this.chargeTimer = 0;
             this.chargedVel = 0;
+
+            this.remove(this.chargeLabel);
         }
 
         console.log(this.chargedVel);
+        console.log(this.chargeTimeThreshold);
 
-
-        this.player.on('collisionstart', (e) => {
-            if (e.other instanceof Trashcan) {
-                localStorage.setItem('scores', JSON.stringify(this.score));
-                this.clear();
-                this.game.goToScene('level1complete');
-            }
-        });
+        if (this.lives === 2){
+            this.remove(this.heart3);
+        }
+        if (this.lives === 1){
+            this.remove(this.heart2);
+        }
+        if (this.lives === 0){
+            this.remove(this.heart1);
+        }
     }
 
-    // throwTrash() {
+    // hitMonster() {
     //     this.score += 1; // Verhoog de score
     //     this.scoreLabel.text = `SCORE: ${this.score}`; // Werk de scorelabel bij
     // }
 
+    hitPlayer() {
+        this.lives -= 1;
+        if (this.lives <= 0) {
+            this.gameOver();
+        }
+    }
+
+    spawnBossTrash() {
+        let bossTrash = new Bosstrash(this.trashmonster.pos.x - 100, this.trashmonster.pos.y);
+        this.add(bossTrash);
+    }
+
     gameOver() {
-        localStorage.setItem('scores', JSON.stringify(this.score));
-        this.game.goToScene('gameover');
+        // localStorage.setItem('scores', JSON.stringify(this.score));
+        // this.clear();
+        this.game.goToScene('bossgameover');
     }
 }

@@ -24,9 +24,10 @@ import {PlayerKnop} from '../actors/playerKnop.js';
 import {BossCeren} from '../actors/bossCeren.js';
 
 export class Startscreen extends Scene {
+    game;
 
     onInitialize(engine) {
-        const game = engine;
+        this.game = engine;
 
         const background = new SelectScreenBackground(Resources.Background1);
         this.add(background);
@@ -61,7 +62,7 @@ export class Startscreen extends Scene {
         this.add(cerenButton);
 
         cerenButton.on('pointerup', () => {
-            this.clear()
+            this.clear();
             game.goToScene('gamescene1');
             game.currentScene.add(new Ceren(300, 600));
 
@@ -97,7 +98,7 @@ export class Startscreen extends Scene {
         this.add(mickButton);
 
         mickButton.on('pointerup', () => {
-            this.clear()
+            this.clear();
             game.goToScene('gamescene1');
             game.currentScene.add(new Mick(300, 600));
         });
@@ -132,9 +133,9 @@ export class Startscreen extends Scene {
         this.add(mikeButton);
 
         mikeButton.on('pointerup', () => {
-            this.clear()
+            this.clear();
             game.goToScene('gamescene1');
-            game.currentScene.add(new Mike(7300, 600));
+            game.currentScene.add(new Mike(300, 600));
         });
 
         const mikePerk = new Label({
@@ -167,7 +168,7 @@ export class Startscreen extends Scene {
         this.add(suhailButton);
 
         suhailButton.on('pointerup', () => {
-            this.clear()
+            this.clear();
             game.goToScene('gamescene1');
             game.currentScene.add(new Suhail(300, 600));
         });
@@ -201,6 +202,11 @@ export class Startscreen extends Scene {
         // });
         // this.add(instructions);
 
+    }
 
+    onPreUpdate(engine, delta) {
+        if (engine.input.keyboard.wasPressed(Input.Keys.Escape)) {
+            this.game.goToScene('prebossfight');
+        }
     }
 }

@@ -10,6 +10,7 @@ import {Level2complete} from './scenes/level2complete.js';
 import {Level3} from './scenes/level3.js';
 import {Bossfight} from './scenes/bossfight.js';
 import {Prebossfight} from './scenes/prebossfight.js';
+import {Bossgameover} from './scenes/bossgameover.js';
 
 export class Game extends Engine {
 
@@ -17,7 +18,7 @@ export class Game extends Engine {
         super({ width: 1200, height: 800 })
         this.start(ResourceLoader).then(() => this.startGame())
         ResourceLoader.suppressPlayButton = true
-        this.showDebug(true)
+        this.showDebug(false)
         Physics.gravity = new Vector(0, 500)
         // Physics.useRealisticPhysics();
     }
@@ -33,6 +34,7 @@ export class Game extends Engine {
         this.addScene('prebossfight', new Prebossfight());
         this.addScene('bossfight', new Bossfight());
         this.addScene('gameover', new GameOver());
+        this.addScene('bossgameover', new Bossgameover());
 
         this.goToScene('start')
     }

@@ -67,12 +67,12 @@ export class BossMike extends Player {
 
         if (engine.input.keyboard.isHeld(Input.Keys.A) || engine.input.keyboard.isHeld(Input.Keys.Left)) {
             this.graphics.use('runright');
-            this.vel.x = -200;
+            this.vel.x = -300;
         }
 
         if (engine.input.keyboard.isHeld(Input.Keys.D) || engine.input.keyboard.isHeld(Input.Keys.Right)) {
             this.graphics.use('runright');
-            this.vel.x = 200;
+            this.vel.x = 300;
             this.anchor.setTo(0.35, 0.5);
         }
         if (engine.input.keyboard.isHeld(Input.Keys.ShiftLeft) || engine.input.keyboard.isHeld(Input.Keys.ShiftRight)) {

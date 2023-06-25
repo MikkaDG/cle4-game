@@ -15,9 +15,6 @@ export class BossSuhail extends Player {
     game;
     trash;
     canJump = true;
-    jumpCount = 0;
-    maxJumpCount = 1;
-
 
     constructor(posX, posY) {
         super();
@@ -70,12 +67,12 @@ export class BossSuhail extends Player {
 
         if (engine.input.keyboard.isHeld(Input.Keys.A) || engine.input.keyboard.isHeld(Input.Keys.Left)) {
             this.graphics.use('runright');
-            this.vel.x = -200;
+            this.vel.x = -300;
         }
 
         if (engine.input.keyboard.isHeld(Input.Keys.D) || engine.input.keyboard.isHeld(Input.Keys.Right)) {
             this.graphics.use('runright');
-            this.vel.x = 200;
+            this.vel.x = 300;
             this.anchor.setTo(0.35, 0.5);
         }
         if (engine.input.keyboard.isHeld(Input.Keys.ShiftLeft) || engine.input.keyboard.isHeld(Input.Keys.ShiftRight)) {
@@ -111,15 +108,11 @@ export class BossSuhail extends Player {
         // }
 
         if (engine.input.keyboard.wasPressed(Input.Keys.Space) && this.canJump === true) {
-            if (this.canJump || this.jumpCount < this.maxJumpCount) {
                 this.jump();
-                this.jumpCount+=1;
                 //na 0.5 sec valt ceren weer
                 setTimeout(() => {
                     this.fall();
                 }, 500);
-            }
-
         }
 
         if (this.pos.y <= -300) {
@@ -129,10 +122,8 @@ export class BossSuhail extends Player {
 
     jump() {
         console.log('jump');
-        this.vel = this.vel.add(new Vector(0, -500));
-        if (this.jumpCount === 1) {
+        this.vel = this.vel.add(new Vector(0, -550));
             this.canJump = false;
-        }
     }
 
     fall() {
@@ -143,7 +134,6 @@ export class BossSuhail extends Player {
         if (event.other instanceof Ground || event.other instanceof Fground || event.other instanceof FgroundH
             || event.other instanceof FgroundS || event.other instanceof FgroundV || event.other instanceof Ground2) {
             this.canJump = true;
-            this.jumpCount = 0;
         }
     }
 }

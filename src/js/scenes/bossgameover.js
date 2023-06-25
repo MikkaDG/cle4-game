@@ -3,12 +3,11 @@ import { Actor, CollisionType, Color, Engine, Font, FontUnit, Label, Physics, Sc
 import {SelectScreenBackground} from '../backgrounds/select.screen.background.js';
 import {Resources} from '../resources.js';
 
-export class GameOver extends Scene {
+export class Bossgameover extends Scene {
 
     onInitialize(engine) {
-        const storedScores = JSON.parse(localStorage.getItem('scores'));
 
-        const gameOverbackground = new SelectScreenBackground(Resources.Background1);
+        const gameOverbackground = new SelectScreenBackground(Resources.Background3);
         this.add(gameOverbackground);
 
         const gameOverText = new Label({
@@ -25,8 +24,8 @@ export class GameOver extends Scene {
         this.add(gameOverText);
 
         const lastScoreLabel = new Label({
-            text: 'SCORE: ' + storedScores,
-            pos: new Vector(505, 320),
+            text: 'You couldn\'t defeat the trash monster',
+            pos: new Vector(200, 320),
             color: Color.Black,
             font: new Font({
                 family: 'Minecraft',
@@ -38,8 +37,8 @@ export class GameOver extends Scene {
         this.add(lastScoreLabel);
 
         const backButton = new Label({
-            text: 'Restart',
-            x: 480,
+            text: 'Home',
+            x: 520,
             y: 510,
             width: 220,
             height: 40,

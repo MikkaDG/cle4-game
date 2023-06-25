@@ -26,10 +26,10 @@ export class Trashmonster extends Actor {
         this.graphics.add("idle", idle)
         this.graphics.add("throwing", throwing)
 
-        this.graphics.use(throwing)
+        this.graphics.use(idle)
 
         this.startY = this.pos.y; // Startpositie Y
-        this.distance = 300; // Afstand om te verplaatsen
+        this.distance = 450; // Afstand om te verplaatsen
         this.velocity = 80; // Snelheid van 100 pixels per seconde
         this.direction = -1; // Richting: -1 voor naar links, 1 voor naar rechts
         this.timer = 0; // Timer voor het bijhouden van de tijd
@@ -39,7 +39,20 @@ export class Trashmonster extends Actor {
     }
 
     onInitialize(engine) {
+        this.game = engine;
         this.body.useGravity = false;
+    }
+
+    onPreUpdate(engine, delta) {
+        // monster gooit bosstrash en dit gebeurt random
+        if (Math.random() < 0.005) {
+            this.game.currentScene.spawnBossTrash()
+            this.graphics.use("throwing")
+            setTimeout(() => {
+                this.graphics.use("idle")
+            }, 500)
+        }
+
     }
 
     onPostUpdate(engine, delta) {
