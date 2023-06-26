@@ -54,7 +54,8 @@ const Resources = {
     Trashcan: new ImageSource(trashcanImage),
     Trashmonster: new ImageSource(trashmonsterImage),
     Heart: new ImageSource(heartImage),
-    Fireworks: new ImageSource(fireworks)
+    Fireworks: new ImageSource(fireworks),
+    Logo: new ImageSource(logoImage)
 }
 
 const Sounds = {
@@ -79,7 +80,7 @@ const ResourceLoader = new Loader([Resources.Suhail, Resources.Mike,
     Resources.MickKnop, Resources.CerenKnop, Resources.Banana, Resources.Can, Resources.Paper,
     Resources.Bag, Resources.Pigeon, Resources.Fground, Resources.Ground2, Resources.Trashcan,
     Resources.Trashmonster, Resources.Heart, Sounds.bossMusic, Sounds.victoryMusic, Sounds.preboss,
-    Sounds.Start, Sounds.Victory, Resources.Fireworks])
+    Sounds.Start, Sounds.Victory, Resources.Fireworks, Resources.Logo])
 ResourceLoader.logo = logoImage
 ResourceLoader.logoHeight = 176
 ResourceLoader.logoWidth = 520

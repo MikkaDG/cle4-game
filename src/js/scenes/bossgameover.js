@@ -53,7 +53,7 @@ export class Bossgameover extends Scene {
         this.add(homeButton);
 
         homeButton.on('pointerup', () => {
-            localStorage.setItem('level', JSON.stringify(''));
+            localStorage.setItem('level', JSON.stringify(0));
             location.reload();
             // engine.goToScene('start'); // Stuur de gebruiker naar de startscene
         });

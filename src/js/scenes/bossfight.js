@@ -132,7 +132,7 @@ export class Bossfight extends Scene {
         this.trashmonster = new Trashmonster();
         this.add(this.trashmonster);
 
-        this.trashmonsterhealth = 12;
+        this.trashmonsterhealth = 15;
 
         const monsterLabel = new Label({
             text: 'Trashmonster',
@@ -301,7 +301,7 @@ export class Bossfight extends Scene {
             this.remove(this.trashmonster);
             this.game.goToScene('victory');
         }
-        this.healthBar.decreaseHealthBar(50); // Pas de schade aan op basis van de werkelijke schadehoeveelheid
+        this.healthBar.decreaseHealthBar(40); // Pas de schade aan op basis van de werkelijke schadehoeveelheid
     }
 
 
