@@ -1,5 +1,5 @@
 import {ImageSource, Sound, Resource, Loader, Vector} from 'excalibur';
-import playerImage from '../images/player1.png'
+// import playerImage from '../images/player1.png'
 import suhailImage from '../images/suhail/suhailspritesheet.png'
 import mikeImage from '../images/mike/mikespritesheet.png'
 import mickImage from '../images/mick/mickspritesheet.png'
@@ -23,9 +23,12 @@ import ground2Image from '../images/ground/ground.png'
 import trashcanImage from '../images/trashcan.png'
 import trashmonsterImage from '../images/enemies/trashmonstersprite.png'
 import heartImage from '../images/heart.png'
+import bossMusic from '../sounds/bossmusic.mp3'
+import victorymusic from '../sounds/mikemusic.mp3'
+import preboss from '../sounds/preboss.mp3'
 
 const Resources = {
-    Player: new ImageSource(playerImage),
+    // Player: new ImageSource(playerImage),
     Suhail: new ImageSource(suhailImage),
     Mike: new ImageSource(mikeImage),
     Mick: new ImageSource(mickImage),
@@ -50,13 +53,26 @@ const Resources = {
     Heart: new ImageSource(heartImage),
 }
 
+const Sounds = {
+    bossMusic: new Sound(bossMusic),
+    victoryMusic: new Sound(victorymusic),
+    preboss: new Sound(preboss)
+}
+
 
 // met deze for loop hoef je niet alles handmatig in de loader te zetten
-const resourceArray = []
-for (const key in Resources) {
-    resourceArray.push(Resources[key])
-}
-const ResourceLoader = new Loader(resourceArray)
+// const resourceArray = []
+// for (const key in Resources) {
+//     resourceArray.push(Resources[key])
+// }
+
+// const ResourceLoader = new Loader(resourceArray)
+const ResourceLoader = new Loader([Resources.Suhail, Resources.Mike,
+    Resources.Mick, Resources.Ceren, Resources.Background1, Resources.Background2,
+    Resources.Background3, Resources.Ground, Resources.SuhailKnop, Resources.MikeKnop,
+    Resources.MickKnop, Resources.CerenKnop, Resources.Banana, Resources.Can, Resources.Paper,
+    Resources.Bag, Resources.Pigeon, Resources.Fground, Resources.Ground2, Resources.Trashcan,
+    Resources.Trashmonster, Resources.Heart, Sounds.bossMusic, Sounds.victoryMusic, Sounds.preboss])
 ResourceLoader.logo = logoImage
 ResourceLoader.logoHeight = 176
 ResourceLoader.logoWidth = 520
@@ -66,4 +82,4 @@ ResourceLoader.playButtonText = 'Start Collecting Trash'
 ResourceLoader.loadingBarPosition = new Vector(350, 420)
 ResourceLoader.loadingBarColor = 'Black'
 
-export { Resources, ResourceLoader }
+export { Resources, ResourceLoader, Sounds }

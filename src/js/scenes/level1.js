@@ -25,6 +25,7 @@ import {Ceren} from '../actors/ceren.js';
 import {Mick} from '../actors/mick.js';
 import {Mike} from '../actors/mike.js';
 import {Suhail} from '../actors/suhail.js';
+import {Sounds} from '../resources.js';
 
 export class Level1 extends Scene {
 
@@ -230,7 +231,20 @@ export class Level1 extends Scene {
         if (this.player === null) {
             // Koppel de player variabele aan de Player class die in het startscherm is toegevoegd aan de scene
             this.player = this.actors.find(a => a instanceof Player);
+            // if (this.player instanceof Ceren) {
+            //     this.game.currentScene.add(new Ceren(0, 0));
+            // }
+            // if (this.player instanceof Mick) {
+            //     this.game.currentScene.add(new Mick(0, 0));
+            // }
+
+            // if (this.player instanceof Suhail) {
+            //     this.game.currentScene.add(new Suhail(0, 0));
+            // }
         }
+        // if (this.player instanceof Mike) {
+        //     this.playermusic = Sounds.mikeMusic;
+        // }
 
         // Camera volgt de speler horizontaal, maar vergrendelt de Y-positie
         const targetCameraX = this.player.pos.x + 300;
@@ -272,18 +286,6 @@ export class Level1 extends Scene {
                 localStorage.setItem('scores', JSON.stringify(this.score));
                 this.clear();
                 this.game.goToScene('level1complete');
-                // if (this.player instanceof Ceren) {
-                //     this.game.currentScene.add(new Ceren(0, 0));
-                // }
-                // if (this.player instanceof Mick) {
-                //     this.game.currentScene.add(new Mick(0, 0));
-                // }
-                // if (this.player instanceof Mike) {
-                //     this.game.currentScene.add(new Mike(0, 0));
-                // }
-                // if (this.player instanceof Suhail) {
-                //     this.game.currentScene.add(new Suhail(0, 0));
-                // }
             }
         });
 
@@ -300,5 +302,15 @@ export class Level1 extends Scene {
     gameOver() {
         localStorage.setItem('scores', JSON.stringify(this.score));
         this.game.goToScene('gameover');
+    }
+
+
+    onActivate() {
+        Sounds.bossMusic.loop = true;
+        Sounds.bossMusic.play(0.5);
+    }
+
+    onDeactivate() {
+        Sounds.bossMusic.pause();
     }
 }

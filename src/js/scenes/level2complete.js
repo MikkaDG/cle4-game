@@ -6,7 +6,7 @@ import {Ceren} from '../actors/ceren.js';
 import {Mike} from '../actors/mike.js';
 import {Mick} from '../actors/mick.js';
 import {PlayerKnop} from '../actors/playerKnop.js';
-import {Resources} from '../resources.js';
+import {Resources, Sounds} from '../resources.js';
 import {SelectScreenBackground} from '../backgrounds/select.screen.background.js';
 
 export class Level2complete extends Scene {
@@ -197,5 +197,14 @@ export class Level2complete extends Scene {
             })
         });
         this.add(suhailPerk);
+    }
+
+    onActivate() {
+        Sounds.victoryMusic.loop = true;
+        Sounds.victoryMusic.play(0.5);
+    }
+
+    onDeactivate() {
+        Sounds.victoryMusic.stop();
     }
 }

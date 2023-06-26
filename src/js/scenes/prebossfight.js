@@ -6,7 +6,7 @@ import {Ceren} from '../actors/ceren.js';
 import {Mike} from '../actors/mike.js';
 import {Mick} from '../actors/mick.js';
 import {PlayerKnop} from '../actors/playerKnop.js';
-import {Resources} from '../resources.js';
+import {Resources, Sounds} from '../resources.js';
 import {BossSuhail} from '../actors/bossSuhail.js';
 import {BossMike} from '../actors/bossMike';
 import {BossMick} from '../actors/bossMick.js';
@@ -202,5 +202,13 @@ export class Prebossfight extends Scene {
             })
         });
         this.add(suhailPerk);
+    }
+    onActivate() {
+        Sounds.preboss.loop = true;
+        Sounds.preboss.play(0.5);
+    }
+
+    onDeactivate() {
+        Sounds.preboss.pause();
     }
 }

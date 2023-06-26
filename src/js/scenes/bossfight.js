@@ -29,6 +29,7 @@ import {Suhail} from '../actors/suhail.js';
 import {BossSuhail} from '../actors/bossSuhail.js';
 import {Bosstrash} from '../objects/bosstrash.js';
 import {Heart} from '../objects/heart.js';
+import {Sounds} from '../resources.js';
 
 
 export class Bossfight extends Scene {
@@ -274,5 +275,14 @@ export class Bossfight extends Scene {
         // localStorage.setItem('scores', JSON.stringify(this.score));
         // this.clear();
         this.game.goToScene('bossgameover');
+    }
+
+    onActivate() {
+        Sounds.bossMusic.loop = true;
+        Sounds.bossMusic.play(0.5);
+    }
+
+    onDeactivate() {
+        Sounds.bossMusic.pause();
     }
 }
