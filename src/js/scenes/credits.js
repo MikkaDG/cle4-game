@@ -149,18 +149,18 @@ export class Credits extends Scene {
         this.creditTitle = creditTitle;
         this.creditText = creditText;
 
-        this.creditTitle.vel.y = -50;
-        this.creditText.vel.y = -50;
-        this.logo.vel.y = -50;
-        this.byLabel.vel.y = -50;
-        this.cerenLabel.vel.y = -50;
-        this.cerenButton.vel.y = -50;
-        this.mickLabel.vel.y = -50;
-        this.mickButton.vel.y = -50;
-        this.mikeLabel.vel.y = -50;
-        this.mikeButton.vel.y = -50;
-        this.suhailLabel.vel.y = -50;
-        this.suhailButton.vel.y = -50;
+        this.creditTitle.vel.y = -80;
+        this.creditText.vel.y = -80;
+        this.logo.vel.y = -80;
+        this.byLabel.vel.y = -80;
+        this.cerenLabel.vel.y = -80;
+        this.cerenButton.vel.y = -80;
+        this.mickLabel.vel.y = -80;
+        this.mickButton.vel.y = -80;
+        this.mikeLabel.vel.y = -80;
+        this.mikeButton.vel.y = -80;
+        this.suhailLabel.vel.y = -80;
+        this.suhailButton.vel.y = -80;
     }
 
     onPreUpdate(_engine, _delta) {
