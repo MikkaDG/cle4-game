@@ -18,7 +18,7 @@ export class Mick extends Player {
         super()
         const runSheet = SpriteSheet.fromImageSource({
             image: Resources.Mick,
-            grid: { rows: 1, columns: 8, spriteWidth: 300, spriteHeight: npm300 }
+            grid: { rows: 1, columns: 8, spriteWidth: 300, spriteHeight: 300 }
         })
         const idle = runSheet.sprites[0] // geen animatie
         const idleLeft = runSheet.sprites[5] // geen animatie
