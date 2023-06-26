@@ -107,7 +107,7 @@ export class Level2 extends Scene {
         const fground4 = new Fground(2600, 370, 1.5);
         this.add(fground4);
 
-        const pigeon = new Pigeon(2600, 320,);
+        const pigeon = new Pigeon(2672, 320,);
         this.add(pigeon);
 
         const fground5 = new Fground(3000, 520, 1.5);
@@ -119,7 +119,7 @@ export class Level2 extends Scene {
         const fground6 = new Fground(3400, 370, 1.5);
         this.add(fground6);
 
-        const pigeon2 = new Pigeon(3400, 320,);
+        const pigeon2 = new Pigeon(3472, 320,);
         this.add(pigeon2);
 
         const fground7 = new Fground(3800, 520, 1.5);
@@ -131,7 +131,7 @@ export class Level2 extends Scene {
         const fground8 = new Fground(4200, 670, 1.5);
         this.add(fground8);
 
-        const pigeon3 = new Pigeon(4200, 620,);
+        const pigeon3 = new Pigeon(4272, 620,);
         this.add(pigeon3);
 
         const fground9 = new Fground(4600, 520, 1.5);
@@ -155,7 +155,7 @@ export class Level2 extends Scene {
         const fground10 = new Fground(5950, 525, 1.5);
         this.add(fground10);
 
-        const pigeon4 = new Pigeon(5950, 478,);
+        const pigeon4 = new Pigeon(6022, 478,);
         this.add(pigeon4);
 
         const trash7 = new Trash(6100, 708,);
@@ -179,7 +179,7 @@ export class Level2 extends Scene {
         const fground12 = new Fground(6550, 525, 1.5);
         this.add(fground12);
 
-        const pigeon5 = new Pigeon(6550, 478,);
+        const pigeon5 = new Pigeon(6622, 478,);
         this.add(pigeon5);
 
         const trash11 = new Trash(6700, 708,);
@@ -194,9 +194,6 @@ export class Level2 extends Scene {
         const fground13 = new Fground(7800, 525, 1.5);
         this.add(fground13);
 
-        const ground7 = new Ground(8100, 920, 1.5);
-        this.add(ground7);
-
         const fground14 = new Fground(8100, 375, 1.5);
         this.add(fground14);
 
@@ -205,18 +202,6 @@ export class Level2 extends Scene {
 
         const fground15 = new Fground(8400, 225, 1.5);
         this.add(fground15);
-
-        const ground8 = new Ground(8800, 920, 1.5);
-        this.add(ground8);
-
-        const ground9 = new Ground(9500, 920, 1.5);
-        this.add(ground9);
-
-        const ground10 = new Ground(10200, 920, 1.5);
-        this.add(ground10);
-
-        const ground11 = new Ground(11000, 920, 1.5);
-        this.add(ground11);
 
         const ground2n1 = new Ground2(11500, 770, 2.0);
         this.add(ground2n1);

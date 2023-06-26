@@ -1,8 +1,7 @@
 import '../../css/style.css'
 import {Animation, Input, range, SpriteSheet, Vector} from 'excalibur';
-import { Resources, ResourceLoader } from '../resources.js'
+import { Resources} from '../resources.js'
 import {Player} from './player.js';
-import {Startscreen} from '../scenes/startscreen.js';
 import {Trash} from '../objects/trash.js';
 import {Ground} from '../objects/ground.js';
 import {Fground} from '../objects/fground.js';
@@ -83,7 +82,7 @@ export class Mick extends Player {
             this.anchor.setTo(0.35, 0.5);
         }
         if (engine.input.keyboard.isHeld(Input.Keys.ShiftLeft) || engine.input.keyboard.isHeld(Input.Keys.ShiftRight)) {
-            this.vel.x *= 9.5;
+            this.vel.x *= 1.5;
         }
         if (engine.input.keyboard.wasReleased(Input.Keys.A) || engine.input.keyboard.wasReleased(Input.Keys.Left)) {
             this.vel.x = 0;
