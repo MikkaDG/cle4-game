@@ -1,5 +1,5 @@
 import {ImageSource, Sound, Resource, Loader, Vector} from 'excalibur';
-import playerImage from '../images/player1.png'
+// import playerImage from '../images/player1.png'
 import suhailImage from '../images/suhail/suhailspritesheet.png'
 import mikeImage from '../images/mike/mikespritesheet.png'
 import mickImage from '../images/mick/mickspritesheet.png'
@@ -10,7 +10,7 @@ import background3Image from '../images/background/background3.png'
 import logoImage from '../images/logo.png'
 import groundImage from '../images/ground/ground2.png'
 import fgroundImage from '../images/ground/fground.png'
-import suhailKnop from '../images/suhail/suhail.png'
+import suhailKnop from '../images/suhail/suhailvacuum.png'
 import mikeKnop from '../images/mike/mike.png'
 import mickKnop from '../images/mick/mick.png'
 import cerenKnop from '../images/ceren/ceren.png'
@@ -21,10 +21,14 @@ import bag from '../images/trash/bag.png'
 import pigeonImage from '../images/enemies/pigeon.png'
 import ground2Image from '../images/ground/ground.png'
 import trashcanImage from '../images/trashcan.png'
-import trashmonsterImage from '../images/enemies/boss.png'
+import trashmonsterImage from '../images/enemies/trashmonstersprite.png'
+import heartImage from '../images/heart.png'
+import bossMusic from '../sounds/bossmusic.mp3'
+import victorymusic from '../sounds/mikemusic.mp3'
+import preboss from '../sounds/preboss.mp3'
 
 const Resources = {
-    Player: new ImageSource(playerImage),
+    // Player: new ImageSource(playerImage),
     Suhail: new ImageSource(suhailImage),
     Mike: new ImageSource(mikeImage),
     Mick: new ImageSource(mickImage),
@@ -46,15 +50,29 @@ const Resources = {
     Ground2: new ImageSource(ground2Image),
     Trashcan: new ImageSource(trashcanImage),
     Trashmonster: new ImageSource(trashmonsterImage),
+    Heart: new ImageSource(heartImage),
+}
+
+const Sounds = {
+    bossMusic: new Sound(bossMusic),
+    victoryMusic: new Sound(victorymusic),
+    preboss: new Sound(preboss)
 }
 
 
 // met deze for loop hoef je niet alles handmatig in de loader te zetten
-const resourceArray = []
-for (const key in Resources) {
-    resourceArray.push(Resources[key])
-}
-const ResourceLoader = new Loader(resourceArray)
+// const resourceArray = []
+// for (const key in Resources) {
+//     resourceArray.push(Resources[key])
+// }
+
+// const ResourceLoader = new Loader(resourceArray)
+const ResourceLoader = new Loader([Resources.Suhail, Resources.Mike,
+    Resources.Mick, Resources.Ceren, Resources.Background1, Resources.Background2,
+    Resources.Background3, Resources.Ground, Resources.SuhailKnop, Resources.MikeKnop,
+    Resources.MickKnop, Resources.CerenKnop, Resources.Banana, Resources.Can, Resources.Paper,
+    Resources.Bag, Resources.Pigeon, Resources.Fground, Resources.Ground2, Resources.Trashcan,
+    Resources.Trashmonster, Resources.Heart, Sounds.bossMusic, Sounds.victoryMusic, Sounds.preboss])
 ResourceLoader.logo = logoImage
 ResourceLoader.logoHeight = 176
 ResourceLoader.logoWidth = 520
@@ -64,4 +82,4 @@ ResourceLoader.playButtonText = 'Start Collecting Trash'
 ResourceLoader.loadingBarPosition = new Vector(350, 420)
 ResourceLoader.loadingBarColor = 'Black'
 
-export { Resources, ResourceLoader }
+export { Resources, ResourceLoader, Sounds }
