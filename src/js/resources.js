@@ -26,6 +26,9 @@ import heartImage from '../images/heart.png'
 import bossMusic from '../sounds/bossmusic.mp3'
 import victorymusic from '../sounds/mikemusic.mp3'
 import preboss from '../sounds/preboss.mp3'
+import start from '../sounds/start.mp3'
+import victory from '../sounds/victory.mp3'
+import fireworks from '../images/fireworks.png'
 
 const Resources = {
     // Player: new ImageSource(playerImage),
@@ -51,12 +54,15 @@ const Resources = {
     Trashcan: new ImageSource(trashcanImage),
     Trashmonster: new ImageSource(trashmonsterImage),
     Heart: new ImageSource(heartImage),
+    Fireworks: new ImageSource(fireworks)
 }
 
 const Sounds = {
     bossMusic: new Sound(bossMusic),
     victoryMusic: new Sound(victorymusic),
-    preboss: new Sound(preboss)
+    preboss: new Sound(preboss),
+    Start: new Sound(start),
+    Victory: new Sound(victory)
 }
 
 
@@ -72,7 +78,8 @@ const ResourceLoader = new Loader([Resources.Suhail, Resources.Mike,
     Resources.Background3, Resources.Ground, Resources.SuhailKnop, Resources.MikeKnop,
     Resources.MickKnop, Resources.CerenKnop, Resources.Banana, Resources.Can, Resources.Paper,
     Resources.Bag, Resources.Pigeon, Resources.Fground, Resources.Ground2, Resources.Trashcan,
-    Resources.Trashmonster, Resources.Heart, Sounds.bossMusic, Sounds.victoryMusic, Sounds.preboss])
+    Resources.Trashmonster, Resources.Heart, Sounds.bossMusic, Sounds.victoryMusic, Sounds.preboss,
+    Sounds.Start, Sounds.Victory, Resources.Fireworks])
 ResourceLoader.logo = logoImage
 ResourceLoader.logoHeight = 176
 ResourceLoader.logoWidth = 520

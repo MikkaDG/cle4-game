@@ -13,7 +13,7 @@ import {
     FontUnit,
     CollisionType
 } from 'excalibur';
-import {Resources} from '../resources.js';
+import {Resources, Sounds} from '../resources.js';
 import {Player} from '../actors/player.js';
 import {Suhail} from '../actors/suhail.js';
 import {Ceren} from '../actors/ceren.js';
@@ -204,9 +204,20 @@ export class Startscreen extends Scene {
 
     }
 
+
+
     onPreUpdate(engine, delta) {
         if (engine.input.keyboard.wasPressed(Input.Keys.Escape)) {
-            this.game.goToScene('prebossfight');
+            this.game.goToScene('3');
         }
+    }
+
+    onActivate() {
+        Sounds.Start.loop = true;
+        Sounds.Start.play(0.5).then(r => console.log(r));
+    }
+
+    onDeactivate() {
+        Sounds.Start.stop();
     }
 }

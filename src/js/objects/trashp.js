@@ -1,7 +1,9 @@
 import {Actor, CollisionType, Physics, Vector} from 'excalibur';
 import {Resources} from '../resources.js';
+import {Trashmonster} from '../actors/trashmonster.js';
 
 export class Trashp extends Actor {
+    game;
     constructor(posX, posY, vel) {
         super({
             width: Resources.Banana.width,
@@ -19,6 +21,7 @@ export class Trashp extends Actor {
     }
 
     onInitialize(engine) {
+        this.game = engine;
         const randomIndex = Math.floor(Math.random() * this.trashSprites.length);
         const randomSprite = this.trashSprites[randomIndex];
         this.graphics.use(randomSprite);
@@ -27,6 +30,7 @@ export class Trashp extends Actor {
         // const randomVel = Math.floor(100 + Math.random() * 500);
         // console.log(randomVel);
         // this.vel = new Vector(randomVel, -randomVel);
+        this.on('collisionstart', (event) => this.onCollisionStart(event));
     }
 
     onPostUpdate(engine, delta) {
@@ -38,5 +42,12 @@ export class Trashp extends Actor {
 
     trashfall() {
         this.vel = this.vel.add(new Vector(0, 10));
+    }
+
+    onCollisionStart(event) {
+        if (event.other instanceof Trashmonster) {
+            this.kill();
+            this.game.currentScene.decreaseMonsterHealth();
+        }
     }
 }

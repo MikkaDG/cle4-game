@@ -45,7 +45,7 @@ export class Trashmonster extends Actor {
 
     onPreUpdate(engine, delta) {
         // monster gooit bosstrash en dit gebeurt random
-        if (Math.random() < 0.005) {
+        if (this.timer >= 2000 && Math.random() < 0.005) {
             this.game.currentScene.spawnBossTrash()
             this.graphics.use("throwing")
             setTimeout(() => {
