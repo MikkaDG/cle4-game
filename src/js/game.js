@@ -12,14 +12,14 @@ import {Bossfight} from './bossfight.js';
 
 export class Game extends Engine {
 
-    constructor() {
-        super({ width: 1200, height: 800 })
-        this.start(ResourceLoader).then(() => this.startGame())
-        ResourceLoader.suppressPlayButton = true
-        this.showDebug(true)
-        Physics.gravity = new Vector(0, 500)
-        // Physics.useRealisticPhysics();
-    }
+        constructor() {
+            super({ width: 1200, height: 800 })
+            this.start(ResourceLoader).then(() => this.startGame())
+            ResourceLoader.suppressPlayButton = true
+            this.showDebug(true)
+            Physics.gravity = new Vector(0, 500)
+            // Physics.useRealisticPhysics();
+        }
 
     startGame() {
         localStorage.setItem('scores', '[]');

@@ -97,8 +97,8 @@ export class Startscreen extends Scene {
 
         mickButton.on('pointerup', () => {
             this.clear()
-            game.goToScene('gamescene1');
-            game.currentScene.add(new Mick(300, 600));
+            game.goToScene('gamescene3');
+            game.currentScene.add(new Mick(8000, 0));
         });
 
         const mickPerk = new Label({

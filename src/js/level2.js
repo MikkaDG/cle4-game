@@ -1,18 +1,5 @@
 import '../css/style.css';
-import {
-    Actor,
-    Color,
-    Engine,
-    Label,
-    Physics,
-    Scene,
-    TextAlign,
-    Vector,
-    Input,
-    Font,
-    FontUnit,
-    CollisionType
-} from 'excalibur';
+import {Actor, Color, Engine, Label, Physics, Scene, TextAlign, Vector, Input, Font, FontUnit, CollisionType, RotationType} from 'excalibur';
 import {Background2} from './background2.js';
 import {Player} from './player.js';
 import {Ground} from './ground.js';

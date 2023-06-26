@@ -18,7 +18,7 @@ export class Mick extends Player {
         super()
         const runSheet = SpriteSheet.fromImageSource({
             image: Resources.Mick,
-            grid: { rows: 1, columns: 8, spriteWidth: 300, spriteHeight: 300 }
+            grid: { rows: 1, columns: 8, spriteWidth: 300, spriteHeight: npm300 }
         })
         const idle = runSheet.sprites[0] // geen animatie
         const idleLeft = runSheet.sprites[5] // geen animatie
@@ -52,25 +52,25 @@ export class Mick extends Player {
         this.kill();
     }
 
-    onPreUpdate(engine, delta) {
+    onPreUpdate(engine  , delta) {
         this.on('collisionstart', (event) => this.onCollisionGround(event));
 
         if (this.pos.y >= 1000) {
             this.die();
         }
 
-        // if (engine.input.keyboard.isHeld(Input.Keys.W) || engine.input.keyboard.isHeld(Input.Keys.Up)) {
-        //     this.vel.y = -500;
-        // }
-        // if (engine.input.keyboard.wasReleased(Input.Keys.W) || engine.input.keyboard.wasReleased(Input.Keys.Up)) {
-        //     this.vel.y = 0;
-        // }
-        // if (engine.input.keyboard.isHeld(Input.Keys.S) || engine.input.keyboard.isHeld(Input.Keys.Down)) {
-        //     this.vel.y = 500;
-        // }
-        // if (engine.input.keyboard.wasReleased(Input.Keys.S) || engine.input.keyboard.wasReleased(Input.Keys.Down)) {
-        //     this.vel.y = 0;
-        // }
+        if (engine.input.keyboard.isHeld(Input.Keys.W) || engine.input.keyboard.isHeld(Input.Keys.Up)) {
+            this.vel.y = -500;
+        }
+        if (engine.input.keyboard.wasReleased(Input.Keys.W) || engine.input.keyboard.wasReleased(Input.Keys.Up)) {
+            this.vel.y = 0;
+        }
+        if (engine.input.keyboard.isHeld(Input.Keys.S) || engine.input.keyboard.isHeld(Input.Keys.Down)) {
+            this.vel.y = 500;
+        }
+        if (engine.input.keyboard.wasReleased(Input.Keys.S) || engine.input.keyboard.wasReleased(Input.Keys.Down)) {
+            this.vel.y = 0;
+        }
 
         if (engine.input.keyboard.isHeld(Input.Keys.A) || engine.input.keyboard.isHeld(Input.Keys.Left)) {
             this.graphics.use('runleft');
