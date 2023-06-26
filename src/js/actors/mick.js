@@ -1,8 +1,7 @@
 import '../../css/style.css'
 import {Animation, Input, range, SpriteSheet, Vector} from 'excalibur';
-import { Resources, ResourceLoader } from '../resources.js'
+import { Resources} from '../resources.js'
 import {Player} from './player.js';
-import {Startscreen} from '../scenes/startscreen.js';
 import {Trash} from '../objects/trash.js';
 import {Ground} from '../objects/ground.js';
 import {Fground} from '../objects/fground.js';
@@ -52,25 +51,25 @@ export class Mick extends Player {
         this.kill();
     }
 
-    onPreUpdate(engine, delta) {
+    onPreUpdate(engine  , delta) {
         this.on('collisionstart', (event) => this.onCollisionGround(event));
 
         if (this.pos.y >= 1000) {
             this.die();
         }
 
-        // if (engine.input.keyboard.isHeld(Input.Keys.W) || engine.input.keyboard.isHeld(Input.Keys.Up)) {
-        //     this.vel.y = -500;
-        // }
-        // if (engine.input.keyboard.wasReleased(Input.Keys.W) || engine.input.keyboard.wasReleased(Input.Keys.Up)) {
-        //     this.vel.y = 0;
-        // }
-        // if (engine.input.keyboard.isHeld(Input.Keys.S) || engine.input.keyboard.isHeld(Input.Keys.Down)) {
-        //     this.vel.y = 500;
-        // }
-        // if (engine.input.keyboard.wasReleased(Input.Keys.S) || engine.input.keyboard.wasReleased(Input.Keys.Down)) {
-        //     this.vel.y = 0;
-        // }
+        if (engine.input.keyboard.isHeld(Input.Keys.W) || engine.input.keyboard.isHeld(Input.Keys.Up)) {
+            this.vel.y = -500;
+        }
+        if (engine.input.keyboard.wasReleased(Input.Keys.W) || engine.input.keyboard.wasReleased(Input.Keys.Up)) {
+            this.vel.y = 0;
+        }
+        if (engine.input.keyboard.isHeld(Input.Keys.S) || engine.input.keyboard.isHeld(Input.Keys.Down)) {
+            this.vel.y = 500;
+        }
+        if (engine.input.keyboard.wasReleased(Input.Keys.S) || engine.input.keyboard.wasReleased(Input.Keys.Down)) {
+            this.vel.y = 0;
+        }
 
         if (engine.input.keyboard.isHeld(Input.Keys.A) || engine.input.keyboard.isHeld(Input.Keys.Left)) {
             this.graphics.use('runleft');
@@ -83,7 +82,7 @@ export class Mick extends Player {
             this.anchor.setTo(0.35, 0.5);
         }
         if (engine.input.keyboard.isHeld(Input.Keys.ShiftLeft) || engine.input.keyboard.isHeld(Input.Keys.ShiftRight)) {
-            this.vel.x *= 9.5;
+            this.vel.x *= 1.5;
         }
         if (engine.input.keyboard.wasReleased(Input.Keys.A) || engine.input.keyboard.wasReleased(Input.Keys.Left)) {
             this.vel.x = 0;
