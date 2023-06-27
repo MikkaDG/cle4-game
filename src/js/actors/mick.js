@@ -134,6 +134,10 @@ export class Mick extends Player {
         //     }, 100);
         // }
 
+        if (engine.input.keyboard.wasReleased(Input.Keys.Y)) {
+            console.log(this.pos.x, this.pos.y)
+        }
+
         if (this.pos.y <= -300) {
             this.fall();
         }
@@ -146,7 +150,7 @@ export class Mick extends Player {
     }
 
     fall() {
-        this.vel = this.vel.add(new Vector(0, 120));
+        this.vel = this.vel.add(new Vector(0, 100));
     }
 
     onCollisionStart(event) {

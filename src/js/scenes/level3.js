@@ -25,6 +25,8 @@ import {Background3} from '../backgrounds/background3.js';
 import {FgroundH} from '../objects/fgroundhorizontal.js';
 import {FgroundV} from '../objects/fgroundvertical.js';
 import {FgroundS} from '../objects/fgroundsquare.js';
+import {FBirdV} from "../actors/fBirdV.js";
+import {FBirdH} from "../actors/fBirdH.js";
 
 export class Level3 extends Scene {
 
@@ -69,23 +71,38 @@ export class Level3 extends Scene {
         const trash0 = new Trash(100, 658);
         this.add(trash0);
 
+        const fbirdh0 = new FBirdH(800, 250, 500);
+        this.add(fbirdh0);
+
         const fgroundh1 = new FgroundH(1200, 480, 200);
         this.add(fgroundh1);
 
         const fgroundv1 = new FgroundV(1600, 680, 400);
         this.add(fgroundv1);
 
+        const pigeon = new Pigeon(1672, 630, 144);
+        this.add(pigeon);
+
         const fgroundh2 = new FgroundH(2200, 480, 200);
         this.add(fgroundh2);
 
+        const fbirdv = new FBirdV(2500, 600, 400);
+        this.add(fbirdv);
+
         const fgroundv2 = new FgroundV(2800, 680, 400);
         this.add(fgroundv2);
+
+        const pigeon2 = new Pigeon(2872, 630, 144);
+        this.add(pigeon2);
 
         const fground1 = new Fground(3400, 700, 1.5);
         this.add(fground1);
 
         const trash = new Trash(3400, 642);
         this.add(trash);
+
+        const fbirdh = new FBirdH(3600, 450, 400);
+        this.add(fbirdh);
 
         const fground2 = new Fground(3400, 200, 1.5);
         this.add(fground2);
@@ -96,20 +113,47 @@ export class Level3 extends Scene {
         const fgrounds1 = new FgroundS(4400, 200, 500);
         this.add(fgrounds1);
 
+        const fbirdv1 = new FBirdV(4700, 650, 500);
+        this.add(fbirdv1);
+
         const fgroundv3 = new FgroundV(5000, 700, 500);
         this.add(fgroundv3);
+
+        const pigeon3 = new Pigeon(5072, 650, 144);
+        this.add(pigeon3);
+
+        const fbirdv2 = new FBirdV(5300, 650, 500);
+        this.add(fbirdv2);
 
         const fgroundv4 = new FgroundV(5600, 700, 500);
         this.add(fgroundv4);
 
+        const pigeon4 = new Pigeon(5672, 650, 144);
+        this.add(pigeon4);
+
+        const fbirdv3 = new FBirdV(5900, 650, 500);
+        this.add(fbirdv3);
+
         const fgroundh3 = new FgroundH(7000, 680, 1200);
         this.add(fgroundh3);
+
+        const fbirdh2 = new FBirdH(7000, 450, 900);
+        this.add(fbirdh2);
 
         const ground2 = new Ground(7500, 900, 1.5);
         this.add(ground2);
 
         const trash3 = new Trash(7710, 688);
         this.add(trash3);
+
+        const pigeon5 = new Pigeon(7400, 150, 300);
+        this.add(pigeon5);
+
+        const pigeon6 = new Pigeon(7950, 150, 290);
+        this.add(pigeon6);
+
+        const pigeon7 = new Pigeon(7715, 700, 660);
+        this.add(pigeon7);
 
         const trash4 = new Trash(7150, 149);
         this.add(trash4);

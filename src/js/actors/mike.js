@@ -119,6 +119,10 @@ export class Mike extends Player {
         //     }, 100);
         // }
 
+        if (engine.input.keyboard.wasReleased(Input.Keys.Y)) {
+            console.log(this.pos.x, this.pos.y)
+        }
+
         if (engine.input.keyboard.wasPressed(Input.Keys.Space) && this.canJump === true) {
             this.jump();
             //na 0.5 sec valt ceren weer

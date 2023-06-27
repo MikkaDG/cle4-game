@@ -6,7 +6,7 @@ import {Player} from './player.js';
 export class Pigeon extends Actor {
     actor;
 
-    constructor(posX, posY) {
+    constructor(posX, posY, walkDistance) {
         super({
             width: 40,
             height: 40,
@@ -27,13 +27,24 @@ export class Pigeon extends Actor {
         this.graphics.add('walkright', walkRight);
 
         this.graphics.use(walkLeft);
-        this.vel.x = 0;
+        this.walkDistance = walkDistance;
     }
 
     onInitialize(engine) {
         this.actions.clearActions();
+        const originalY = this.pos.y;
         this.actions.repeatForever((context)=>{
-          context.moveTo(this.pos.x - 144, this.pos.y - 0, 100).delay(0).moveTo(this.pos.x + 0, this.pos.y + 0, 100).delay(0)
+          context.moveTo(this.pos.x - this.walkDistance, this.pos.y, 100).delay(0).moveTo(this.pos.x, this.pos.y, 100).delay(0)
         })
+    }
+
+    onPreUpdate(_engine, _delta) {
+        // this.on('collisionstart', (event) => this.onCollisionGround(event));
+
+        if (this.vel.x > 0) {
+            this.graphics.use('walkright');
+        } else {
+            this.graphics.use('walkleft');
+        }
     }
 }

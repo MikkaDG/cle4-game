@@ -107,7 +107,7 @@ export class Level2 extends Scene {
         const fground4 = new Fground(2600, 370, 1.5);
         this.add(fground4);
 
-        const pigeon = new Pigeon(2672, 320,);
+        const pigeon = new Pigeon(2672, 320, 144);
         this.add(pigeon);
 
         const fground5 = new Fground(3000, 520, 1.5);
@@ -119,7 +119,7 @@ export class Level2 extends Scene {
         const fground6 = new Fground(3400, 370, 1.5);
         this.add(fground6);
 
-        const pigeon2 = new Pigeon(3472, 320,);
+        const pigeon2 = new Pigeon(3472, 320, 144);
         this.add(pigeon2);
 
         const fground7 = new Fground(3800, 520, 1.5);
@@ -131,7 +131,7 @@ export class Level2 extends Scene {
         const fground8 = new Fground(4200, 670, 1.5);
         this.add(fground8);
 
-        const pigeon3 = new Pigeon(4272, 620,);
+        const pigeon3 = new Pigeon(4272, 620, 144);
         this.add(pigeon3);
 
         const fground9 = new Fground(4600, 520, 1.5);
@@ -155,7 +155,7 @@ export class Level2 extends Scene {
         const fground10 = new Fground(5950, 525, 1.5);
         this.add(fground10);
 
-        const pigeon4 = new Pigeon(6022, 478,);
+        const pigeon4 = new Pigeon(6022, 478, 144);
         this.add(pigeon4);
 
         const trash7 = new Trash(6100, 708,);
@@ -179,7 +179,7 @@ export class Level2 extends Scene {
         const fground12 = new Fground(6550, 525, 1.5);
         this.add(fground12);
 
-        const pigeon5 = new Pigeon(6622, 478,);
+        const pigeon5 = new Pigeon(6622, 478, 144);
         this.add(pigeon5);
 
         const trash11 = new Trash(6700, 708,);

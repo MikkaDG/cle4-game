@@ -117,7 +117,7 @@ export class Level1 extends Scene {
         const ground4 = new Ground(3400, 870, 1.5);
         this.add(ground4);
 
-        const pigeon1 = new Pigeon(3672, 658);
+        const pigeon1 = new Pigeon(3842, 658, 900);
         this.add(pigeon1);
 
         const sprintLabel = new Label({
@@ -169,11 +169,14 @@ export class Level1 extends Scene {
         const ground8 = new Ground(6930, 464, 1.5);
         this.add(ground8);
 
+        const pigeon2 = new Pigeon(5820, 658, 1380);
+        this.add(pigeon2);
+
         const trash6 = new Trash(6580, 252);
         this.add(trash6);
 
-        const pigeon2 = new Pigeon(7002, 258);
-        this.add(pigeon2);
+        const pigeon3 = new Pigeon(7380, 258, 900);
+        this.add(pigeon3);
 
         const trash7 = new Trash(7280, 252);
         this.add(trash7);
@@ -194,8 +197,8 @@ export class Level1 extends Scene {
         const trash9 = new Trash(7420, 658);
         this.add(trash9);
 
-        const pigeon3 = new Pigeon(7902, 658);
-        this.add(pigeon3);
+        const pigeon4 = new Pigeon(8280, 658, 850);
+        this.add(pigeon4);
 
         const trash10 = new Trash(8240, 658);
         this.add(trash10);
@@ -203,8 +206,8 @@ export class Level1 extends Scene {
         const fground6 = new Fground(8200, 200, 1.5);
         this.add(fground6);
 
-        const pigeon4 = new Pigeon(8272, 148);
-        this.add(pigeon4);
+        const pigeon5 = new Pigeon(8272, 148, 144);
+        this.add(pigeon5);
 
         const ground2n1 = new Ground2(8800, 770, 2.0);
         this.add(ground2n1);
