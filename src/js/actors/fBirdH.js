@@ -13,7 +13,7 @@ export class FBirdH extends Actor {
         });
 
         const fBirdSheet = SpriteSheet.fromImageSource({
-            image: Resources.FBirdH,
+            image: Resources.FlyingbirdL,
             grid: {rows: 1, columns: 16, spriteWidth: 40, spriteHeight: 40}
         });
         this.scale = new Vector(1.5, 1.5);
