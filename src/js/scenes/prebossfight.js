@@ -209,6 +209,6 @@ export class Prebossfight extends Scene {
     }
 
     onDeactivate() {
-        Sounds.preboss.pause();
+        Sounds.preboss.stop();
     }
 }

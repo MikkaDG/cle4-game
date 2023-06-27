@@ -288,12 +288,12 @@ export class Level1 extends Scene {
             if (e.other instanceof Trashcan) {
                 localStorage.setItem('scores', JSON.stringify(this.score));
                 this.clear();
-                this.game.goToScene('level1complete');
+                this.game.goToScene('1');
             }
         });
 
         if (engine.input.keyboard.wasPressed(Input.Keys.Esc)) {
-            this.game.goToScene('level1complete');
+            this.game.goToScene('1');
         }
     }
 
@@ -309,11 +309,11 @@ export class Level1 extends Scene {
 
 
     onActivate() {
-        Sounds.bossMusic.loop = true;
-        Sounds.bossMusic.play(0.5);
+        // Sounds.bossMusic.loop = true;
+        // Sounds.bossMusic.play(0.5);
     }
 
     onDeactivate() {
-        Sounds.bossMusic.pause();
+        // Sounds.bossMusic.pause();
     }
 }

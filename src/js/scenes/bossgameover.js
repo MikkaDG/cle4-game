@@ -36,11 +36,33 @@ export class Bossgameover extends Scene {
         });
         this.add(lastScoreLabel);
 
-        const backButton = new Label({
+        const homeButton = new Label({
             text: 'Home',
-            x: 520,
+            x: 340,
             y: 510,
-            width: 220,
+            width: 140,
+            height: 40,
+            anchor: new Vector(0, 0.9),
+            font: new Font({
+                family: 'Minecraft',
+                size: 50,
+                unit: FontUnit.Px
+            }),
+            textAlign: TextAlign.Center
+        });
+        this.add(homeButton);
+
+        homeButton.on('pointerup', () => {
+            localStorage.setItem('level', JSON.stringify(0));
+            location.reload();
+            // engine.goToScene('start'); // Stuur de gebruiker naar de startscene
+        });
+
+        const backButton = new Label({
+            text: 'Try again',
+            x: 640,
+            y: 510,
+            width: 240,
             height: 40,
             anchor: new Vector(0, 0.9),
             font: new Font({

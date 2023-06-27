@@ -34,6 +34,10 @@ export class Trashmonster extends Actor {
         this.direction = -1; // Richting: -1 voor naar links, 1 voor naar rechts
         this.timer = 0; // Timer voor het bijhouden van de tijd
 
+        this.throwTimer = 0;
+        this.throwIntervalMin = 1000; // Minimum interval in milliseconden (3 seconden)
+        this.throwIntervalMax = 3000; // Maximum interval in milliseconden (5 seconden)
+
         // this.body.friction = 1;
         // this.body.limitDegreeOfFreedom.push(DegreeOfFreedom.Rotation);
     }
@@ -43,17 +47,17 @@ export class Trashmonster extends Actor {
         this.body.useGravity = false;
     }
 
-    onPreUpdate(engine, delta) {
-        // monster gooit bosstrash en dit gebeurt random
-        if (Math.random() < 0.005) {
-            this.game.currentScene.spawnBossTrash()
-            this.graphics.use("throwing")
-            setTimeout(() => {
-                this.graphics.use("idle")
-            }, 500)
-        }
-
-    }
+    // onPreUpdate(engine, delta) {
+    //     // monster gooit bosstrash en dit gebeurt random
+    //     if (this.timer >= 2000 && Math.random() < 0.005) {
+    //         this.game.currentScene.spawnBossTrash()
+    //         this.graphics.use("throwing")
+    //         setTimeout(() => {
+    //             this.graphics.use("idle")
+    //         }, 500)
+    //     }
+    //
+    // }
 
     onPostUpdate(engine, delta) {
         this.timer += delta; // Verhoog de timer met de verstreken tijd
@@ -75,4 +79,28 @@ export class Trashmonster extends Actor {
             this.pos.y = this.startY; // Zorg ervoor dat de actor niet verder naar rechts gaat dan de startpositie
         }
     }
+
+    onPreUpdate(_engine, _delta) {
+        // ...
+
+        // Verhoog de throwTimer met de verstreken tijd
+        this.throwTimer += _delta;
+
+        // Controleer of het monster afval moet gooien op basis van de timer en het interval
+        if (this.throwTimer >= this.getRandomThrowInterval()) {
+            this.throwTrash();
+            this.throwTimer = 0; // Reset de timer na het gooien van afval
+        }
+    }
+        getRandomThrowInterval() {
+            return Math.random() * (this.throwIntervalMax - this.throwIntervalMin) + this.throwIntervalMin;
+        }
+
+        throwTrash() {
+            this.game.currentScene.spawnBossTrash();
+            this.graphics.use("throwing");
+            setTimeout(() => {
+                this.graphics.use("idle");
+            }, 500);
+        }
 }

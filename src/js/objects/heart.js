@@ -8,7 +8,7 @@ export class Heart extends Actor {
             height: Resources.Heart.height,
         });
         this.pos = new Vector(posX, posY);
-        // this.scale = new Vector(0.6, 0.6);
+        this.scale = new Vector(1.5, 1.5);
         this.graphics.use(Resources.Heart.toSprite());
     }
 }

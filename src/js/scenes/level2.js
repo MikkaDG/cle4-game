@@ -268,7 +268,7 @@ export class Level2 extends Scene {
             if (e.other instanceof Trashcan) {
                 localStorage.setItem('scores', JSON.stringify(this.score));
                 this.clear();
-                this.game.goToScene('level2complete');
+                this.game.goToScene('2');
                 // if (this.player instanceof Ceren) {
                 //     this.game.currentScene.add(new Ceren(0, 0));
                 // }
@@ -285,7 +285,7 @@ export class Level2 extends Scene {
         });
 
         if (engine.input.keyboard.wasPressed(Input.Keys.Esc)) {
-            this.game.goToScene('level2complete');
+            this.game.goToScene('2');
         }
     }
 
@@ -296,6 +296,7 @@ export class Level2 extends Scene {
 
     gameOver() {
         localStorage.setItem('scores', JSON.stringify(this.score));
+        localStorage.setItem('level', JSON.stringify(1));
         this.game.goToScene('gameover');
     }
 }

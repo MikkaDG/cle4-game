@@ -331,7 +331,7 @@ export class Level3 extends Scene {
             if (e.other instanceof Player) {
                 localStorage.setItem('scores', JSON.stringify(this.score));
                 this.clear();
-                this.engine.goToScene('prebossfight');
+                this.engine.goToScene('3')
             }
         });
     }
@@ -379,7 +379,7 @@ export class Level3 extends Scene {
         this.scoreLabel.pos = new Vector(scoreLabelX, scoreLabelY);
 
         if (engine.input.keyboard.wasPressed(Input.Keys.Esc)) {
-            this.game.goToScene('prebossfight');
+            this.game.goToScene('3');
         }
     }
 
@@ -390,6 +390,7 @@ export class Level3 extends Scene {
 
     gameOver() {
         localStorage.setItem('scores', JSON.stringify(this.score));
+        localStorage.setItem('level', JSON.stringify(2));
         this.game.goToScene('gameover');
     }
 }

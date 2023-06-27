@@ -11,7 +11,7 @@ import {
     Input,
     Font,
     FontUnit,
-    CollisionType, RotationType
+    CollisionType, RotationType, Rectangle
 } from 'excalibur';
 import {Background1} from '../backgrounds/background1.js';
 import {Player} from '../actors/player.js';
@@ -30,6 +30,7 @@ import {BossSuhail} from '../actors/bossSuhail.js';
 import {Bosstrash} from '../objects/bosstrash.js';
 import {Heart} from '../objects/heart.js';
 import {Sounds} from '../resources.js';
+import {HealthBar} from '../objects/healthbar.js';
 
 
 export class Bossfight extends Scene {
@@ -72,13 +73,13 @@ export class Bossfight extends Scene {
 
         this.lives = 3;
 
-        this.heart1 = new Heart(20,20);
+        this.heart1 = new Heart(50, 50);
         this.add(this.heart1);
 
-        this.heart2 = new Heart(60,20);
+        this.heart2 = new Heart(110, 50);
         this.add(this.heart2);
 
-        this.heart3 = new Heart(100,20);
+        this.heart3 = new Heart(170, 50);
         this.add(this.heart3);
 
         // voeg barriere toe aan start van level zodat de speler niet naar links kan
@@ -130,6 +131,23 @@ export class Bossfight extends Scene {
 
         this.trashmonster = new Trashmonster();
         this.add(this.trashmonster);
+
+        this.trashmonsterhealth = 15;
+
+        const monsterLabel = new Label({
+            text: 'Trashmonster',
+            pos: new Vector(420, 80),
+            color: Color.Black,
+            font: new Font({
+                family: 'Minecraft',
+                size: 50,
+                unit: FontUnit.Px
+            })
+        });
+        this.add(monsterLabel);
+
+        this.healthBar = new HealthBar();
+        this.add(this.healthBar);
 
         const barrier2 = new Actor({
             pos: new Vector(1200, 400),
@@ -243,14 +261,19 @@ export class Bossfight extends Scene {
         console.log(this.chargedVel);
         console.log(this.chargeTimeThreshold);
 
-        if (this.lives === 2){
+        if (this.lives === 2) {
             this.remove(this.heart3);
         }
-        if (this.lives === 1){
+        if (this.lives === 1) {
             this.remove(this.heart2);
         }
-        if (this.lives === 0){
+        if (this.lives === 0) {
             this.remove(this.heart1);
+        }
+
+
+        if (engine.input.keyboard.wasPressed(Input.Keys.Escape)) {
+            this.game.goToScene('victory');
         }
     }
 
@@ -271,9 +294,21 @@ export class Bossfight extends Scene {
         this.add(bossTrash);
     }
 
+
+    decreaseMonsterHealth() {
+        this.trashmonsterhealth -= 1;
+        if (this.trashmonsterhealth <= 0) {
+            this.remove(this.trashmonster);
+            this.game.goToScene('victory');
+        }
+        this.healthBar.decreaseHealthBar(40); // Pas de schade aan op basis van de werkelijke schadehoeveelheid
+    }
+
+
     gameOver() {
         // localStorage.setItem('scores', JSON.stringify(this.score));
         // this.clear();
+        localStorage.setItem('level', JSON.stringify(3));
         this.game.goToScene('bossgameover');
     }
 
@@ -283,6 +318,6 @@ export class Bossfight extends Scene {
     }
 
     onDeactivate() {
-        Sounds.bossMusic.pause();
+        Sounds.bossMusic.stop();
     }
 }
