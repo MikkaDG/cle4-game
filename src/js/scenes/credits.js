@@ -161,6 +161,19 @@ export class Credits extends Scene {
         this.mikeButton.vel.y = -80;
         this.suhailLabel.vel.y = -80;
         this.suhailButton.vel.y = -80;
+        // this.creditTitle.vel.y = -200;
+        // this.creditText.vel.y = -200;
+        // this.logo.vel.y = -200;
+        // this.byLabel.vel.y = -200;
+        // this.cerenLabel.vel.y = -200;
+        // this.cerenButton.vel.y = -200;
+        // this.mickLabel.vel.y = -200;
+        // this.mickButton.vel.y = -200;
+        // this.mikeLabel.vel.y = -200;
+        // this.mikeButton.vel.y = -200;
+        // this.suhailLabel.vel.y = -200;
+        // this.suhailButton.vel.y = -200;
+
     }
 
     onPreUpdate(_engine, _delta) {
@@ -193,6 +206,33 @@ export class Credits extends Scene {
         }
         if (this.suhailButton.pos.y <= 600) {
             this.suhailButton.vel.y = 0; // Stop de beweging van de "Suhail" knop
+        }
+
+        if (this.cerenButton.pos.y <= 600 && this.mickButton.pos.y <= 600 &&
+            this.mikeButton.pos.y <= 600 && this.suhailButton.pos.y <= 600) {
+
+            // Stel de rotatiehoek in voor elk van de acteurs
+            const rotationAmount = 10;
+            const rotationSpeed = 0.006;
+
+            // Houd de huidige draairichting bij (1 voor links, -1 voor rechts)
+            if (!this.rotationDirection) {
+                this.rotationDirection = 1;
+            }
+
+            // Draai de acteurs volgens de huidige draairichting
+            this.cerenButton.rotation += rotationAmount * rotationSpeed * this.rotationDirection;
+            this.mickButton.rotation -= rotationAmount * rotationSpeed * this.rotationDirection;
+            this.mikeButton.rotation += rotationAmount * rotationSpeed * this.rotationDirection;
+            this.suhailButton.rotation -= rotationAmount * rotationSpeed * this.rotationDirection;
+
+            // Controleer of de acteurs een bepaalde rotatiehoek hebben bereikt
+            const maxRotation = 3; // Aantal graden dat ze maximaal draaien
+
+            if (Math.abs(this.cerenButton.rotation) >= maxRotation) {
+                // Keer de draairichting om
+                this.rotationDirection *= -1;
+            }
         }
     }
 
