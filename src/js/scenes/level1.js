@@ -6,6 +6,7 @@ import {
     Label,
     Physics,
     Scene,
+    Sound,
     TextAlign,
     Vector,
     Input,
@@ -309,11 +310,11 @@ export class Level1 extends Scene {
 
 
     onActivate() {
-        // Sounds.bossMusic.loop = true;
-        // Sounds.bossMusic.play(0.5);
+        Sounds.Level1.loop = true;
+        Sounds.Level1.play(0.5);
     }
 
     onDeactivate() {
-        // Sounds.bossMusic.pause();
+        Sounds.Level1.stop();
     }
 }

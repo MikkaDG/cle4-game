@@ -6,6 +6,7 @@ import {
     Label,
     Physics,
     Scene,
+    Sound,
     TextAlign,
     Vector,
     Input,
@@ -21,6 +22,7 @@ import {Trash} from '../objects/trash.js';
 import {Pigeon} from '../actors/pigeon.js';
 import {Ground2} from "../objects/ground2.js";
 import {Trashcan} from "../objects/trashcan.js";
+import {Sounds} from '../resources.js';
 
 export class Level2 extends Scene {
 
@@ -298,5 +300,14 @@ export class Level2 extends Scene {
         localStorage.setItem('scores', JSON.stringify(this.score));
         localStorage.setItem('level', JSON.stringify(1));
         this.game.goToScene('gameover');
+    }
+
+    onActivate() {
+        Sounds.Level2.loop = true;
+        Sounds.Level2.play(0.5);
+    }
+
+    onDeactivate() {
+        Sounds.Level2.stop();
     }
 }

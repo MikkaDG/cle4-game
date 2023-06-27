@@ -6,6 +6,7 @@ import {
     Label,
     Physics,
     Scene,
+    Sound,
     TextAlign,
     Vector,
     Input,
@@ -25,6 +26,7 @@ import {Background3} from '../backgrounds/background3.js';
 import {FgroundH} from '../objects/fgroundhorizontal.js';
 import {FgroundV} from '../objects/fgroundvertical.js';
 import {FgroundS} from '../objects/fgroundsquare.js';
+import {Sounds} from '../resources.js';
 import {FBirdV} from "../actors/fBirdV.js";
 import {FBirdH} from "../actors/fBirdH.js";
 
@@ -392,5 +394,14 @@ export class Level3 extends Scene {
         localStorage.setItem('scores', JSON.stringify(this.score));
         localStorage.setItem('level', JSON.stringify(2));
         this.game.goToScene('gameover');
+    }
+
+    onActivate() {
+        Sounds.Level3.loop = true;
+        Sounds.Level3.play(0.5);
+    }
+
+    onDeactivate() {
+        Sounds.Level3.stop();
     }
 }
