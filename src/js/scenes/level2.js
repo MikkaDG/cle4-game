@@ -293,7 +293,7 @@ export class Level2 extends Scene {
 
     pickupTrash() {
         this.score += 1; // Verhoog de score
-        this.scoreLabel.text = `SCORE: ${this.score}`; // Werk de scorelabel bij
+        this.scoreLabel.text = `SCORE: ${this.score}/16`; // Werk de scorelabel bij
     }
 
     gameOver() {
