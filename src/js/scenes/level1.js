@@ -46,7 +46,7 @@ export class Level1 extends Scene {
 
         // Voeg score label toe
         this.scoreLabel = new Label({
-            text: `SCORE: ${this.score}`,
+            text: `SCORE: ${this.score}/10`,
             pos: new Vector(650, 190),
             color: Color.Black,
             font: new Font({
