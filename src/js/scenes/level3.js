@@ -76,16 +76,19 @@ export class Level3 extends Scene {
         const fbirdh0 = new FBirdH(800, 250, 500);
         this.add(fbirdh0);
 
-        const fgroundh1 = new FgroundH(1200, 480, 200);
+        const fgroundh1 = new FgroundH(1400, 480, 400);
         this.add(fgroundh1);
 
         const fgroundv1 = new FgroundV(1600, 680, 400);
         this.add(fgroundv1);
 
-        const pigeon = new Pigeon(1672, 630, 144);
-        this.add(pigeon);
+        // const pigeon = new Pigeon(1672, 230, 144);
+        // this.add(pigeon);
 
-        const fgroundh2 = new FgroundH(2200, 480, 200);
+        const fbirdv0 = new FBirdV(1850, 600, 400)
+        this.add(fbirdv0);
+
+        const fgroundh2 = new FgroundH(2380, 480, 400);
         this.add(fgroundh2);
 
         const fbirdv = new FBirdV(2500, 600, 400);
@@ -94,8 +97,8 @@ export class Level3 extends Scene {
         const fgroundv2 = new FgroundV(2800, 680, 400);
         this.add(fgroundv2);
 
-        const pigeon2 = new Pigeon(2872, 630, 144);
-        this.add(pigeon2);
+        // const pigeon2 = new Pigeon(2872, 230, 144);
+        // this.add(pigeon2);
 
         const fground1 = new Fground(3400, 700, 1.5);
         this.add(fground1);
@@ -121,8 +124,8 @@ export class Level3 extends Scene {
         const fgroundv3 = new FgroundV(5000, 700, 500);
         this.add(fgroundv3);
 
-        const pigeon3 = new Pigeon(5072, 650, 144);
-        this.add(pigeon3);
+        // const pigeon3 = new Pigeon(5072, 150, 144);
+        // this.add(pigeon3);
 
         const fbirdv2 = new FBirdV(5300, 650, 500);
         this.add(fbirdv2);
@@ -130,8 +133,8 @@ export class Level3 extends Scene {
         const fgroundv4 = new FgroundV(5600, 700, 500);
         this.add(fgroundv4);
 
-        const pigeon4 = new Pigeon(5672, 650, 144);
-        this.add(pigeon4);
+        // const pigeon4 = new Pigeon(5672, 150, 144);
+        // this.add(pigeon4);
 
         const fbirdv3 = new FBirdV(5900, 650, 500);
         this.add(fbirdv3);

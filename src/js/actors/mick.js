@@ -9,6 +9,9 @@ import {FgroundH} from '../objects/fgroundhorizontal.js';
 import {FgroundS} from '../objects/fgroundsquare.js';
 import {FgroundV} from '../objects/fgroundvertical.js';
 import {Ground2} from '../objects/ground2.js';
+import {Pigeon} from "./pigeon.js";
+import {FBirdV} from "./fBirdV.js";
+import {FBirdH} from "./fBirdH.js";
 
 export class Mick extends Player {
     game;
@@ -158,6 +161,29 @@ export class Mick extends Player {
             this.collision = true;
             this.trash = event.other;
         }
+        if (event.other instanceof Pigeon || event.other instanceof FBirdH || event.other instanceof FBirdV) {
+            console.log(this.pos.x, this.pos.y)
+            if (this.pos.y <= Pigeon - 91 || this.pos.y <= FBirdH - 91 || this.pos.y <= FBirdV - 91) {
+                this.game.currentScene.gameOver();
+            } else {
+                this.vel.add(new Vector(0, -300));
+                event.other.kill();
+            }
+        }
+        // if (event.other instanceof Pigeon || event.other instanceof FBirdH || event.other instanceof FBirdV) {
+        //     // Controleer of Mick boven het midden van de vogel is
+        //     const mickBottom = this.pos.y + this.getHeight() / 2;
+        //     const birdTop = event.other.pos.y - event.other.getHeight() / 2;
+        //     if (mickBottom <= birdTop) {
+        //         // Mick krijgt een boost omhoog
+        //         this.vel = this.vel.add(new Vector(0, -300));
+        //         // Vogel sterft
+        //         event.other.kill();
+        //     } else {
+        //         // Mick sterft
+        //         this.die();
+        //     }
+        // }
     }
 
     onCollisionGround(event) {
@@ -170,6 +196,9 @@ export class Mick extends Player {
     onCollisionEnd(event) {
         if (event.other instanceof Trash) {
             this.collision = false;
+        }
+        if (event.other instanceof Pigeon || event.other instanceof FBirdH || event.other instanceof FBirdV) {
+            this.vel = this.vel.add(new Vector(0, -650));
         }
     }
 

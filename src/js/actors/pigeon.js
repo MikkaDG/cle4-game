@@ -1,5 +1,5 @@
-    import '../../css/style.css';
-import {Actor, Animation, CollisionType, Input, range, Ray, SpriteSheet, Vector} from 'excalibur';
+import '../../css/style.css';
+import {Actor, Animation, CollisionType, Input, Physics, range, Ray, SpriteSheet, Vector} from 'excalibur';
 import {Resources, ResourceLoader} from '../resources.js';
 import {Player} from './player.js';
 
@@ -32,7 +32,6 @@ export class Pigeon extends Actor {
 
     onInitialize(engine) {
         this.actions.clearActions();
-        const originalY = this.pos.y;
         this.actions.repeatForever((context)=>{
           context.moveTo(this.pos.x - this.walkDistance, this.pos.y, 100).delay(0).moveTo(this.pos.x, this.pos.y, 100).delay(0)
         })
@@ -40,11 +39,20 @@ export class Pigeon extends Actor {
 
     onPreUpdate(_engine, _delta) {
         // this.on('collisionstart', (event) => this.onCollisionGround(event));
-
         if (this.vel.x > 0) {
             this.graphics.use('walkright');
         } else {
             this.graphics.use('walkleft');
         }
+    }
+
+    onCollisionStart(event) {
+        if (event.other instanceof Player) {
+            this.kill();
+        }
+    }
+
+    die() {
+        this.kill();
     }
 }
