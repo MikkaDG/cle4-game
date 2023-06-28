@@ -161,21 +161,10 @@ export class Mick extends Player {
             this.collision = true;
             this.trash = event.other;
         }
-        // if (event.other instanceof Pigeon || event.other instanceof FBirdH || event.other instanceof FBirdV) {
-        //     console.log(this.pos.x, this.pos.y)
-        //     if (this.pos.y <= Pigeon - 91 || this.pos.y <= FBirdH - 91 || this.pos.y <= FBirdV - 91) {
-        //         this.game.currentScene.gameOver();
-        //     } else {
-        //         this.vel.add(new Vector(0, -300));
-        //         event.other.kill();
-        //     }
-        // }
 
         if (event.other instanceof Pigeon || event.other instanceof FBirdH || event.other instanceof FBirdV) {
             // Controleer of Mick boven het midden van de vogel is
-            const mickBottom = this.pos.y + this.height / 2;
-            const birdTop = event.other.pos.y - event.other.height / 2;
-            if (mickBottom <= birdTop) {
+            if (this.pos.y <= event.other.pos.y) {
                 // Mick krijgt een boost omhoog
                 this.vel = this.vel.add(new Vector(0, -300));
                 // Vogel sterft
@@ -187,26 +176,23 @@ export class Mick extends Player {
         }
     }
 
-onCollisionGround(event) {
-    if (event.other instanceof Ground || event.other instanceof Fground || event.other instanceof FgroundH
-        || event.other instanceof FgroundS || event.other instanceof FgroundV || event.other instanceof Ground2) {
-        this.canJump = true;
+    onCollisionGround(event) {
+        if (event.other instanceof Ground || event.other instanceof Fground || event.other instanceof FgroundH
+            || event.other instanceof FgroundS || event.other instanceof FgroundV || event.other instanceof Ground2) {
+            this.canJump = true;
+        }
     }
-}
 
-onCollisionEnd(event) {
-    if (event.other instanceof Trash) {
-        this.collision = false;
+    onCollisionEnd(event) {
+        if (event.other instanceof Trash) {
+            this.collision = false;
+        }
     }
-    if (event.other instanceof Pigeon || event.other instanceof FBirdH || event.other instanceof FBirdV) {
-        this.vel = this.vel.add(new Vector(0, -650));
-    }
-}
 
-grabTrash() {
-    if (this.collision === true) {
-        this.game.currentScene.pickupTrash();
-        this.trash.kill();
+    grabTrash() {
+        if (this.collision === true) {
+            this.game.currentScene.pickupTrash();
+            this.trash.kill();
+        }
     }
-}
 }

@@ -155,16 +155,14 @@ export class Mike extends Player {
             this.trash = event.other;
         }
         if (event.other instanceof Pigeon || event.other instanceof FBirdH || event.other instanceof FBirdV) {
-            // Controleer of Mick boven het midden van de vogel is
-            const mickBottom = this.pos.y + this.height / 2;
-            const birdTop = event.other.pos.y - event.other.height / 2;
-            if (mickBottom <= birdTop) {
-                // Mick krijgt een boost omhoog
+            // Controleer of Mike boven het midden van de vogel is
+            if (this.pos.y <= event.other.pos.y) {
+                // Mike krijgt een boost omhoog
                 this.vel = this.vel.add(new Vector(0, -300));
                 // Vogel sterft
                 event.other.kill();
             } else {
-                // Mick sterft
+                // Mike sterft
                 this.die();
             }
         }
