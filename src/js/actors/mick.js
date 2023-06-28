@@ -1,6 +1,6 @@
-import '../../css/style.css'
+import '../../css/style.css';
 import {Animation, Input, range, SpriteSheet, Vector} from 'excalibur';
-import { Resources} from '../resources.js'
+import {Resources} from '../resources.js';
 import {Player} from './player.js';
 import {Trash} from '../objects/trash.js';
 import {Ground} from '../objects/ground.js';
@@ -9,37 +9,37 @@ import {FgroundH} from '../objects/fgroundhorizontal.js';
 import {FgroundS} from '../objects/fgroundsquare.js';
 import {FgroundV} from '../objects/fgroundvertical.js';
 import {Ground2} from '../objects/ground2.js';
-import {Pigeon} from "./pigeon.js";
-import {FBirdV} from "./fBirdV.js";
-import {FBirdH} from "./fBirdH.js";
+import {Pigeon} from './pigeon.js';
+import {FBirdV} from './fBirdV.js';
+import {FBirdH} from './fBirdH.js';
 
 export class Mick extends Player {
     game;
 
     constructor(posX, posY) {
-        super()
+        super();
         const runSheet = SpriteSheet.fromImageSource({
             image: Resources.Mick,
-            grid: { rows: 1, columns: 8, spriteWidth: 300, spriteHeight: 300 }
-        })
-        const idle = runSheet.sprites[0] // geen animatie
-        const idleLeft = runSheet.sprites[5] // geen animatie
-        const runLeft = Animation.fromSpriteSheet(runSheet, range(3, 5), 80)
-        const runRight = Animation.fromSpriteSheet(runSheet, range(0, 2), 80)
-        const pickup = runSheet.sprites[6] // pick up trash
-        const pickupLeft = runSheet.sprites[7] // pick up trash
+            grid: {rows: 1, columns: 8, spriteWidth: 300, spriteHeight: 300}
+        });
+        const idle = runSheet.sprites[0]; // geen animatie
+        const idleLeft = runSheet.sprites[5]; // geen animatie
+        const runLeft = Animation.fromSpriteSheet(runSheet, range(3, 5), 80);
+        const runRight = Animation.fromSpriteSheet(runSheet, range(0, 2), 80);
+        const pickup = runSheet.sprites[6]; // pick up trash
+        const pickupLeft = runSheet.sprites[7]; // pick up trash
 
-        this.pos = new Vector(posX, posY)
+        this.pos = new Vector(posX, posY);
 
-        this.graphics.add("idle", idle)
-        this.graphics.add("idleLeft", idleLeft)
-        this.graphics.add("runleft", runLeft)
-        this.graphics.add("runright", runRight)
-        this.graphics.add("pickup", pickup)
-        this.graphics.add("pickupLeft", pickupLeft)
+        this.graphics.add('idle', idle);
+        this.graphics.add('idleLeft', idleLeft);
+        this.graphics.add('runleft', runLeft);
+        this.graphics.add('runright', runRight);
+        this.graphics.add('pickup', pickup);
+        this.graphics.add('pickupLeft', pickupLeft);
 
 
-        this.graphics.use(idle)
+        this.graphics.use(idle);
     }
 
     onInitialize(engine) {
@@ -54,7 +54,7 @@ export class Mick extends Player {
         this.kill();
     }
 
-    onPreUpdate(engine  , delta) {
+    onPreUpdate(engine, delta) {
         this.on('collisionstart', (event) => this.onCollisionGround(event));
 
         if (this.pos.y >= 1000) {
@@ -138,7 +138,7 @@ export class Mick extends Player {
         // }
 
         if (engine.input.keyboard.wasReleased(Input.Keys.Y)) {
-            console.log(this.pos.x, this.pos.y)
+            console.log(this.pos.x, this.pos.y);
         }
 
         if (this.pos.y <= -300) {
@@ -161,51 +161,52 @@ export class Mick extends Player {
             this.collision = true;
             this.trash = event.other;
         }
-        if (event.other instanceof Pigeon || event.other instanceof FBirdH || event.other instanceof FBirdV) {
-            console.log(this.pos.x, this.pos.y)
-            if (this.pos.y <= Pigeon - 91 || this.pos.y <= FBirdH - 91 || this.pos.y <= FBirdV - 91) {
-                this.game.currentScene.gameOver();
-            } else {
-                this.vel.add(new Vector(0, -300));
-                event.other.kill();
-            }
-        }
         // if (event.other instanceof Pigeon || event.other instanceof FBirdH || event.other instanceof FBirdV) {
-        //     // Controleer of Mick boven het midden van de vogel is
-        //     const mickBottom = this.pos.y + this.getHeight() / 2;
-        //     const birdTop = event.other.pos.y - event.other.getHeight() / 2;
-        //     if (mickBottom <= birdTop) {
-        //         // Mick krijgt een boost omhoog
-        //         this.vel = this.vel.add(new Vector(0, -300));
-        //         // Vogel sterft
-        //         event.other.kill();
+        //     console.log(this.pos.x, this.pos.y)
+        //     if (this.pos.y <= Pigeon - 91 || this.pos.y <= FBirdH - 91 || this.pos.y <= FBirdV - 91) {
+        //         this.game.currentScene.gameOver();
         //     } else {
-        //         // Mick sterft
-        //         this.die();
+        //         this.vel.add(new Vector(0, -300));
+        //         event.other.kill();
         //     }
         // }
-    }
 
-    onCollisionGround(event) {
-        if (event.other instanceof Ground || event.other instanceof Fground || event.other instanceof FgroundH
-            || event.other instanceof FgroundS || event.other instanceof FgroundV || event.other instanceof Ground2) {
-            this.canJump = true;
-        }
-    }
-
-    onCollisionEnd(event) {
-        if (event.other instanceof Trash) {
-            this.collision = false;
-        }
         if (event.other instanceof Pigeon || event.other instanceof FBirdH || event.other instanceof FBirdV) {
-            this.vel = this.vel.add(new Vector(0, -650));
+            // Controleer of Mick boven het midden van de vogel is
+            const mickBottom = this.pos.y + this.height / 2;
+            const birdTop = event.other.pos.y - event.other.height / 2;
+            if (mickBottom <= birdTop) {
+                // Mick krijgt een boost omhoog
+                this.vel = this.vel.add(new Vector(0, -300));
+                // Vogel sterft
+                event.other.kill();
+            } else {
+                // Mick sterft
+                this.die();
+            }
         }
     }
 
-    grabTrash() {
-        if (this.collision === true) {
-            this.game.currentScene.pickupTrash();
-            this.trash.kill();
-        }
+onCollisionGround(event) {
+    if (event.other instanceof Ground || event.other instanceof Fground || event.other instanceof FgroundH
+        || event.other instanceof FgroundS || event.other instanceof FgroundV || event.other instanceof Ground2) {
+        this.canJump = true;
     }
+}
+
+onCollisionEnd(event) {
+    if (event.other instanceof Trash) {
+        this.collision = false;
+    }
+    if (event.other instanceof Pigeon || event.other instanceof FBirdH || event.other instanceof FBirdV) {
+        this.vel = this.vel.add(new Vector(0, -650));
+    }
+}
+
+grabTrash() {
+    if (this.collision === true) {
+        this.game.currentScene.pickupTrash();
+        this.trash.kill();
+    }
+}
 }

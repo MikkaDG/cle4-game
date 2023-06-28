@@ -10,6 +10,9 @@ import {FgroundH} from '../objects/fgroundhorizontal.js';
 import {FgroundS} from '../objects/fgroundsquare.js';
 import {FgroundV} from '../objects/fgroundvertical.js';
 import {Ground2} from '../objects/ground2.js';
+import {Pigeon} from './pigeon.js';
+import {FBirdH} from './fBirdH.js';
+import {FBirdV} from './fBirdV.js';
 
 export class Mike extends Player {
     game;
@@ -150,6 +153,20 @@ export class Mike extends Player {
         if (event.other instanceof Trash) {
             this.collision = true;
             this.trash = event.other;
+        }
+        if (event.other instanceof Pigeon || event.other instanceof FBirdH || event.other instanceof FBirdV) {
+            // Controleer of Mick boven het midden van de vogel is
+            const mickBottom = this.pos.y + this.height / 2;
+            const birdTop = event.other.pos.y - event.other.height / 2;
+            if (mickBottom <= birdTop) {
+                // Mick krijgt een boost omhoog
+                this.vel = this.vel.add(new Vector(0, -300));
+                // Vogel sterft
+                event.other.kill();
+            } else {
+                // Mick sterft
+                this.die();
+            }
         }
     }
 
