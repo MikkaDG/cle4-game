@@ -70,7 +70,13 @@ export class Level3 extends Scene {
         const ground = new Ground(450, 870, 1.5);
         this.add(ground);
 
-        const trash0 = new Trash(100, 658);
+        const trash01 = new Trash(30, 658);
+        this.add(trash01);
+
+        const trash02 = new Trash(105, 658);
+        this.add(trash02);
+
+        const trash0 = new Trash(180, 658);
         this.add(trash0);
 
         const fbirdh0 = new FBirdH(800, 250, 500);

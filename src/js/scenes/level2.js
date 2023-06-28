@@ -256,7 +256,7 @@ export class Level2 extends Scene {
         // Bijwerken van de positie van de scorelabel op basis van de huidige camera positie
         const cameraX = this.camera.pos.x;
         const cameraY = this.camera.pos.y;
-        const offsetX = 350; // X-offset van de scorelabel ten opzichte van de camera
+        const offsetX = 300; // X-offset van de scorelabel ten opzichte van de camera
         const offsetY = -300; // Y-offset van de scorelabel ten opzichte van de camera
 
         // Bereken de nieuwe positie van de scorelabel gebaseerd op de camera positie
