@@ -102,7 +102,7 @@ export class Mick extends Player {
         if (engine.input.keyboard.isHeld(Input.Keys.X) || engine.input.keyboard.isHeld(Input.Keys.E)) {
             this.graphics.use('pickup');
         }
-        if (this.facingLeft === true && engine.input.keyboard.isHeld(Input.Keys.X) || engine.input.keyboard.isHeld(Input.Keys.E)) {
+        if (this.facingLeft === true && engine.input.keyboard.isHeld(Input.Keys.X) || this.facingLeft === true && engine.input.keyboard.isHeld(Input.Keys.E)) {
             this.graphics.use('pickupLeft');
         }
         if (engine.input.keyboard.isHeld(Input.Keys.A) && engine.input.keyboard.isHeld(Input.Keys.X) || engine.input.keyboard.isHeld(Input.Keys.Left) && engine.input.keyboard.isHeld(Input.Keys.X)
@@ -119,7 +119,7 @@ export class Mick extends Player {
             this.graphics.use('idle');
             this.grabTrash();
         }
-        if (this.facingLeft === true && engine.input.keyboard.wasReleased(Input.Keys.X) || engine.input.keyboard.wasReleased(Input.Keys.E)) {
+        if (this.facingLeft === true && engine.input.keyboard.wasReleased(Input.Keys.X) || this.facingLeft === true && engine.input.keyboard.wasReleased(Input.Keys.E)) {
             this.graphics.use('idleLeft');
         }
 
