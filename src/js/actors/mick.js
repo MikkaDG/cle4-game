@@ -44,7 +44,6 @@ export class Mick extends Player {
 
     onInitialize(engine) {
         this.game = engine;
-
         this.on('collisionstart', (event) => this.onCollisionStart(event));
         this.on('collisionend', (event) => this.onCollisionEnd(event));
     }
