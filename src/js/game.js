@@ -43,10 +43,11 @@ export class Game extends Engine {
         // this.goToScene('start');
         const savedScene = localStorage.getItem('level');
 
-        if (savedScene == 0 || savedScene === '') {
-            this.goToScene('start');
-        } else if (savedScene){
+        if (savedScene){
             this.goToScene(savedScene);
+        }
+        else {
+            this.goToScene('start');
         }
     }
 }
